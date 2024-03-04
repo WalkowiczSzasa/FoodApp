@@ -7,28 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-
 
 namespace FoodApp
 {
-    public partial class Bejelentkezes : Form
+    public partial class FoodApp : Form
     {
-        public Bejelentkezes()
+        public FoodApp()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
+            Bejelentkezes login = new Bejelentkezes();
             this.Hide();
-            FoodApp form = new FoodApp();
-            form.ShowDialog();
+            login.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

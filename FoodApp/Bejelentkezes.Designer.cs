@@ -72,6 +72,7 @@ namespace FoodApp
             this.button1.TabIndex = 6;
             this.button1.Text = "Bejelentkezés";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // richTextBox2
             // 
@@ -170,6 +171,7 @@ namespace FoodApp
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Bejelentkezes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
