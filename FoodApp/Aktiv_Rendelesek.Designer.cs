@@ -35,7 +35,7 @@ namespace FoodApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(353, 291);
+            this.label1.Location = new System.Drawing.Point(444, 313);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 17);
             this.label1.TabIndex = 0;
@@ -45,9 +45,11 @@ namespace FoodApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.label1);
             this.Name = "Aktiv_Rendelesek";
-            this.Size = new System.Drawing.Size(1029, 720);
+            this.Size = new System.Drawing.Size(1029, 719);
+            this.Load += new System.EventHandler(this.Aktiv_Rendelesek_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

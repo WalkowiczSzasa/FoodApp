@@ -16,5 +16,10 @@ namespace FoodApp
         {
             InitializeComponent();
         }
+
+        private void Aktiv_Rendelesek_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
