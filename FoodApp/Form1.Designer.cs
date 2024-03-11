@@ -42,6 +42,7 @@ namespace FoodApp
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.rendeles_felvetel2 = new Rendeles_felvetel();
+            this.aktiv_Rendelesek1 = new Aktiv_Rendelesek();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -193,21 +194,31 @@ namespace FoodApp
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(902, 4);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(914, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 50);
+            this.button1.Size = new System.Drawing.Size(46, 42);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // rendeles_felvetel2
             // 
+            this.rendeles_felvetel2.BackColor = System.Drawing.Color.White;
             this.rendeles_felvetel2.Location = new System.Drawing.Point(188, 0);
             this.rendeles_felvetel2.Margin = new System.Windows.Forms.Padding(2);
             this.rendeles_felvetel2.Name = "rendeles_felvetel2";
             this.rendeles_felvetel2.Size = new System.Drawing.Size(772, 584);
             this.rendeles_felvetel2.TabIndex = 1;
+            // 
+            // aktiv_Rendelesek1
+            // 
+            this.aktiv_Rendelesek1.BackColor = System.Drawing.Color.White;
+            this.aktiv_Rendelesek1.Location = new System.Drawing.Point(188, 1);
+            this.aktiv_Rendelesek1.Margin = new System.Windows.Forms.Padding(2);
+            this.aktiv_Rendelesek1.Name = "aktiv_Rendelesek1";
+            this.aktiv_Rendelesek1.Size = new System.Drawing.Size(772, 584);
+            this.aktiv_Rendelesek1.TabIndex = 2;
             // 
             // FoodApp
             // 
@@ -218,6 +229,7 @@ namespace FoodApp
             this.Controls.Add(this.button1);
             this.Controls.Add(this.rendeles_felvetel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.aktiv_Rendelesek1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FoodApp";
@@ -245,5 +257,6 @@ namespace FoodApp
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private Rendeles_felvetel rendeles_felvetel2;
+        private Aktiv_Rendelesek aktiv_Rendelesek1;
     }
 }

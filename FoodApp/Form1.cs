@@ -41,7 +41,7 @@ namespace FoodApp
         {
             KijeloltPanel.Height = button3.Height;
             KijeloltPanel.Top = button3.Top;
-            rendeles_felvetel2.BringToFront();
+            aktiv_Rendelesek1.BringToFront();
             button1.BringToFront();
         }
 
