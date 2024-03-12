@@ -69,5 +69,13 @@ namespace FoodApp
             rendeles_felvetel2.BringToFront();
             button1.BringToFront();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            KijeloltPanel.Height = button7.Height;
+            KijeloltPanel.Top = button7.Top;
+            rendeles_felvetel2.BringToFront();
+            button1.BringToFront();
+        }
     }
 }
