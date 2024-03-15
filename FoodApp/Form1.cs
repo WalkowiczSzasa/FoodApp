@@ -12,6 +12,7 @@ namespace FoodApp
 {
     public partial class FoodApp : Form
     {
+        public string Dname { get; set; }
         public FoodApp()
         {
             InitializeComponent();
@@ -19,6 +20,10 @@ namespace FoodApp
             KijeloltPanel.Top = button2.Top;
             rendeles_felvetel2.BringToFront();
             button1.BringToFront();
+        }
+        private void FoodApp_Load(object sender, EventArgs e)
+        {
+            label2.Text = Dname;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -77,5 +82,7 @@ namespace FoodApp
             rendeles_felvetel2.BringToFront();
             button1.BringToFront();
         }
+
+
     }
 }
