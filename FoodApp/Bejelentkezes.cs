@@ -21,6 +21,7 @@ namespace FoodApp
         public Bejelentkezes()
         {
             InitializeComponent();
+            label4.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -44,6 +45,7 @@ namespace FoodApp
                 DataTable dtbl = new DataTable();
                 da.Fill(dtbl);
                 conn.Close();
+                label4.Show();
                 if (dtbl.Rows.Count != 1)
                 {
                     conn.Open();
@@ -52,7 +54,8 @@ namespace FoodApp
                     DataTable dtbl1 = new DataTable();
                     da1.Fill(dtbl1);
                     conn.Close();
-                    if(dtbl1.Rows.Count != 1)
+                    label4.Show();
+                    if (dtbl1.Rows.Count != 1)
                     {
                         conn.Open();
                         string sql2 = $"SELECT * FROM `dispatch` WHERE username='{textBox2.Text}' AND password='{textBox1.Text}'";
@@ -60,6 +63,7 @@ namespace FoodApp
                         DataTable dtbl2 = new DataTable();
                         da2.Fill(dtbl2);
                         conn.Close();
+                        label4.Show();
                         if (dtbl2.Rows.Count == 1)
                         {
                             foreach (DataRow row in dtbl2.Rows)
@@ -99,6 +103,8 @@ namespace FoodApp
             }
             catch (Exception ex){
                 Console.WriteLine(ex.ToString());
+
+
             }
             conn.Close();
         }
