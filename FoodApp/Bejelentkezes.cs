@@ -35,7 +35,7 @@ namespace FoodApp
         }
 
         private void bejelentkezes()
-        {
+        {//If its stupid and it works its not stupid
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
             try{
