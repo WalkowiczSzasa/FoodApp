@@ -26,10 +26,12 @@ namespace FoodApp
         {
             private int id;
             private string nev;
-            public customer(int id, string nev) => (this.id, this.nev) = (id, nev);
+            private string telszam;
+            public customer(int id, string nev, string telszam) => (this.id, this.nev, this.telszam) = (id, nev, telszam);
 
             public int Id { get => id; set => id = value; }
             public string Nev { get => nev; set => nev = value; }
+            public string Telszam { get => telszam; set => telszam = value; }
         }
         List<customer> customerek = new List<customer>();
         public Rendeles_felvetel()
@@ -47,7 +49,7 @@ namespace FoodApp
 
         private void customerek_betolt()
         {
-            //Kapcsolódási adatok0
+            //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
 
@@ -55,12 +57,12 @@ namespace FoodApp
             try
             {
                 conn.Open();
-                string sql = "SELECT ID, name FROM `customer` ORDER BY name ASC;";
+                string sql = "SELECT ID, name, phoneNumber FROM `customer` ORDER BY name ASC;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    customerek.Add(new customer(Convert.ToInt32(rdr[0]), rdr[1].ToString()));
+                    customerek.Add(new customer(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString()));
                 }
             }
             catch (Exception ex)
@@ -81,8 +83,7 @@ namespace FoodApp
         private void uj_rendeles()
         {
             //Elvitel- e a rendelés
-            if (checkBox1.Checked == true){elvitel = 0;}
-            else {elvitel = 1;}
+
 
             //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
@@ -209,10 +210,31 @@ namespace FoodApp
 
             //customerek betöltése comboBox-ba
             customerek_betolt();
-            elmek_betolt();
         }
 
-        private void elmek_betolt()
+        private void customer_select(object sender, EventArgs e)
+        {
+            int index;
+            index=comboBox2.SelectedIndex;
+            textBox1.Text = customerek[index].Nev;
+            textBox2.Text = customerek[index].Telszam;
+        }
+
+        private void elvitel_ellenorzes(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true) { 
+                elvitel = 0; 
+                textBox3.Text = "Étterem utcája";
+                textBox4.Text = "Étterem hsz.";
+            }
+            else {
+                textBox3.Text = "Utca:";
+                textBox4.Text = "Házszám:";
+                elvitel = 1; }
+
+        }
+
+        private void elemek_betolt()
         {
             flowLayoutPanel1.Controls.Clear();
             //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden

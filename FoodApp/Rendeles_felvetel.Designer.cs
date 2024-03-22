@@ -34,6 +34,7 @@ namespace FoodApp
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@ namespace FoodApp
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -120,6 +120,13 @@ namespace FoodApp
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(319, 511);
             this.panel4.TabIndex = 1;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 8);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(315, 500);
+            this.flowLayoutPanel1.TabIndex = 3;
             // 
             // label2
             // 
@@ -246,6 +253,7 @@ namespace FoodApp
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 14;
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.elvitel_ellenorzes);
             // 
             // label6
             // 
@@ -329,13 +337,7 @@ namespace FoodApp
             this.comboBox2.Size = new System.Drawing.Size(320, 29);
             this.comboBox2.Sorted = true;
             this.comboBox2.TabIndex = 19;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 8);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(315, 500);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.customer_select);
             // 
             // Rendeles_felvetel
             // 
