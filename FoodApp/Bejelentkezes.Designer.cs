@@ -31,6 +31,7 @@ namespace FoodApp
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bejelentkezes));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@ namespace FoodApp
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +60,18 @@ namespace FoodApp
             this.panel1.Size = new System.Drawing.Size(188, 585);
             this.panel1.TabIndex = 0;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label4.Location = new System.Drawing.Point(12, 257);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(132, 32);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "*Hibás felhasználónév \r\nvagy jelszó!";
+            // 
             // textBox2
             // 
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -69,6 +81,7 @@ namespace FoodApp
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(150, 24);
             this.textBox2.TabIndex = 8;
+            this.textBox2.TabStop = false;
             // 
             // textBox1
             // 
@@ -80,6 +93,7 @@ namespace FoodApp
             this.textBox1.PasswordChar = '*';
             this.textBox1.Size = new System.Drawing.Size(150, 24);
             this.textBox1.TabIndex = 7;
+            this.textBox1.TabStop = false;
             // 
             // button1
             // 
@@ -162,18 +176,6 @@ namespace FoodApp
             this.button2.TabIndex = 7;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(12, 257);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(132, 32);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "*Hibás felhasználónév \r\nvagy jelszó!";
             // 
             // Bejelentkezes
             // 

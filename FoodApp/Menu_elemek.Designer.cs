@@ -31,9 +31,10 @@ namespace FoodApp
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.hozzaadasBtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,13 +53,55 @@ namespace FoodApp
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.hozzaadasBtn);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(150, 119);
             this.panel1.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label3.Location = new System.Drawing.Point(128, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Placeholder";
+            // 
+            // hozzaadasBtn
+            // 
+            this.hozzaadasBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.hozzaadasBtn.FlatAppearance.BorderSize = 0;
+            this.hozzaadasBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hozzaadasBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.hozzaadasBtn.ForeColor = System.Drawing.Color.White;
+            this.hozzaadasBtn.Location = new System.Drawing.Point(72, 91);
+            this.hozzaadasBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.hozzaadasBtn.Name = "hozzaadasBtn";
+            this.hozzaadasBtn.Size = new System.Drawing.Size(75, 25);
+            this.hozzaadasBtn.TabIndex = 2;
+            this.hozzaadasBtn.Text = "Hozzáad";
+            this.hozzaadasBtn.UseVisualStyleBackColor = false;
+            this.hozzaadasBtn.Click += new System.EventHandler(this.hozzaadasBtn_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox1.Location = new System.Drawing.Point(4, 52);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(143, 36);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "placeholder";
             // 
             // label2
             // 
@@ -71,32 +114,6 @@ namespace FoodApp
             this.label2.Text = "xxxxFt";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(4, 52);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 36);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "placeholder";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(72, 91);
-            this.button1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Hozzáad";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // Menu_elemek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -107,6 +124,7 @@ namespace FoodApp
             this.Name = "Menu_elemek";
             this.Size = new System.Drawing.Size(156, 125);
             this.Load += new System.EventHandler(this.Menu_elemek_Load);
+            this.Click += new System.EventHandler(this.Menu_elemek_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -119,7 +137,8 @@ namespace FoodApp
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button hozzaadasBtn;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -43,9 +43,9 @@ namespace FoodApp
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.KijeloltPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.rendeles_felvetel2 = new Rendeles_felvetel();
+            this.exitBtn = new System.Windows.Forms.Button();
             this.aktiv_Rendelesek1 = new Aktiv_Rendelesek();
+            this.rendeles_felvetel2 = new Rendeles_felvetel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -233,28 +233,19 @@ namespace FoodApp
             this.KijeloltPanel.Size = new System.Drawing.Size(14, 43);
             this.KijeloltPanel.TabIndex = 1;
             // 
-            // button1
+            // exitBtn
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(914, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(46, 42);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // rendeles_felvetel2
-            // 
-            this.rendeles_felvetel2.BackColor = System.Drawing.Color.White;
-            this.rendeles_felvetel2.Location = new System.Drawing.Point(188, 0);
-            this.rendeles_felvetel2.Margin = new System.Windows.Forms.Padding(2);
-            this.rendeles_felvetel2.Name = "rendeles_felvetel2";
-            this.rendeles_felvetel2.Size = new System.Drawing.Size(772, 584);
-            this.rendeles_felvetel2.TabIndex = 1;
+            this.exitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
+            this.exitBtn.Location = new System.Drawing.Point(914, 0);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(46, 42);
+            this.exitBtn.TabIndex = 1;
+            this.exitBtn.UseVisualStyleBackColor = false;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
             // aktiv_Rendelesek1
             // 
@@ -265,13 +256,22 @@ namespace FoodApp
             this.aktiv_Rendelesek1.Size = new System.Drawing.Size(772, 584);
             this.aktiv_Rendelesek1.TabIndex = 2;
             // 
+            // rendeles_felvetel2
+            // 
+            this.rendeles_felvetel2.BackColor = System.Drawing.Color.White;
+            this.rendeles_felvetel2.Location = new System.Drawing.Point(188, 0);
+            this.rendeles_felvetel2.Margin = new System.Windows.Forms.Padding(2);
+            this.rendeles_felvetel2.Name = "rendeles_felvetel2";
+            this.rendeles_felvetel2.Size = new System.Drawing.Size(772, 584);
+            this.rendeles_felvetel2.TabIndex = 1;
+            // 
             // FoodApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(960, 585);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.aktiv_Rendelesek1);
             this.Controls.Add(this.rendeles_felvetel2);
@@ -294,7 +294,7 @@ namespace FoodApp
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;

@@ -13,55 +13,43 @@ using MySql.Data.MySqlClient;
 namespace FoodApp
 {
     public partial class Menu_elemek : UserControl
-    {
-
-        public class item
-        {
-            private string nev;
-            private string leiras;
-            private string ar;
-            private bool elerheto;
-            public item(string nev, string leiras, string ar, bool elerheto) => (this.nev, this.leiras, this.ar, this.elerheto) = (nev, leiras, ar, elerheto);
-
-            public string Nev { get => nev; set => nev = value; }
-            public string Leiras { get => leiras; set => leiras = value; }
-            public string Ar { get => ar; set => ar = value; }
-            public bool Elerheto { get => elerheto; set => elerheto = value; }
-        }
-        List<item> Menu = new List<item>();
-
+    { 
         public Menu_elemek()
         {
             InitializeComponent();
         }
 
+        Rendeles_felvetel rend_form = new Rendeles_felvetel();
         private void Menu_elemek_Load(object sender, EventArgs e)
         {
-
+            adat_beiras();
         }
-        private void customerek_betolt()
-        {
-            //Kapcsolódási adatok0
-            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
-            MySqlConnection conn = new MySqlConnection(connStr);
 
-            //cutomerID és név kiválasztása a destination tábla customerID mező kitöltéséhez
-            try
-            {
-                conn.Open();
-                string sql = "SELECT `foodName`, `foodDesc`,`foodPrice`,`foodStatus` FROM `food`";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    Menu.Add(new item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), Convert.ToBoolean(Convert.ToInt32(rdr[3]))));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            conn.Close();
+        private void adat_beiras()
+        {
+
+             label1.Text = nev;
+             label2.Text = ar + "Ft";
+             textBox1.Text = leiras;
+             label3.Text="#"+id;
+        }
+
+        private string nev;
+        private string leiras;
+        private string ar;
+        private bool elerheto;
+        private string id;
+
+        public string Nev { get => nev; set => nev = value; }
+        public string Leiras { get => leiras; set => leiras = value; }
+        public string Ar { get => ar; set => ar = value; }
+        public bool Elerheto { get => elerheto; set => elerheto = value; }
+        public string Id { get => id; set => id = value; }
+
+        
+        private void hozzaadasBtn_Click(object sender, EventArgs e)
+        {
+            rend_form.Elemek.Add(label3.Text.Trim('#'));
         }
     }
 }
