@@ -276,6 +276,7 @@ namespace FoodApp
             this.Controls.Add(this.aktiv_Rendelesek1);
             this.Controls.Add(this.rendeles_felvetel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FoodApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
