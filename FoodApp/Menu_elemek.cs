@@ -19,7 +19,6 @@ namespace FoodApp
             InitializeComponent();
         }
 
-        Rendeles_felvetel rend_form = new Rendeles_felvetel();
         private void Menu_elemek_Load(object sender, EventArgs e)
         {
             adat_beiras();
@@ -49,7 +48,8 @@ namespace FoodApp
         
         private void hozzaadasBtn_Click(object sender, EventArgs e)
         {
-            rend_form.Elemek.Add(label3.Text.Trim('#'));
+            Rendeles_felvetel.foodID.Add(label3.Text.Trim('#'));
+            Rendeles_felvetel.drinkID.Add(label3.Text.Trim('#'));
         }
     }
 }

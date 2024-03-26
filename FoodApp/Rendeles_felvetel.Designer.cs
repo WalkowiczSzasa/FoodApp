@@ -31,10 +31,14 @@ namespace FoodApp
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.rend_tetelek = new System.Windows.Forms.ListBox();
+            this.italBtn = new System.Windows.Forms.Button();
+            this.etelBtn = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,7 +48,7 @@ namespace FoodApp
             this.label5 = new System.Windows.Forms.Label();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.mentesBtn = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -54,10 +58,6 @@ namespace FoodApp
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -82,51 +82,15 @@ namespace FoodApp
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.rend_tetelek);
+            this.panel1.Controls.Add(this.italBtn);
+            this.panel1.Controls.Add(this.etelBtn);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Location = new System.Drawing.Point(422, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(350, 584);
             this.panel1.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(95, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 30);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Ital ";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(14, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Étel ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.Control;
-            this.panel4.Location = new System.Drawing.Point(13, 58);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(324, 21);
-            this.panel4.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
@@ -135,6 +99,80 @@ namespace FoodApp
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(324, 277);
             this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button5.Location = new System.Drawing.Point(269, 518);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(31, 31);
+            this.button5.TabIndex = 22;
+            this.button5.Text = "-";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button4.Location = new System.Drawing.Point(306, 518);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 31);
+            this.button4.TabIndex = 21;
+            this.button4.Text = "+";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox5.Location = new System.Drawing.Point(13, 519);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(229, 31);
+            this.textBox5.TabIndex = 20;
+            // 
+            // rend_tetelek
+            // 
+            this.rend_tetelek.FormattingEnabled = true;
+            this.rend_tetelek.Location = new System.Drawing.Point(13, 352);
+            this.rend_tetelek.Name = "rend_tetelek";
+            this.rend_tetelek.Size = new System.Drawing.Size(324, 160);
+            this.rend_tetelek.TabIndex = 3;
+            // 
+            // italBtn
+            // 
+            this.italBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.italBtn.FlatAppearance.BorderSize = 0;
+            this.italBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.italBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.italBtn.Location = new System.Drawing.Point(95, 33);
+            this.italBtn.Name = "italBtn";
+            this.italBtn.Size = new System.Drawing.Size(75, 30);
+            this.italBtn.TabIndex = 2;
+            this.italBtn.Text = "Ital ";
+            this.italBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.italBtn.UseVisualStyleBackColor = false;
+            this.italBtn.Click += new System.EventHandler(this.italBtn_Click);
+            // 
+            // etelBtn
+            // 
+            this.etelBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.etelBtn.FlatAppearance.BorderSize = 0;
+            this.etelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.etelBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.etelBtn.Location = new System.Drawing.Point(14, 33);
+            this.etelBtn.Name = "etelBtn";
+            this.etelBtn.Size = new System.Drawing.Size(75, 30);
+            this.etelBtn.TabIndex = 0;
+            this.etelBtn.Text = "Étel ";
+            this.etelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.etelBtn.UseVisualStyleBackColor = false;
+            this.etelBtn.Click += new System.EventHandler(this.etelBtn_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Location = new System.Drawing.Point(13, 58);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(324, 21);
+            this.panel4.TabIndex = 1;
             // 
             // label2
             // 
@@ -239,19 +277,19 @@ namespace FoodApp
             this.panel3.Size = new System.Drawing.Size(321, 123);
             this.panel3.TabIndex = 12;
             // 
-            // button3
+            // mentesBtn
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(245, 526);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 38);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Mentés";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.mentesBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.mentesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mentesBtn.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.mentesBtn.ForeColor = System.Drawing.Color.White;
+            this.mentesBtn.Location = new System.Drawing.Point(245, 526);
+            this.mentesBtn.Name = "mentesBtn";
+            this.mentesBtn.Size = new System.Drawing.Size(111, 38);
+            this.mentesBtn.TabIndex = 13;
+            this.mentesBtn.Text = "Mentés";
+            this.mentesBtn.UseVisualStyleBackColor = false;
+            this.mentesBtn.Click += new System.EventHandler(this.mentesBtn_Click);
             // 
             // checkBox1
             // 
@@ -347,42 +385,6 @@ namespace FoodApp
             this.comboBox2.TabIndex = 19;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.customer_select);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(13, 352);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(324, 160);
-            this.listBox1.TabIndex = 3;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox5.Location = new System.Drawing.Point(13, 519);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(229, 31);
-            this.textBox5.TabIndex = 20;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Location = new System.Drawing.Point(306, 518);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(31, 31);
-            this.button4.TabIndex = 21;
-            this.button4.Text = "+";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button5.Location = new System.Drawing.Point(269, 518);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(31, 31);
-            this.button5.TabIndex = 22;
-            this.button5.Text = "-";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // Rendeles_felvetel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,7 +396,7 @@ namespace FoodApp
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.mentesBtn);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePicker1);
@@ -434,9 +436,9 @@ namespace FoodApp
         private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button etelBtn;
+        private System.Windows.Forms.Button italBtn;
+        private System.Windows.Forms.Button mentesBtn;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel5;
@@ -447,7 +449,7 @@ namespace FoodApp
         private System.Windows.Forms.DateTimePicker timePicker;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox rend_tetelek;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox5;

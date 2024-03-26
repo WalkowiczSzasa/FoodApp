@@ -15,24 +15,25 @@ namespace FoodApp
 {
     public partial class Rendeles_felvetel : UserControl
     {
-        private byte elvitel;
-        private byte fizeszk;
+        private byte elvitel, fizeszk;
         private DateTime DueDate = new DateTime();
-        private int customerID;
-        private int orderDestID;
+        private int customerID, orderDestID;
 
 
-        public List<string> Elemek { get => elemek; set => elemek = value; }
-        private List<string> elemek = new List<string>();
+        List<food> foodMenu = new List<food>();
+        List<drink> drinkMenu = new List<drink>();
+        List<customer> customerek = new List<customer>();
+        public static List<string> foodID = new List<string>();
+        public static List<string> drinkID = new List<string>();
 
-        public class item
+        public class food
         {
             private string nev;
             private string leiras;
             private string ar;
             private bool elerheto;
             private string id;
-            public item(string nev, string leiras, string ar, bool elerheto, string id) => (this.nev, this.leiras, this.ar, this.elerheto, this.id) = (nev, leiras, ar, elerheto, id);
+            public food(string nev, string leiras, string ar, bool elerheto, string id) => (this.nev, this.leiras, this.ar, this.elerheto, this.id) = (nev, leiras, ar, elerheto, id);
 
             public string Nev { get => nev; set => nev = value; }
             public string Leiras { get => leiras; set => leiras = value; }
@@ -40,9 +41,19 @@ namespace FoodApp
             public bool Elerheto { get => elerheto; set => elerheto = value; }
             public string Id { get => id; set => id = value; }
         }
-        List<item> Menu = new List<item>();
+        public class drink
+        {
+            private string dNev;
+            private string dAr;
+            private bool dElerheto;
+            private string dId;
+            public drink(string dNev, string dAr, bool dElerheto, string dId) => (this.DNev, this.DAr, this.DElerheto, this.DId) = (dNev, dAr, dElerheto, dId);
 
-
+            public string DNev { get => dNev; set => dNev = value; }
+            public string DAr { get => dAr; set => dAr = value; }
+            public bool DElerheto { get => dElerheto; set => dElerheto = value; }
+            public string DId { get => dId; set => dId = value; }
+        }
         public class customer
         {
             private int id;
@@ -54,33 +65,57 @@ namespace FoodApp
             public string Nev { get => nev; set => nev = value; }
             public string Telszam { get => telszam; set => telszam = value; }
         }
-        List<customer> customerek = new List<customer>();
-
 
         public Rendeles_felvetel()
         {
             InitializeComponent();
         }
 
+        private void Rendeles_felvetel_Load(object sender, EventArgs e)
+        {
+            //placeholder attribútum hiányában ez a csunyaság van megoldásképp
+            textBox1.Text = "Telefonszám";
+            textBox2.Text = "Név:";
+            textBox3.Text = "Utca:";
+            textBox4.Text = "Házszám:";
 
-        private void button3_Click(object sender, EventArgs e)
+            //DateTimePicker formázás
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "yyyy/MM/dd";
+
+            //TimePicker formázás
+            timePicker.Format = DateTimePickerFormat.Custom;
+            timePicker.CustomFormat = "HH:mm";
+            timePicker.ShowUpDown = true;
+
+            //customerek betöltése comboBox-ba
+            customerek_betolt();
+
+            etelek_betolt();
+        }
+
+        private void mentesBtn_Click(object sender, EventArgs e)
         {
             //TODO: food és drink tábla elemeinek kilistázása
             uj_rendeles();
             customerek_betolt();
-            /*try
-            {
-                MessageBox.Show(Elemek.ElementAt(0).ToString());
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.ToString());
-                throw;
-            }*/
+
+        }
+
+        private void etelBtn_Click(object sender, EventArgs e)
+        {
+            etelek_betolt();
+        }
+
+        private void italBtn_Click(object sender, EventArgs e)
+        {
+            italok_betolt();
         }
 
         private void customerek_betolt()
         {
+            comboBox2.Items.Clear();
+            customerek.Clear();
             //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -104,13 +139,13 @@ namespace FoodApp
             conn.Close();
 
             //combobox2 feltöltése
-            comboBox2.Items.Clear();
+
             foreach (customer item in customerek)
             {
                 comboBox2.Items.Add(item.Nev);
             }
+            comboBox2.SelectedIndex = -1;
         }
-        
 
         private void uj_rendeles()
         {
@@ -125,9 +160,17 @@ namespace FoodApp
             try
             {
                 conn.Open();
-                string sql = $"INSERT INTO `customer`(`name`, `phoneNumber`) VALUES ('{textBox2.Text}','{textBox1.Text}')";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
+                if (comboBox2.SelectedIndex==-1)
+                {
+                    string sql = $"INSERT INTO `customer`(`name`, `phoneNumber`) VALUES ('{textBox2.Text}','{textBox1.Text}')";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                else if(comboBox2.SelectedIndex!=-1 && textBox2.Text!=comboBox2.SelectedItem.ToString()){
+                    string sql = $"UPDATE customer SET name='{textBox2.Text}' WHERE name='{comboBox2.SelectedItem}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
@@ -190,8 +233,10 @@ namespace FoodApp
             // orders tábla record létrehozás
             try
             {
+                foodID.Sort();
+                drinkID.Sort();
                 conn.Open();
-                string sql = $"INSERT INTO `orders`(`orderNote`, `orderTime`, `orderDueTime`, `orderDestID`, `orderDispatchID`, `orderStatus`, `foodID`, `drinkID`, `paymentID`) VALUES ('{richTextBox4.Text}','{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}','{DueDate.ToString("yyyy-MM-dd hh:mm:ss")}','{orderDestID}','[value-5]','0','[value-7]','[value-8]','0'   )";
+                string sql = $"INSERT INTO `orders`(`orderNote`, `orderTime`, `orderDueTime`, `orderDestID`, `orderDispatchID`, `orderStatus`, `foodID`, `drinkID`, `paymentID`) VALUES ('{richTextBox4.Text}','{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}','{DueDate.ToString("yyyy-MM-dd hh:mm:ss")}','{orderDestID}','[value-5]','0','{string.Join(" ", foodID)}','{string.Join(" ", drinkID)}','0'   )";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
             }
@@ -220,38 +265,32 @@ namespace FoodApp
                 MessageBox.Show(ex.ToString());
             }
             conn.Close();
-
+            customerek_betolt();
+            mezok_kiurit();
         }
 
-        private void Rendeles_felvetel_Load(object sender, EventArgs e)
-        { 
-            //placeholder attribútum hiányában ez a csunyaság van megoldásképp
-            textBox1.Text = "Telefonszám";
-            textBox2.Text = "Név:";
-            textBox3.Text = "Utca:";
-            textBox4.Text = "Házszám:";
-
-            //DateTimePicker formázás
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "yyyy/MM/dd";
-
-            //TimePicker formázás
-            timePicker.Format = DateTimePickerFormat.Custom;
-            timePicker.CustomFormat = "HH:mm";
-            timePicker.ShowUpDown = true;
-
-            //customerek betöltése comboBox-ba
-            customerek_betolt();
-
-            elemek_betolt();
+        private void mezok_kiurit()
+        {
+            comboBox2.SelectedIndex = -1;
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            checkBox1.Checked = false;
+            comboBox1.SelectedIndex = -1;
+            richTextBox4.Clear();
+            rend_tetelek.Items.Clear();
+            textBox5.Clear();
+            foodID.Clear();
+            drinkID.Clear();
         }
 
         private void customer_select(object sender, EventArgs e)
         {
             int index;
             index=comboBox2.SelectedIndex;
-            textBox1.Text = customerek[index].Nev;
-            textBox2.Text = customerek[index].Telszam;
+            textBox2.Text = customerek[index].Nev;
+            textBox1.Text = customerek[index].Telszam;
         }
 
         private void elvitel_ellenorzes(object sender, EventArgs e)
@@ -268,9 +307,10 @@ namespace FoodApp
 
         }
 
-        private void elemek_betolt()
+        private void etelek_betolt()
         {
             flowLayoutPanel1.Controls.Clear();
+            foodMenu.Clear();
             //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
             //Kapcsolódási adatok0
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
@@ -285,7 +325,7 @@ namespace FoodApp
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    Menu.Add(new item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), Convert.ToBoolean(Convert.ToInt32(rdr[3])), rdr[4].ToString()));
+                    foodMenu.Add(new food(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), Convert.ToBoolean(Convert.ToInt32(rdr[3])), rdr[4].ToString()));
                 }
             }
             catch (Exception ex)
@@ -294,24 +334,68 @@ namespace FoodApp
             }
             conn.Close();
 
-            Menu_elemek[] menu_items = new Menu_elemek[Menu.Count];
+            Menu_elemek[] menu_items = new Menu_elemek[foodMenu.Count];
 
-            for (int i = 0; i < Menu.Count(); i++)
+            for (int i = 0; i < foodMenu.Count(); i++)
             {
-                if (Menu[i].Elerheto)
+                if (foodMenu[i].Elerheto)
                 {
                     menu_items[i] = new Menu_elemek();
-                    menu_items[i].Nev = Menu[i].Nev;
-                    menu_items[i].Ar = Menu[i].Ar;
-                    menu_items[i].Leiras = Menu[i].Leiras;
-                    menu_items[i].Elerheto = Menu[i].Elerheto;
-                    menu_items[i].Id = Menu[i].Id;
+                    menu_items[i].Nev = foodMenu[i].Nev;
+                    menu_items[i].Ar = foodMenu[i].Ar;
+                    menu_items[i].Leiras = foodMenu[i].Leiras;
+                    menu_items[i].Elerheto = foodMenu[i].Elerheto;
+                    menu_items[i].Id = foodMenu[i].Id;
 
                     flowLayoutPanel1.Controls.Add(menu_items[i]);
 
                 }
             }
 
+        }
+        private void italok_betolt()
+        {
+            drinkMenu.Clear();
+            flowLayoutPanel1.Controls.Clear();
+            //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            //cutomerID és név kiválasztása a destination tábla customerID mező kitöltéséhez
+            try
+            {
+                conn.Open();
+                string sql = "SELECT `drinkName`, `drinkPrice`,`drinkStatus`,`ID`  FROM `drink`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    drinkMenu.Add(new drink(rdr[0].ToString(), rdr[1].ToString(), Convert.ToBoolean(Convert.ToInt32(rdr[2])), rdr[3].ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+
+            Menu_elemek[] Dmenu_items = new Menu_elemek[drinkMenu.Count];
+
+            for (int i = 0; i < drinkMenu.Count(); i++)
+            {
+                if (drinkMenu[i].DElerheto)
+                {
+                    Dmenu_items[i] = new Menu_elemek();
+                    Dmenu_items[i].Nev = drinkMenu[i].DNev;
+                    Dmenu_items[i].Ar = drinkMenu[i].DAr;
+                    Dmenu_items[i].Elerheto = drinkMenu[i].DElerheto;
+                    Dmenu_items[i].Id = drinkMenu[i].DId;
+
+                    flowLayoutPanel1.Controls.Add(Dmenu_items[i]);
+
+                }
+            }
         }
 
         //placeholder attribútum hiányában ez a csunyaság van megoldásképp
@@ -360,6 +444,9 @@ namespace FoodApp
 
             }
         }
+
+
+
         private void textBox4_Enter(object sender, EventArgs e)
         {
             if (textBox4.Text == "Házszám:")
