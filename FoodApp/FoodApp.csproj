@@ -100,6 +100,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aktiv_rendeles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aktiv_rendeles.Designer.cs">
+      <DependentUpon>Aktiv_rendeles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bejelentkezes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     <Compile Include="Aktiv_Rendelesek.Designer.cs">
       <DependentUpon>Aktiv_Rendelesek.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Aktiv_rendeles.resx">
+      <DependentUpon>Aktiv_rendeles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Aktiv_Rendelesek.resx">
       <DependentUpon>Aktiv_Rendelesek.cs</DependentUpon>
     </EmbeddedResource>

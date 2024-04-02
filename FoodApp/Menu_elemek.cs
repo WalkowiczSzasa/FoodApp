@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace FoodApp
 {
@@ -48,8 +46,15 @@ namespace FoodApp
         
         private void hozzaadasBtn_Click(object sender, EventArgs e)
         {
-            Rendeles_felvetel.foodID.Add(label3.Text.Trim('#'));
-            Rendeles_felvetel.drinkID.Add(label3.Text.Trim('#'));
+            if (textBox1.Text=="")
+            {
+                Rendeles_felvetel.drinkID.Add("d" + label3.Text.Trim('#'));
+                textBox1.Hide();
+            }
+            else
+            {
+                Rendeles_felvetel.foodID.Add("f" + label3.Text.Trim('#'));
+            }
         }
     }
 }

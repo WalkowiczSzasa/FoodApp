@@ -29,12 +29,14 @@ namespace FoodApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rendeles_felvetel));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.refreshPictbox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tetelMinus = new System.Windows.Forms.Button();
+            this.tetelAdd = new System.Windows.Forms.Button();
+            this.kivalasztott_tetelTextBox = new System.Windows.Forms.TextBox();
             this.rend_tetelek = new System.Windows.Forms.ListBox();
             this.italBtn = new System.Windows.Forms.Button();
             this.etelBtn = new System.Windows.Forms.Button();
@@ -59,6 +61,7 @@ namespace FoodApp
             this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -78,10 +81,11 @@ namespace FoodApp
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.panel1.Controls.Add(this.refreshPictbox);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.tetelMinus);
+            this.panel1.Controls.Add(this.tetelAdd);
+            this.panel1.Controls.Add(this.kivalasztott_tetelTextBox);
             this.panel1.Controls.Add(this.rend_tetelek);
             this.panel1.Controls.Add(this.italBtn);
             this.panel1.Controls.Add(this.etelBtn);
@@ -92,6 +96,17 @@ namespace FoodApp
             this.panel1.Size = new System.Drawing.Size(350, 584);
             this.panel1.TabIndex = 1;
             // 
+            // refreshPictbox
+            // 
+            this.refreshPictbox.Image = ((System.Drawing.Image)(resources.GetObject("refreshPictbox.Image")));
+            this.refreshPictbox.Location = new System.Drawing.Point(312, 347);
+            this.refreshPictbox.Name = "refreshPictbox";
+            this.refreshPictbox.Size = new System.Drawing.Size(25, 25);
+            this.refreshPictbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.refreshPictbox.TabIndex = 0;
+            this.refreshPictbox.TabStop = false;
+            this.refreshPictbox.Click += new System.EventHandler(this.refreshPctbox_Click);
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
@@ -100,41 +115,46 @@ namespace FoodApp
             this.flowLayoutPanel1.Size = new System.Drawing.Size(324, 277);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
-            // button5
+            // tetelMinus
             // 
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button5.Location = new System.Drawing.Point(269, 518);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(31, 31);
-            this.button5.TabIndex = 22;
-            this.button5.Text = "-";
-            this.button5.UseVisualStyleBackColor = true;
+            this.tetelMinus.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tetelMinus.Location = new System.Drawing.Point(269, 530);
+            this.tetelMinus.Name = "tetelMinus";
+            this.tetelMinus.Size = new System.Drawing.Size(31, 31);
+            this.tetelMinus.TabIndex = 22;
+            this.tetelMinus.Text = "-";
+            this.tetelMinus.UseVisualStyleBackColor = true;
+            this.tetelMinus.Click += new System.EventHandler(this.tetelMinus_Click);
             // 
-            // button4
+            // tetelAdd
             // 
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Location = new System.Drawing.Point(306, 518);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(31, 31);
-            this.button4.TabIndex = 21;
-            this.button4.Text = "+";
-            this.button4.UseVisualStyleBackColor = true;
+            this.tetelAdd.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tetelAdd.Location = new System.Drawing.Point(306, 530);
+            this.tetelAdd.Name = "tetelAdd";
+            this.tetelAdd.Size = new System.Drawing.Size(31, 31);
+            this.tetelAdd.TabIndex = 21;
+            this.tetelAdd.Text = "+";
+            this.tetelAdd.UseVisualStyleBackColor = true;
+            this.tetelAdd.Click += new System.EventHandler(this.tetelAdd_Click);
             // 
-            // textBox5
+            // kivalasztott_tetelTextBox
             // 
-            this.textBox5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox5.Location = new System.Drawing.Point(13, 519);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(229, 31);
-            this.textBox5.TabIndex = 20;
+            this.kivalasztott_tetelTextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.kivalasztott_tetelTextBox.Location = new System.Drawing.Point(13, 531);
+            this.kivalasztott_tetelTextBox.Name = "kivalasztott_tetelTextBox";
+            this.kivalasztott_tetelTextBox.Size = new System.Drawing.Size(229, 31);
+            this.kivalasztott_tetelTextBox.TabIndex = 20;
             // 
             // rend_tetelek
             // 
+            this.rend_tetelek.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.rend_tetelek.FormattingEnabled = true;
-            this.rend_tetelek.Location = new System.Drawing.Point(13, 352);
+            this.rend_tetelek.ItemHeight = 21;
+            this.rend_tetelek.Location = new System.Drawing.Point(14, 373);
             this.rend_tetelek.Name = "rend_tetelek";
-            this.rend_tetelek.Size = new System.Drawing.Size(324, 160);
+            this.rend_tetelek.Size = new System.Drawing.Size(324, 151);
             this.rend_tetelek.TabIndex = 3;
+            this.rend_tetelek.SelectedIndexChanged += new System.EventHandler(this.rend_tetelek_SelectedIndexChanged);
             // 
             // italBtn
             // 
@@ -413,6 +433,7 @@ namespace FoodApp
             this.Load += new System.EventHandler(this.Rendeles_felvetel_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -450,8 +471,9 @@ namespace FoodApp
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ListBox rend_tetelek;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button tetelMinus;
+        private System.Windows.Forms.Button tetelAdd;
+        private System.Windows.Forms.TextBox kivalasztott_tetelTextBox;
+        private System.Windows.Forms.PictureBox refreshPictbox;
     }
 }

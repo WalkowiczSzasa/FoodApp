@@ -23,8 +23,8 @@ namespace FoodApp
         List<food> foodMenu = new List<food>();
         List<drink> drinkMenu = new List<drink>();
         List<customer> customerek = new List<customer>();
-        public static List<string> foodID = new List<string>();
-        public static List<string> drinkID = new List<string>();
+        public static List<string> foodID, drinkID = new List<string>();
+        List<tetel> rendeles_tetelek = new List<tetel>();
 
         public class food
         {
@@ -65,6 +65,21 @@ namespace FoodApp
             public string Nev { get => nev; set => nev = value; }
             public string Telszam { get => telszam; set => telszam = value; }
         }
+        public class tetel {
+            string tetelID;
+            string tetelName;
+            double tetelPrice;
+
+            public tetel(string tetelID, string tetelName, double tetelPrice)
+            {
+                this.tetelID = tetelID;
+                this.tetelName = tetelName;
+                this.tetelPrice = tetelPrice;
+            }
+            public string TetelID { get => tetelID; set => tetelID = value; }
+            public string TetelName { get => tetelName; set => tetelName = value; }
+            public double TetelPrice { get => tetelPrice; set => tetelPrice = value; }
+        }
 
         public Rendeles_felvetel()
         {
@@ -96,9 +111,9 @@ namespace FoodApp
 
         private void mentesBtn_Click(object sender, EventArgs e)
         {
-            //TODO: food és drink tábla elemeinek kilistázása
             uj_rendeles();
             customerek_betolt();
+            mezok_kiurit();
 
         }
 
@@ -110,6 +125,39 @@ namespace FoodApp
         private void italBtn_Click(object sender, EventArgs e)
         {
             italok_betolt();
+        }
+
+        private void refreshPctbox_Click(object sender, EventArgs e)
+        {
+            rend_tetelekFeltoltes();
+        }
+
+        private void tetelAdd_Click(object sender, EventArgs e)
+        {
+            string addID = kivalasztott_tetelTextBox.Text.Split(' ').FirstOrDefault();
+            if (addID.Contains('d'))
+            {
+                drinkID.Add(addID);
+            }
+            else
+            {
+                foodID.Add(addID);
+            }
+            rend_tetelekFeltoltes();
+        }
+
+        private void tetelMinus_Click(object sender, EventArgs e)
+        {
+            string addID = kivalasztott_tetelTextBox.Text.Split(' ').FirstOrDefault();
+            if (addID.Contains('d'))
+            {
+                drinkID.Remove(addID);
+            }
+            else
+            {
+                foodID.Remove(addID);
+            }
+            rend_tetelekFeltoltes();
         }
 
         private void customerek_betolt()
@@ -265,13 +313,11 @@ namespace FoodApp
                 MessageBox.Show(ex.ToString());
             }
             conn.Close();
-            customerek_betolt();
-            mezok_kiurit();
+
         }
 
         private void mezok_kiurit()
         {
-            comboBox2.SelectedIndex = -1;
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
@@ -280,31 +326,9 @@ namespace FoodApp
             comboBox1.SelectedIndex = -1;
             richTextBox4.Clear();
             rend_tetelek.Items.Clear();
-            textBox5.Clear();
+            kivalasztott_tetelTextBox.Clear();
             foodID.Clear();
             drinkID.Clear();
-        }
-
-        private void customer_select(object sender, EventArgs e)
-        {
-            int index;
-            index=comboBox2.SelectedIndex;
-            textBox2.Text = customerek[index].Nev;
-            textBox1.Text = customerek[index].Telszam;
-        }
-
-        private void elvitel_ellenorzes(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked == true) { 
-                elvitel = 0; 
-                textBox3.Text = "Étterem utcája";
-                textBox4.Text = "Étterem hsz.";
-            }
-            else {
-                textBox3.Text = "Utca:";
-                textBox4.Text = "Házszám:";
-                elvitel = 1; }
-
         }
 
         private void etelek_betolt()
@@ -312,7 +336,7 @@ namespace FoodApp
             flowLayoutPanel1.Controls.Clear();
             foodMenu.Clear();
             //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
-            //Kapcsolódási adatok0
+            //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
 
@@ -353,6 +377,7 @@ namespace FoodApp
             }
 
         }
+
         private void italok_betolt()
         {
             drinkMenu.Clear();
@@ -396,6 +421,91 @@ namespace FoodApp
 
                 }
             }
+        }
+
+        private void rend_tetelekFeltoltes()
+        {
+            rend_tetelek.Items.Clear();
+            rendeles_tetelek.Clear();
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            //cutomerID és név kiválasztása a destination tábla customerID mező kitöltéséhez
+            try
+            {
+                if (foodID.Count > 0)
+                {
+                    for (int i = 0; i < foodID.Count; i++)
+                    {
+                        conn.Open();
+                        string sql = $"SELECT ID, foodName, foodPrice FROM `food` WHERE ID={foodID[i].TrimStart('f')} ORDER BY foodName ASC;";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        while (rdr.Read())
+                        {
+                            rendeles_tetelek.Add(new tetel(foodID[i], rdr[1].ToString(), Convert.ToDouble(rdr[2])));
+                        }
+                        conn.Close();
+                    }
+                }
+                if (drinkID.Count > 0)
+                {
+                    for (int i = 0; i < drinkID.Count; i++)
+                    {
+                        conn.Open();
+                        string sql = $"SELECT ID, drinkName, drinkPrice FROM `drink` WHERE ID={drinkID[i].TrimStart('d')} ORDER BY drinkName ASC;";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        while (rdr.Read())
+                        {
+                            rendeles_tetelek.Add(new tetel(drinkID[i], rdr[1].ToString(), Convert.ToDouble(rdr[2])));
+                        }
+                        conn.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            foreach (tetel item in rendeles_tetelek)
+            {
+                rend_tetelek.Items.Add(item.TetelID + " " + item.TetelName + "\t" + item.TetelPrice);
+            }
+            rend_tetelek.Sorted = true;
+        }
+
+        private void customer_select(object sender, EventArgs e)
+        {
+            int index;
+            index = comboBox2.SelectedIndex;
+            textBox2.Text = customerek[index].Nev;
+            textBox1.Text = customerek[index].Telszam;
+        }
+
+        private void elvitel_ellenorzes(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                elvitel = 0;
+                textBox3.Text = "Étterem utcája";
+                textBox4.Text = "Étterem hsz.";
+            }
+            else
+            {
+                textBox3.Text = "Utca:";
+                textBox4.Text = "Házszám:";
+                elvitel = 1;
+            }
+
+        }
+
+        private void rend_tetelek_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string kiv_tetel = rend_tetelek.SelectedItem.ToString();
+            kivalasztott_tetelTextBox.Text = kiv_tetel.TrimEnd('\t').Remove(kiv_tetel.LastIndexOf('\t') + 1);
         }
 
         //placeholder attribútum hiányában ez a csunyaság van megoldásképp
@@ -444,9 +554,6 @@ namespace FoodApp
 
             }
         }
-
-
-
         private void textBox4_Enter(object sender, EventArgs e)
         {
             if (textBox4.Text == "Házszám:")
@@ -462,6 +569,11 @@ namespace FoodApp
 
             }
         }
+        //HIBA
+
+
+
+
 
     }
 }
