@@ -13,9 +13,58 @@ namespace FoodApp
 {
     public partial class Aktiv_Rendelesek : UserControl
     {
+        List<food> foodMenu = new List<food>();
+        List<drink> drinkMenu = new List<drink>();
+        public static List<string> foodID = new List<string>();
+        public static List<string> drinkID = new List<string>();
         List<customer> Customers = new List<customer>();
         List<cim> Cimek = new List<cim>();
         List<order> Orders = new List<order>();
+        public class food
+        {
+            private string nev;
+            private string leiras;
+            private string ar;
+            private bool elerheto;
+            private string id;
+            public food(string nev, string leiras, string ar, bool elerheto, string id) => (this.nev, this.leiras, this.ar, this.elerheto, this.id) = (nev, leiras, ar, elerheto, id);
+
+            public string Nev { get => nev; set => nev = value; }
+            public string Leiras { get => leiras; set => leiras = value; }
+            public string Ar { get => ar; set => ar = value; }
+            public bool Elerheto { get => elerheto; set => elerheto = value; }
+            public string Id { get => id; set => id = value; }
+        }
+        public class drink
+        {
+            private string dNev;
+            private string dAr;
+            private bool dElerheto;
+            private string dId;
+            public drink(string dNev, string dAr, bool dElerheto, string dId) => (this.DNev, this.DAr, this.DElerheto, this.DId) = (dNev, dAr, dElerheto, dId);
+
+            public string DNev { get => dNev; set => dNev = value; }
+            public string DAr { get => dAr; set => dAr = value; }
+            public bool DElerheto { get => dElerheto; set => dElerheto = value; }
+            public string DId { get => dId; set => dId = value; }
+        }
+        public class tetel
+        {
+            string tetelID;
+            string tetelName;
+            double tetelPrice;
+
+            public tetel(string tetelID, string tetelName, double tetelPrice)
+            {
+                this.tetelID = tetelID;
+                this.tetelName = tetelName;
+                this.tetelPrice = tetelPrice;
+            }
+            public string TetelID { get => tetelID; set => tetelID = value; }
+            public string TetelName { get => tetelName; set => tetelName = value; }
+            public double TetelPrice { get => tetelPrice; set => tetelPrice = value; }
+        }
+
         public class order
         {
             private string id;
@@ -86,6 +135,8 @@ namespace FoodApp
         private void Aktiv_Rendelesek_Load(object sender, EventArgs e)
         {
             rendelesek_betolt();
+            etelek_betolt();
+
         }
 
         public void rendelesek_betolt()
@@ -188,15 +239,200 @@ namespace FoodApp
             }
 
         }
+        private void etelek_betolt()
+        {
+            flowLayoutPanel2.Controls.Clear();
+            foodMenu.Clear();
+            //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            //cutomerID és név kiválasztása a destination tábla customerID mező kitöltéséhez
+            try
+            {
+                conn.Open();
+                string sql = "SELECT `foodName`, `foodDesc`,`foodPrice`,`foodStatus`,`ID`  FROM `food`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    foodMenu.Add(new food(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), Convert.ToBoolean(Convert.ToInt32(rdr[3])), rdr[4].ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+
+            Menu_elemek[] menu_items = new Menu_elemek[foodMenu.Count];
+
+            for (int i = 0; i < foodMenu.Count(); i++)
+            {
+                if (foodMenu[i].Elerheto)
+                {
+                    menu_items[i] = new Menu_elemek();
+                    menu_items[i].Nev = foodMenu[i].Nev;
+                    menu_items[i].Ar = foodMenu[i].Ar;
+                    menu_items[i].Leiras = foodMenu[i].Leiras;
+                    menu_items[i].Elerheto = foodMenu[i].Elerheto;
+                    menu_items[i].Id = foodMenu[i].Id;
+
+                    flowLayoutPanel2.Controls.Add(menu_items[i]);
+
+                }
+            }
+
+        }
+
+        private void italok_betolt()
+        {
+            drinkMenu.Clear();
+            flowLayoutPanel2.Controls.Clear();
+            //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            //cutomerID és név kiválasztása a destination tábla customerID mező kitöltéséhez
+            try
+            {
+                conn.Open();
+                string sql = "SELECT `drinkName`, `drinkPrice`,`drinkStatus`,`ID`  FROM `drink`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    drinkMenu.Add(new drink(rdr[0].ToString(), rdr[1].ToString(), Convert.ToBoolean(Convert.ToInt32(rdr[2])), rdr[3].ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+
+            Menu_elemek[] Dmenu_items = new Menu_elemek[drinkMenu.Count];
+
+            for (int i = 0; i < drinkMenu.Count(); i++)
+            {
+                if (drinkMenu[i].DElerheto)
+                {
+                    Dmenu_items[i] = new Menu_elemek();
+                    Dmenu_items[i].Nev = drinkMenu[i].DNev;
+                    Dmenu_items[i].Ar = drinkMenu[i].DAr;
+                    Dmenu_items[i].Elerheto = drinkMenu[i].DElerheto;
+                    Dmenu_items[i].Id = drinkMenu[i].DId;
+
+                    flowLayoutPanel2.Controls.Add(Dmenu_items[i]);
+
+                }
+            }
+        }
+        private void rend_tetelek_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string kiv_tetel = rend_tetelek.SelectedItem.ToString();
+            kivalasztott_tetelTextBox.Text = kiv_tetel.TrimEnd('\t').Remove(kiv_tetel.LastIndexOf('\t') + 1);
+        }
+        private void rend_tetelekFeltoltes()
+        {
+           /* rend_tetelek.Items.Clear();
+            rendeles_tetelek.Clear();
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            //cutomerID és név kiválasztása a destination tábla customerID mező kitöltéséhez
+            try
+            {
+                if (foodID.Count > 0)
+                {
+                    for (int i = 0; i < foodID.Count; i++)
+                    {
+                        conn.Open();
+                        string sql = $"SELECT ID, foodName, foodPrice FROM `food` WHERE ID={foodID[i].TrimStart('f')} ORDER BY foodName ASC;";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        while (rdr.Read())
+                        {
+                            rendeles_tetelek.Add(new tetel(foodID[i], rdr[1].ToString(), Convert.ToDouble(rdr[2])));
+                        }
+                        conn.Close();
+                    }
+                }
+                if (drinkID.Count > 0)
+                {
+                    for (int i = 0; i < drinkID.Count; i++)
+                    {
+                        conn.Open();
+                        string sql = $"SELECT ID, drinkName, drinkPrice FROM `drink` WHERE ID={drinkID[i].TrimStart('d')} ORDER BY drinkName ASC;";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        while (rdr.Read())
+                        {
+                            rendeles_tetelek.Add(new tetel(drinkID[i], rdr[1].ToString(), Convert.ToDouble(rdr[2])));
+                        }
+                        conn.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            foreach (tetel item in rendeles_tetelek)
+            {
+                rend_tetelek.Items.Add(item.TetelID + " " + item.TetelName + "\t" + item.TetelPrice);
+            }
+            rend_tetelek.Sorted = true;
+           */
+        }
+
+
+        private void etelBtn_Click(object sender, EventArgs e)
+        {
+            etelek_betolt();
+        }
+
+        private void italBtn_Click(object sender, EventArgs e)
+        {
+            italok_betolt();
+        }
+
+        private void refreshPctbox_Click(object sender, EventArgs e)
+        {
+            rend_tetelekFeltoltes();
+        }
 
         private void tetelAdd_Click(object sender, EventArgs e)
         {
-
+            string addID = kivalasztott_tetelTextBox.Text.Split(' ').FirstOrDefault();
+            if (addID.Contains('d'))
+            {
+                drinkID.Add(addID);
+            }
+            else
+            {
+                foodID.Add(addID);
+            }
+            rend_tetelekFeltoltes();
         }
 
         private void tetelMinus_Click(object sender, EventArgs e)
         {
-
+            string addID = kivalasztott_tetelTextBox.Text.Split(' ').FirstOrDefault();
+            if (addID.Contains('d'))
+            {
+                drinkID.Remove(addID);
+            }
+            else
+            {
+                foodID.Remove(addID);
+            }
+            rend_tetelekFeltoltes();
         }
+
     }
 }

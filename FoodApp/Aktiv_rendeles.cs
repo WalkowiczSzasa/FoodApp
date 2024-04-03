@@ -85,6 +85,7 @@ namespace FoodApp
             telszamLabel.Text = telszam;
             cimLabel.Text = cim;
             arLabel.Text = ar + "Ft";
+            hatarido_kezeles();
             allapot_ellenorzes();
 
             foreach (futar item in futarok)
@@ -92,6 +93,21 @@ namespace FoodApp
                 futarComboBox.Items.Add(item.Nev);
             }
             futarComboBox.SelectedIndex = -1;
+        }
+
+        private void hatarido_kezeles()
+        {
+            DateTime ma = DateTime.Now;
+            if (duetime.Date>ma.Date)
+            {
+                idoLabel.Text = Duetime.ToString("HH:mm");
+                dueDayLabel.Text= Duetime.ToString("MM/dd");
+            }
+            else
+            {
+                idoLabel.Text = Duetime.ToString("HH:mm");
+                dueDayLabel.Hide();
+            }
         }
 
         private void allapot_ellenorzes()

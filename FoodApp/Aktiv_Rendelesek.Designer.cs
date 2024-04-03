@@ -43,8 +43,10 @@ namespace FoodApp
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mentesBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.rendeles_szerkBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.adatok_modBtn = new System.Windows.Forms.Button();
             this.rend_tetelek = new System.Windows.Forms.ListBox();
             this.tetelMinus = new System.Windows.Forms.Button();
             this.tetelAdd = new System.Windows.Forms.Button();
@@ -53,15 +55,12 @@ namespace FoodApp
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBox4
@@ -208,9 +207,9 @@ namespace FoodApp
             this.panel1.Controls.Add(this.richTextBox3);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(422, 99);
+            this.panel1.Location = new System.Drawing.Point(452, 99);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(350, 488);
+            this.panel1.Size = new System.Drawing.Size(320, 488);
             this.panel1.TabIndex = 24;
             // 
             // mentesBtn
@@ -227,26 +226,27 @@ namespace FoodApp
             this.mentesBtn.Text = "Mentés";
             this.mentesBtn.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // rendeles_szerkBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(0, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(305, 29);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Rendelés szerkesztése";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
+            this.rendeles_szerkBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.rendeles_szerkBtn.FlatAppearance.BorderSize = 0;
+            this.rendeles_szerkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rendeles_szerkBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.rendeles_szerkBtn.ForeColor = System.Drawing.Color.White;
+            this.rendeles_szerkBtn.Location = new System.Drawing.Point(0, 29);
+            this.rendeles_szerkBtn.Name = "rendeles_szerkBtn";
+            this.rendeles_szerkBtn.Size = new System.Drawing.Size(305, 29);
+            this.rendeles_szerkBtn.TabIndex = 27;
+            this.rendeles_szerkBtn.Text = "Rendelés szerkesztése";
+            this.rendeles_szerkBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rendeles_szerkBtn.UseVisualStyleBackColor = false;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.flowLayoutPanel2);
+            this.panel4.Controls.Add(this.adatok_modBtn);
+            this.panel4.Controls.Add(this.rendeles_szerkBtn);
             this.panel4.Controls.Add(this.rend_tetelek);
             this.panel4.Controls.Add(this.tetelMinus);
             this.panel4.Controls.Add(this.tetelAdd);
@@ -255,12 +255,34 @@ namespace FoodApp
             this.panel4.Controls.Add(this.button5);
             this.panel4.Controls.Add(this.button3);
             this.panel4.Controls.Add(this.button4);
-            this.panel4.Controls.Add(this.dataGridView1);
             this.panel4.Controls.Add(this.panel3);
-            this.panel4.Location = new System.Drawing.Point(422, 0);
+            this.panel4.Location = new System.Drawing.Point(445, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(350, 584);
+            this.panel4.Size = new System.Drawing.Size(327, 584);
             this.panel4.TabIndex = 28;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 93);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(324, 246);
+            this.flowLayoutPanel2.TabIndex = 38;
+            // 
+            // adatok_modBtn
+            // 
+            this.adatok_modBtn.BackColor = System.Drawing.Color.White;
+            this.adatok_modBtn.FlatAppearance.BorderSize = 0;
+            this.adatok_modBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adatok_modBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.adatok_modBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.adatok_modBtn.Location = new System.Drawing.Point(0, 0);
+            this.adatok_modBtn.Name = "adatok_modBtn";
+            this.adatok_modBtn.Size = new System.Drawing.Size(327, 31);
+            this.adatok_modBtn.TabIndex = 37;
+            this.adatok_modBtn.Text = "Adatok módosítása";
+            this.adatok_modBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.adatok_modBtn.UseVisualStyleBackColor = false;
             // 
             // rend_tetelek
             // 
@@ -269,13 +291,14 @@ namespace FoodApp
             this.rend_tetelek.ItemHeight = 21;
             this.rend_tetelek.Location = new System.Drawing.Point(10, 378);
             this.rend_tetelek.Name = "rend_tetelek";
-            this.rend_tetelek.Size = new System.Drawing.Size(320, 130);
+            this.rend_tetelek.Size = new System.Drawing.Size(302, 130);
             this.rend_tetelek.TabIndex = 36;
+            this.rend_tetelek.SelectedIndexChanged += new System.EventHandler(this.rend_tetelek_SelectedIndexChanged);
             // 
             // tetelMinus
             // 
             this.tetelMinus.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tetelMinus.Location = new System.Drawing.Point(262, 511);
+            this.tetelMinus.Location = new System.Drawing.Point(244, 511);
             this.tetelMinus.Name = "tetelMinus";
             this.tetelMinus.Size = new System.Drawing.Size(31, 31);
             this.tetelMinus.TabIndex = 35;
@@ -286,7 +309,7 @@ namespace FoodApp
             // tetelAdd
             // 
             this.tetelAdd.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tetelAdd.Location = new System.Drawing.Point(299, 511);
+            this.tetelAdd.Location = new System.Drawing.Point(281, 511);
             this.tetelAdd.Name = "tetelAdd";
             this.tetelAdd.Size = new System.Drawing.Size(31, 31);
             this.tetelAdd.TabIndex = 34;
@@ -320,7 +343,7 @@ namespace FoodApp
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button5.Location = new System.Drawing.Point(227, 548);
+            this.button5.Location = new System.Drawing.Point(208, 548);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(104, 29);
             this.button5.TabIndex = 30;
@@ -333,13 +356,14 @@ namespace FoodApp
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.Location = new System.Drawing.Point(92, 64);
+            this.button3.Location = new System.Drawing.Point(84, 64);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 27);
             this.button3.TabIndex = 6;
             this.button3.Text = "Ital ";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.italBtn_Click);
             // 
             // button4
             // 
@@ -347,30 +371,21 @@ namespace FoodApp
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Location = new System.Drawing.Point(11, 64);
+            this.button4.Location = new System.Drawing.Point(3, 64);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 27);
             this.button4.TabIndex = 3;
             this.button4.Text = "Étel ";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button4.UseVisualStyleBackColor = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 101);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(313, 238);
-            this.dataGridView1.TabIndex = 4;
+            this.button4.Click += new System.EventHandler(this.etelBtn_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Location = new System.Drawing.Point(11, 90);
+            this.panel3.Location = new System.Drawing.Point(2, 90);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(319, 249);
+            this.panel3.Size = new System.Drawing.Size(324, 249);
             this.panel3.TabIndex = 5;
             // 
             // label1
@@ -386,28 +401,14 @@ namespace FoodApp
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("flowLayoutPanel1.BackgroundImage")));
             this.flowLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 49);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 49);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(416, 523);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(446, 523);
             this.flowLayoutPanel1.TabIndex = 33;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(350, 31);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Adatok módosítása";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // Aktiv_Rendelesek
             // 
@@ -427,7 +428,6 @@ namespace FoodApp
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,12 +447,11 @@ namespace FoodApp
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button mentesBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button rendeles_szerkBtn;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
@@ -461,6 +460,7 @@ namespace FoodApp
         private System.Windows.Forms.TextBox kivalasztott_tetelTextBox;
         private System.Windows.Forms.ListBox rend_tetelek;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button adatok_modBtn;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }

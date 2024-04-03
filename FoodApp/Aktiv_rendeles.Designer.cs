@@ -38,6 +38,7 @@ namespace FoodApp
             this.arLabel = new System.Windows.Forms.Label();
             this.futarComboBox = new System.Windows.Forms.ComboBox();
             this.idoLabel = new System.Windows.Forms.Label();
+            this.dueDayLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,7 +111,7 @@ namespace FoodApp
             this.allapotLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.allapotLabel.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.allapotLabel.ForeColor = System.Drawing.Color.White;
-            this.allapotLabel.Location = new System.Drawing.Point(295, 6);
+            this.allapotLabel.Location = new System.Drawing.Point(293, 6);
             this.allapotLabel.Name = "allapotLabel";
             this.allapotLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.allapotLabel.Size = new System.Drawing.Size(117, 33);
@@ -126,7 +127,7 @@ namespace FoodApp
             this.arLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.arLabel.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.arLabel.ForeColor = System.Drawing.Color.Black;
-            this.arLabel.Location = new System.Drawing.Point(377, 43);
+            this.arLabel.Location = new System.Drawing.Point(375, 42);
             this.arLabel.Name = "arLabel";
             this.arLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.arLabel.Size = new System.Drawing.Size(33, 22);
@@ -138,7 +139,7 @@ namespace FoodApp
             // 
             this.futarComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.futarComboBox.FormattingEnabled = true;
-            this.futarComboBox.Location = new System.Drawing.Point(255, 94);
+            this.futarComboBox.Location = new System.Drawing.Point(253, 92);
             this.futarComboBox.Name = "futarComboBox";
             this.futarComboBox.Size = new System.Drawing.Size(157, 25);
             this.futarComboBox.Sorted = true;
@@ -159,10 +160,26 @@ namespace FoodApp
             this.idoLabel.Text = "XX:XX";
             this.idoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // dueDayLabel
+            // 
+            this.dueDayLabel.AutoSize = true;
+            this.dueDayLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.dueDayLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dueDayLabel.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dueDayLabel.ForeColor = System.Drawing.Color.Black;
+            this.dueDayLabel.Location = new System.Drawing.Point(221, 28);
+            this.dueDayLabel.Name = "dueDayLabel";
+            this.dueDayLabel.Size = new System.Drawing.Size(71, 22);
+            this.dueDayLabel.TabIndex = 8;
+            this.dueDayLabel.Text = "XX/XX";
+            this.dueDayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Aktiv_rendeles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.dueDayLabel);
             this.Controls.Add(this.idoLabel);
             this.Controls.Add(this.futarComboBox);
             this.Controls.Add(this.arLabel);
@@ -172,7 +189,7 @@ namespace FoodApp
             this.Controls.Add(this.nevLabel);
             this.Controls.Add(this.panel1);
             this.Name = "Aktiv_rendeles";
-            this.Size = new System.Drawing.Size(415, 122);
+            this.Size = new System.Drawing.Size(413, 120);
             this.Load += new System.EventHandler(this.Aktiv_rendeles_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -192,5 +209,6 @@ namespace FoodApp
         private System.Windows.Forms.Label arLabel;
         private System.Windows.Forms.ComboBox futarComboBox;
         private System.Windows.Forms.Label idoLabel;
+        private System.Windows.Forms.Label dueDayLabel;
     }
 }

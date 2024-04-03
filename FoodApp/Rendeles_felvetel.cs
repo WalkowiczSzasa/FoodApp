@@ -228,21 +228,43 @@ namespace FoodApp
             conn.Close();
 
             //customerID kiválasztása a destination tábla customerID mező kitöltéséhez
-            try
+            if (comboBox2.SelectedIndex>-1)
             {
-                conn.Open();
-                string sql = $"SELECT ID FROM `customer` WHERE name='{comboBox2.SelectedItem.ToString()}'";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                try
                 {
-                    customerID = Convert.ToInt32(rdr[0]);
+                    conn.Open();
+                    string sql = $"SELECT ID FROM `customer` WHERE name='{comboBox2.SelectedItem.ToString()}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        customerID = Convert.ToInt32(rdr[0]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                try
+                {
+                    conn.Open();
+                    string sql = $"SELECT ID FROM `customer` WHERE name='{textBox2.Text}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        customerID = Convert.ToInt32(rdr[0]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
+
             conn.Close();
             // destination tábla record létrehozás
             try
