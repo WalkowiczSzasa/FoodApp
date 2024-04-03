@@ -66,6 +66,7 @@ namespace FoodApp
             KijeloltPanel.Top = button3.Top;
             aktiv_Rendelesek1.BringToFront();
             exitBtn.BringToFront();
+            aktiv_Rendelesek1.rendelesek_betolt();
         }
 
         private void button4_Click(object sender, EventArgs e)

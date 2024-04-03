@@ -13,6 +13,7 @@ namespace FoodApp
 {
     public partial class Aktiv_Rendelesek : UserControl
     {
+        List<customer> Customers = new List<customer>();
         List<cim> Cimek = new List<cim>();
         List<order> Orders = new List<order>();
         public class order
@@ -45,7 +46,7 @@ namespace FoodApp
             string customerID;
             string orderID;
 
-            public cim(string utca, string hazszam, string orderID, string customerID)
+            public cim(string utca, string hazszam, string customerID, string orderID)
             {
                 this.utca = utca;
                 this.hazszam = hazszam;
@@ -58,17 +59,20 @@ namespace FoodApp
             public string CustomerID { get => customerID; set => customerID = value; }
             public string OrderID { get => orderID; set => orderID = value; }
         }
-        public class customers
+        public class customer
         {
+            string orderID;
             string nev;
             string telszam;
 
-            public customers(string nev, string telszam)
+            public customer(string orderID, string nev, string telszam)
             {
+                this.orderID = orderID;
                 this.nev = nev;
                 this.telszam = telszam;
             }
 
+            public string OrderID { get => orderID; set => orderID = value; }
             public string Nev { get => nev; set => nev = value; }
             public string Telszam { get => telszam; set => telszam = value; }
         }
@@ -84,10 +88,12 @@ namespace FoodApp
             rendelesek_betolt();
         }
 
-        private void rendelesek_betolt()
+        public void rendelesek_betolt()
         {
             flowLayoutPanel1.Controls.Clear();
             Orders.Clear();
+            Cimek.Clear();
+            Customers.Clear();
             //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -129,7 +135,57 @@ namespace FoodApp
                 }
                 conn.Close();
             }
+            
+            foreach (cim item in Cimek)
+            {
+                try
+                {
+                    conn.Open();
+                    string sql = $"SELECT `name`, `phoneNumber` FROM `customer` WHERE ID={item.CustomerID}";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        Customers.Add(new customer(item.OrderID,rdr[0].ToString(), rdr[1].ToString()));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close();
+            }
+            MessageBox.Show(Customers.Count().ToString());
+            Aktiv_rendeles[] aktiv_rend = new Aktiv_rendeles[Orders.Count];
+            for (int i = 0; i < Orders.Count(); i++)
+            {
+                aktiv_rend[i] = new Aktiv_rendeles();
+                aktiv_rend[i].Id = Orders[i].Id;
+                for (int j = 0; j < Customers.Count; j++)
+                {
+                    if (Customers[j].OrderID==Orders[i].Id)
+                    {
+                        aktiv_rend[i].Nev = Customers[j].Nev;
+                        aktiv_rend[i].Telszam = Customers[j].Telszam;
+                        
+                    }
+                }
+                //aktiv_rend[i].Nev = Customers[i].Nev;
+                //aktiv_rend[i].Telszam = Customers[i].Telszam;
+                aktiv_rend[i].Cim = Cimek[i].Utca + " " +Cimek[i].Hazszam;
+                if (Orders[i].Allapot=="0")
+                {
+                    aktiv_rend[i].Allapot = false;
+                }
+                else
+                {
+                    aktiv_rend[i].Allapot = true;
+                }
+                aktiv_rend[i].Duetime = Orders[i].Ido;
+                aktiv_rend[i].Ar = aktiv_rend[i].Ar;
 
+                    flowLayoutPanel1.Controls.Add(aktiv_rend[i]);
+            }
 
         }
 

@@ -23,7 +23,8 @@ namespace FoodApp
         List<food> foodMenu = new List<food>();
         List<drink> drinkMenu = new List<drink>();
         List<customer> customerek = new List<customer>();
-        public static List<string> foodID, drinkID = new List<string>();
+        public static List<string> foodID = new List<string>();
+        public static List<string> drinkID = new List<string>();
         List<tetel> rendeles_tetelek = new List<tetel>();
 
         public class food
@@ -226,11 +227,11 @@ namespace FoodApp
             }
             conn.Close();
 
-            //cutomerID kiválasztása a destination tábla customerID mező kitöltéséhez
+            //customerID kiválasztása a destination tábla customerID mező kitöltéséhez
             try
             {
                 conn.Open();
-                string sql = "SELECT ID FROM `customer` ORDER BY ID DESC LIMIT 1;";
+                string sql = $"SELECT ID FROM `customer` WHERE name='{comboBox2.SelectedItem.ToString()}'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
@@ -323,6 +324,7 @@ namespace FoodApp
             textBox3.Clear();
             textBox4.Clear();
             checkBox1.Checked = false;
+            comboBox2.SelectedIndex = -1;
             comboBox1.SelectedIndex = -1;
             richTextBox4.Clear();
             rend_tetelek.Items.Clear();

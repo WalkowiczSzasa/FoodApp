@@ -64,7 +64,7 @@ namespace FoodApp
             try
             {
                 conn.Open();
-                string sql = "SELECT ID, dname FROM `users` WHERE role='dispatch' ORDER BY name ASC;";
+                string sql = "SELECT ID, dname FROM `users` WHERE role='dispatch' ORDER BY dname ASC;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
@@ -85,6 +85,7 @@ namespace FoodApp
             telszamLabel.Text = telszam;
             cimLabel.Text = cim;
             arLabel.Text = ar + "Ft";
+            allapot_ellenorzes();
 
             foreach (futar item in futarok)
             {
@@ -93,18 +94,33 @@ namespace FoodApp
             futarComboBox.SelectedIndex = -1;
         }
 
-        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        private void allapot_ellenorzes()
         {
-            if (checkBox.Checked==true)
+            if (allapot == true)
             {
+                checkBox.Checked = true;
                 allapotLabel.Text = "Kész";
                 allapotLabel.BackColor = Color.Green;
             }
             else
             {
+                checkBox.Checked = false;
                 allapotLabel.Text = "Készül";
                 allapotLabel.BackColor = Color.Goldenrod;
             }
+        }
+
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox.Checked==true)
+            {
+                allapot = true;
+            }
+            else
+            {
+                allapot = false;
+            }
+            allapot_ellenorzes();
         }
     }
 }

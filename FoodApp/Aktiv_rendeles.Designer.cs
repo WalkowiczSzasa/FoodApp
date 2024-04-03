@@ -138,7 +138,7 @@ namespace FoodApp
             // 
             this.futarComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.futarComboBox.FormattingEnabled = true;
-            this.futarComboBox.Location = new System.Drawing.Point(255, 77);
+            this.futarComboBox.Location = new System.Drawing.Point(255, 94);
             this.futarComboBox.Name = "futarComboBox";
             this.futarComboBox.Size = new System.Drawing.Size(157, 25);
             this.futarComboBox.Sorted = true;
