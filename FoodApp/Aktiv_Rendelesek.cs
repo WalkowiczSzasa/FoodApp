@@ -136,6 +136,7 @@ namespace FoodApp
         {
             rendelesek_betolt();
             etelek_betolt();
+            
 
         }
 
@@ -206,7 +207,6 @@ namespace FoodApp
                 }
                 conn.Close();
             }
-            MessageBox.Show(Customers.Count().ToString());
             Aktiv_rendeles[] aktiv_rend = new Aktiv_rendeles[Orders.Count];
             for (int i = 0; i < Orders.Count(); i++)
             {
@@ -234,8 +234,8 @@ namespace FoodApp
                 }
                 aktiv_rend[i].Duetime = Orders[i].Ido;
                 aktiv_rend[i].Ar = aktiv_rend[i].Ar;
-
-                    flowLayoutPanel1.Controls.Add(aktiv_rend[i]);
+                
+                flowLayoutPanel1.Controls.Add(aktiv_rend[i]);
             }
 
         }
@@ -434,5 +434,9 @@ namespace FoodApp
             rend_tetelekFeltoltes();
         }
 
+        private void refreshPictbox_Click(object sender, EventArgs e)
+        {
+            rend_tetelekFeltoltes();
+        }
     }
 }

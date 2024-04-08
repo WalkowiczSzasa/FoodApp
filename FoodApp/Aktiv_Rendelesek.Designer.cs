@@ -45,6 +45,7 @@ namespace FoodApp
             this.mentesBtn = new System.Windows.Forms.Button();
             this.rendeles_szerkBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.refreshPictbox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.adatok_modBtn = new System.Windows.Forms.Button();
             this.rend_tetelek = new System.Windows.Forms.ListBox();
@@ -61,6 +62,7 @@ namespace FoodApp
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBox4
@@ -244,6 +246,7 @@ namespace FoodApp
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.panel4.Controls.Add(this.refreshPictbox);
             this.panel4.Controls.Add(this.flowLayoutPanel2);
             this.panel4.Controls.Add(this.adatok_modBtn);
             this.panel4.Controls.Add(this.rendeles_szerkBtn);
@@ -260,6 +263,17 @@ namespace FoodApp
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(327, 584);
             this.panel4.TabIndex = 28;
+            // 
+            // refreshPictbox
+            // 
+            this.refreshPictbox.Image = ((System.Drawing.Image)(resources.GetObject("refreshPictbox.Image")));
+            this.refreshPictbox.Location = new System.Drawing.Point(287, 352);
+            this.refreshPictbox.Name = "refreshPictbox";
+            this.refreshPictbox.Size = new System.Drawing.Size(25, 25);
+            this.refreshPictbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.refreshPictbox.TabIndex = 39;
+            this.refreshPictbox.TabStop = false;
+            this.refreshPictbox.Click += new System.EventHandler(this.refreshPictbox_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -393,7 +407,7 @@ namespace FoodApp
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(20, 10);
+            this.label1.Location = new System.Drawing.Point(30, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(249, 33);
             this.label1.TabIndex = 32;
@@ -428,6 +442,7 @@ namespace FoodApp
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,5 +477,6 @@ namespace FoodApp
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button adatok_modBtn;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.PictureBox refreshPictbox;
     }
 }

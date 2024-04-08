@@ -22,6 +22,7 @@ namespace FoodApp
             KijeloltPanel.Top = button2.Top;
             rendeles_felvetel2.BringToFront();
             exitBtn.BringToFront();
+            move_PictureBox.BringToFront();
         }
         private void FoodApp_Load(object sender, EventArgs e)
         {
@@ -34,8 +35,6 @@ namespace FoodApp
             switch (role)
             {
                 case "cook":
-                    button5.Hide();
-                    button6.Hide();
                     button7.Hide();
                     break;
                 case "dispatch":
@@ -58,6 +57,7 @@ namespace FoodApp
             KijeloltPanel.Top = button2.Top;
             rendeles_felvetel2.BringToFront();
             exitBtn.BringToFront();
+            move_PictureBox.BringToFront();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -66,32 +66,8 @@ namespace FoodApp
             KijeloltPanel.Top = button3.Top;
             aktiv_Rendelesek1.BringToFront();
             exitBtn.BringToFront();
+            move_PictureBox.BringToFront();
             aktiv_Rendelesek1.rendelesek_betolt();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            KijeloltPanel.Height = button4.Height;
-            KijeloltPanel.Top = button4.Top;
-            rendeles_felvetel2.BringToFront();
-            exitBtn.BringToFront();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            KijeloltPanel.Height = button5.Height;
-            KijeloltPanel.Top = button5.Top;
-            rendeles_felvetel2.BringToFront();
-            exitBtn.BringToFront();
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            KijeloltPanel.Height = button6.Height;
-            KijeloltPanel.Top = button6.Top;
-            rendeles_felvetel2.BringToFront();
-            exitBtn.BringToFront();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -100,8 +76,27 @@ namespace FoodApp
             KijeloltPanel.Top = button7.Top;
             rendeles_felvetel2.BringToFront();
             exitBtn.BringToFront();
+            move_PictureBox.BringToFront();
         }
 
+        #region Ablak mozgatás
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
 
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+
+        private void Fo_Form_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+        #endregion
     }
 }

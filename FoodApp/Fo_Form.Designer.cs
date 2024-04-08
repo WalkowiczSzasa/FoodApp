@@ -34,15 +34,13 @@ namespace FoodApp
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.KijeloltPanel = new System.Windows.Forms.Panel();
+            this.move_PictureBox = new System.Windows.Forms.PictureBox();
             this.exitBtn = new System.Windows.Forms.Button();
             this.aktiv_Rendelesek1 = new Aktiv_Rendelesek();
             this.rendeles_felvetel2 = new Rendeles_felvetel();
@@ -50,6 +48,7 @@ namespace FoodApp
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.move_PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,9 +57,6 @@ namespace FoodApp
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.button2);
@@ -99,7 +95,7 @@ namespace FoodApp
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button7.Location = new System.Drawing.Point(0, 437);
+            this.button7.Location = new System.Drawing.Point(0, 249);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(179, 43);
@@ -108,54 +104,6 @@ namespace FoodApp
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button6.Location = new System.Drawing.Point(0, 378);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(179, 43);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Statisztikák";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button5.Location = new System.Drawing.Point(0, 304);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(179, 58);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Alkalmazottak kezelése";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Location = new System.Drawing.Point(0, 245);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(179, 43);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Futárok";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -233,6 +181,18 @@ namespace FoodApp
             this.KijeloltPanel.Size = new System.Drawing.Size(14, 43);
             this.KijeloltPanel.TabIndex = 1;
             // 
+            // move_PictureBox
+            // 
+            this.move_PictureBox.BackColor = System.Drawing.Color.White;
+            this.move_PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("move_PictureBox.Image")));
+            this.move_PictureBox.Location = new System.Drawing.Point(188, 0);
+            this.move_PictureBox.Name = "move_PictureBox";
+            this.move_PictureBox.Size = new System.Drawing.Size(28, 33);
+            this.move_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.move_PictureBox.TabIndex = 12;
+            this.move_PictureBox.TabStop = false;
+            this.move_PictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Fo_Form_MouseDown);
+            // 
             // exitBtn
             // 
             this.exitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -250,10 +210,10 @@ namespace FoodApp
             // aktiv_Rendelesek1
             // 
             this.aktiv_Rendelesek1.BackColor = System.Drawing.Color.White;
-            this.aktiv_Rendelesek1.Location = new System.Drawing.Point(188, 1);
+            this.aktiv_Rendelesek1.Location = new System.Drawing.Point(188, 0);
             this.aktiv_Rendelesek1.Margin = new System.Windows.Forms.Padding(2);
             this.aktiv_Rendelesek1.Name = "aktiv_Rendelesek1";
-            this.aktiv_Rendelesek1.Size = new System.Drawing.Size(772, 584);
+            this.aktiv_Rendelesek1.Size = new System.Drawing.Size(772, 585);
             this.aktiv_Rendelesek1.TabIndex = 2;
             // 
             // rendeles_felvetel2
@@ -271,6 +231,7 @@ namespace FoodApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(960, 585);
+            this.Controls.Add(this.move_PictureBox);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.aktiv_Rendelesek1);
@@ -281,13 +242,16 @@ namespace FoodApp
             this.Name = "FoodApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FoodApp";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FoodApp_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Fo_Form_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.move_PictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -301,14 +265,12 @@ namespace FoodApp
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel KijeloltPanel;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private Rendeles_felvetel rendeles_felvetel2;
         private Aktiv_Rendelesek aktiv_Rendelesek1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox move_PictureBox;
     }
 }

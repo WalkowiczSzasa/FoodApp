@@ -55,7 +55,9 @@ namespace FoodApp
                         form.Dname = row["dname"].ToString();
                         form.role = row["role"].ToString();
                     }
+                    this.Hide();
                     form.ShowDialog();
+                    this.Show();
                 }
                 else {label4.Show();}
             }

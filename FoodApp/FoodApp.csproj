@@ -112,11 +112,17 @@
     <Compile Include="Bejelentkezes.Designer.cs">
       <DependentUpon>Bejelentkezes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Etel_Ital_felvetel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Etel_Ital_felvetel.Designer.cs">
+      <DependentUpon>Etel_Ital_felvetel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fo_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Fo_Form.Designer.cs">
+      <DependentUpon>Fo_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu_elemek.cs">
       <SubType>UserControl</SubType>
@@ -147,8 +153,11 @@
     <EmbeddedResource Include="Bejelentkezes.resx">
       <DependentUpon>Bejelentkezes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Etel_Ital_felvetel.resx">
+      <DependentUpon>Etel_Ital_felvetel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fo_Form.resx">
+      <DependentUpon>Fo_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_elemek.resx">
       <DependentUpon>Menu_elemek.cs</DependentUpon>
