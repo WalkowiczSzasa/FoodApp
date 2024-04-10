@@ -29,6 +29,7 @@ namespace FoodApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aktiv_rendeles));
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox = new System.Windows.Forms.CheckBox();
             this.nevLabel = new System.Windows.Forms.Label();
@@ -39,7 +40,9 @@ namespace FoodApp
             this.futarComboBox = new System.Windows.Forms.ComboBox();
             this.idoLabel = new System.Windows.Forms.Label();
             this.dueDayLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -111,7 +114,7 @@ namespace FoodApp
             this.allapotLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.allapotLabel.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.allapotLabel.ForeColor = System.Drawing.Color.White;
-            this.allapotLabel.Location = new System.Drawing.Point(293, 6);
+            this.allapotLabel.Location = new System.Drawing.Point(287, 0);
             this.allapotLabel.Name = "allapotLabel";
             this.allapotLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.allapotLabel.Size = new System.Drawing.Size(117, 33);
@@ -174,11 +177,23 @@ namespace FoodApp
             this.dueDayLabel.Text = "XX/XX";
             this.dueDayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(386, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(23, 23);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // Aktiv_rendeles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dueDayLabel);
             this.Controls.Add(this.idoLabel);
             this.Controls.Add(this.futarComboBox);
@@ -193,6 +208,7 @@ namespace FoodApp
             this.Load += new System.EventHandler(this.Aktiv_rendeles_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +226,6 @@ namespace FoodApp
         private System.Windows.Forms.ComboBox futarComboBox;
         private System.Windows.Forms.Label idoLabel;
         private System.Windows.Forms.Label dueDayLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
