@@ -30,19 +30,6 @@ namespace FoodApp
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aktiv_Rendelesek));
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.mentesBtn = new System.Windows.Forms.Button();
             this.rendeles_szerkBtn = new System.Windows.Forms.Button();
             this.tetelmodPanel = new System.Windows.Forms.Panel();
             this.refreshPictbox = new System.Windows.Forms.PictureBox();
@@ -60,187 +47,28 @@ namespace FoodApp
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.adatmodPanel = new System.Windows.Forms.Panel();
-            this.nevTextBox = new System.Windows.Forms.TextBox();
-            this.utcaTextBox = new System.Windows.Forms.TextBox();
-            this.hsztextBox = new System.Windows.Forms.TextBox();
+            this.torlesBtn = new System.Windows.Forms.Button();
+            this.osszegLabel = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.timePicker = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.telszamTextBox = new System.Windows.Forms.TextBox();
+            this.adatmodositasBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.fizComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.telszamTextBox = new System.Windows.Forms.TextBox();
-            this.timePicker = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.hsztextBox = new System.Windows.Forms.TextBox();
+            this.utcaTextBox = new System.Windows.Forms.TextBox();
+            this.nevTextBox = new System.Windows.Forms.TextBox();
             this.tetelmodPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).BeginInit();
             this.adatmodPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // richTextBox4
-            // 
-            this.richTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.richTextBox4.Location = new System.Drawing.Point(16, 321);
-            this.richTextBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(316, 118);
-            this.richTextBox4.TabIndex = 11;
-            this.richTextBox4.Text = "";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(12, 297);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 23);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Megjegyzés:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(101, 256);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(232, 22);
-            this.dateTimePicker1.TabIndex = 21;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Location = new System.Drawing.Point(152, 203);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(181, 35);
-            this.panel2.TabIndex = 20;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Készpénz",
-            "Kártya"});
-            this.comboBox1.Location = new System.Drawing.Point(4, 3);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(173, 29);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(12, 256);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 23);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Időzítés:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 203);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 23);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Fizetési mód:";
-            // 
-            // richTextBox3
-            // 
-            this.richTextBox3.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.richTextBox3.Location = new System.Drawing.Point(12, 147);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(321, 34);
-            this.richTextBox3.TabIndex = 17;
-            this.richTextBox3.Text = "Utca, házszám:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 102);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(231, 32);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Adatok felvétele";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.richTextBox2.Location = new System.Drawing.Point(12, 52);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(321, 34);
-            this.richTextBox2.TabIndex = 15;
-            this.richTextBox2.Text = "Név:";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.richTextBox1.Location = new System.Drawing.Point(12, 14);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(321, 34);
-            this.richTextBox1.TabIndex = 13;
-            this.richTextBox1.Text = "Telefonszám:";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.panel1.Controls.Add(this.richTextBox4);
-            this.panel1.Controls.Add(this.mentesBtn);
-            this.panel1.Controls.Add(this.richTextBox1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.richTextBox2);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.richTextBox3);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(452, 99);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(320, 488);
-            this.panel1.TabIndex = 24;
-            // 
-            // mentesBtn
-            // 
-            this.mentesBtn.BackColor = System.Drawing.Color.White;
-            this.mentesBtn.FlatAppearance.BorderSize = 0;
-            this.mentesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mentesBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mentesBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.mentesBtn.Location = new System.Drawing.Point(229, 444);
-            this.mentesBtn.Name = "mentesBtn";
-            this.mentesBtn.Size = new System.Drawing.Size(104, 29);
-            this.mentesBtn.TabIndex = 29;
-            this.mentesBtn.Text = "Mentés";
-            this.mentesBtn.UseVisualStyleBackColor = false;
             // 
             // rendeles_szerkBtn
             // 
@@ -444,11 +272,17 @@ namespace FoodApp
             // adatmodPanel
             // 
             this.adatmodPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.adatmodPanel.Controls.Add(this.torlesBtn);
+            this.adatmodPanel.Controls.Add(this.osszegLabel);
+            this.adatmodPanel.Controls.Add(this.label13);
+            this.adatmodPanel.Controls.Add(this.label12);
+            this.adatmodPanel.Controls.Add(this.label11);
+            this.adatmodPanel.Controls.Add(this.label10);
+            this.adatmodPanel.Controls.Add(this.label9);
             this.adatmodPanel.Controls.Add(this.timePicker);
-            this.adatmodPanel.Controls.Add(this.dateTimePicker2);
             this.adatmodPanel.Controls.Add(this.label8);
             this.adatmodPanel.Controls.Add(this.telszamTextBox);
-            this.adatmodPanel.Controls.Add(this.button1);
+            this.adatmodPanel.Controls.Add(this.adatmodositasBtn);
             this.adatmodPanel.Controls.Add(this.panel4);
             this.adatmodPanel.Controls.Add(this.label7);
             this.adatmodPanel.Controls.Add(this.hsztextBox);
@@ -459,35 +293,142 @@ namespace FoodApp
             this.adatmodPanel.Size = new System.Drawing.Size(336, 522);
             this.adatmodPanel.TabIndex = 38;
             // 
-            // nevTextBox
+            // torlesBtn
             // 
-            this.nevTextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F);
-            this.nevTextBox.Location = new System.Drawing.Point(7, 164);
-            this.nevTextBox.Name = "nevTextBox";
-            this.nevTextBox.Size = new System.Drawing.Size(326, 31);
-            this.nevTextBox.TabIndex = 0;
+            this.torlesBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.torlesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.torlesBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.torlesBtn.ForeColor = System.Drawing.Color.White;
+            this.torlesBtn.Location = new System.Drawing.Point(117, 481);
+            this.torlesBtn.Name = "torlesBtn";
+            this.torlesBtn.Size = new System.Drawing.Size(99, 29);
+            this.torlesBtn.TabIndex = 28;
+            this.torlesBtn.Text = "Törlés";
+            this.torlesBtn.UseVisualStyleBackColor = false;
+            this.torlesBtn.Click += new System.EventHandler(this.torlesBtn_Click);
             // 
-            // utcaTextBox
+            // osszegLabel
             // 
-            this.utcaTextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F);
-            this.utcaTextBox.Location = new System.Drawing.Point(7, 205);
-            this.utcaTextBox.Name = "utcaTextBox";
-            this.utcaTextBox.Size = new System.Drawing.Size(161, 31);
-            this.utcaTextBox.TabIndex = 1;
+            this.osszegLabel.AutoSize = true;
+            this.osszegLabel.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.osszegLabel.ForeColor = System.Drawing.Color.White;
+            this.osszegLabel.Location = new System.Drawing.Point(186, 303);
+            this.osszegLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.osszegLabel.Name = "osszegLabel";
+            this.osszegLabel.Size = new System.Drawing.Size(108, 32);
+            this.osszegLabel.TabIndex = 27;
+            this.osszegLabel.Text = "XXXXFt";
             // 
-            // hsztextBox
+            // label13
             // 
-            this.hsztextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F);
-            this.hsztextBox.Location = new System.Drawing.Point(172, 205);
-            this.hsztextBox.Name = "hsztextBox";
-            this.hsztextBox.Size = new System.Drawing.Size(161, 31);
-            this.hsztextBox.TabIndex = 2;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(6, 311);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(115, 23);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "Végösszeg:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(168, 148);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(98, 23);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Házszám:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(6, 147);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 23);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Utca:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(6, 87);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 23);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Név:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(6, 26);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(128, 23);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Telefonszám:";
+            // 
+            // timePicker
+            // 
+            this.timePicker.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.timePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timePicker.Location = new System.Drawing.Point(152, 254);
+            this.timePicker.Margin = new System.Windows.Forms.Padding(2);
+            this.timePicker.Name = "timePicker";
+            this.timePicker.Size = new System.Drawing.Size(89, 22);
+            this.timePicker.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(6, 254);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 23);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Időzítés:";
+            // 
+            // telszamTextBox
+            // 
+            this.telszamTextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.telszamTextBox.Location = new System.Drawing.Point(7, 53);
+            this.telszamTextBox.Name = "telszamTextBox";
+            this.telszamTextBox.Size = new System.Drawing.Size(326, 31);
+            this.telszamTextBox.TabIndex = 15;
+            // 
+            // adatmodositasBtn
+            // 
+            this.adatmodositasBtn.BackColor = System.Drawing.Color.White;
+            this.adatmodositasBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adatmodositasBtn.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.adatmodositasBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.adatmodositasBtn.Location = new System.Drawing.Point(222, 472);
+            this.adatmodositasBtn.Name = "adatmodositasBtn";
+            this.adatmodositasBtn.Size = new System.Drawing.Size(111, 38);
+            this.adatmodositasBtn.TabIndex = 14;
+            this.adatmodositasBtn.Text = "Mentés";
+            this.adatmodositasBtn.UseVisualStyleBackColor = false;
+            this.adatmodositasBtn.Click += new System.EventHandler(this.adatmodositasBtnClick);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.fizComboBox);
-            this.panel4.Location = new System.Drawing.Point(152, 252);
+            this.panel4.Location = new System.Drawing.Point(152, 209);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(181, 35);
@@ -515,87 +456,52 @@ namespace FoodApp
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(6, 261);
+            this.label7.Location = new System.Drawing.Point(6, 214);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 23);
             this.label7.TabIndex = 9;
             this.label7.Text = "Fizetési mód:";
             // 
-            // button1
+            // hsztextBox
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(222, 472);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 38);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Mentés";
-            this.button1.UseVisualStyleBackColor = false;
+            this.hsztextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.hsztextBox.Location = new System.Drawing.Point(172, 173);
+            this.hsztextBox.Name = "hsztextBox";
+            this.hsztextBox.Size = new System.Drawing.Size(161, 31);
+            this.hsztextBox.TabIndex = 2;
             // 
-            // telszamTextBox
+            // utcaTextBox
             // 
-            this.telszamTextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F);
-            this.telszamTextBox.Location = new System.Drawing.Point(7, 128);
-            this.telszamTextBox.Name = "telszamTextBox";
-            this.telszamTextBox.Size = new System.Drawing.Size(326, 31);
-            this.telszamTextBox.TabIndex = 15;
+            this.utcaTextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.utcaTextBox.Location = new System.Drawing.Point(7, 173);
+            this.utcaTextBox.Name = "utcaTextBox";
+            this.utcaTextBox.Size = new System.Drawing.Size(161, 31);
+            this.utcaTextBox.TabIndex = 1;
             // 
-            // timePicker
+            // nevTextBox
             // 
-            this.timePicker.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.timePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker.Location = new System.Drawing.Point(237, 309);
-            this.timePicker.Margin = new System.Windows.Forms.Padding(2);
-            this.timePicker.Name = "timePicker";
-            this.timePicker.Size = new System.Drawing.Size(94, 22);
-            this.timePicker.TabIndex = 21;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.dateTimePicker2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(147, 309);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(86, 22);
-            this.dateTimePicker2.TabIndex = 20;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(6, 308);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 23);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Időzítés:";
+            this.nevTextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.nevTextBox.Location = new System.Drawing.Point(7, 113);
+            this.nevTextBox.Name = "nevTextBox";
+            this.nevTextBox.Size = new System.Drawing.Size(326, 31);
+            this.nevTextBox.TabIndex = 0;
             // 
             // Aktiv_Rendelesek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.adatmodPanel);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.adatok_modBtn);
-            this.Controls.Add(this.tetelmodPanel);
             this.Controls.Add(this.rendeles_szerkBtn);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.adatmodPanel);
+            this.Controls.Add(this.tetelmodPanel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Aktiv_Rendelesek";
             this.Size = new System.Drawing.Size(772, 584);
             this.Load += new System.EventHandler(this.Aktiv_Rendelesek_Load);
-            this.panel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.tetelmodPanel.ResumeLayout(false);
             this.tetelmodPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).EndInit();
@@ -608,19 +514,6 @@ namespace FoodApp
         }
 
         #endregion
-        private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button mentesBtn;
         private System.Windows.Forms.Button rendeles_szerkBtn;
         private System.Windows.Forms.Panel tetelmodPanel;
         private System.Windows.Forms.Button mentes_Btn;
@@ -645,9 +538,15 @@ namespace FoodApp
         private System.Windows.Forms.ComboBox fizComboBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox telszamTextBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button adatmodositasBtn;
         private System.Windows.Forms.DateTimePicker timePicker;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button torlesBtn;
+        private System.Windows.Forms.Label osszegLabel;
+        private System.Windows.Forms.Label label13;
     }
 }

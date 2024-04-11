@@ -22,7 +22,7 @@ namespace FoodApp
         private string id, nev, telszam, cim, ar;
         public string foodID = "";
         public string drinkID = "";
-        public string fizID;
+        public string fizID, cimID, customerID;
         public static string fiztip;
         private bool allapot;
         private DateTime duetime;
@@ -132,9 +132,25 @@ namespace FoodApp
             }
             conn.Close();
 
-            Aktiv_Rendelesek.foodID=foodID.Split(' ').ToList();
+            adat_atadas();
+
+
+        }
+
+        private void adat_atadas()
+        {
+            Aktiv_Rendelesek.foodID = foodID.Split(' ').ToList();
             Aktiv_Rendelesek.drinkID = drinkID.Split(' ').ToList();
             Aktiv_Rendelesek.oID = Id;
+            Aktiv_Rendelesek.fizID = fizID;
+            Aktiv_Rendelesek.destID = cimID;
+            Aktiv_Rendelesek.adat.Telszam = telszam;
+            Aktiv_Rendelesek.adat.Nev = nev;
+            Aktiv_Rendelesek.adat.Utcahsz = cim;
+            Aktiv_Rendelesek.adat.Fizmod = fiztip;
+            Aktiv_Rendelesek.adat.Ido = duetime;
+            Aktiv_Rendelesek.adat.Vegossz = ar;
+            Aktiv_Rendelesek.adat.CustID = customerID;
         }
 
         private void futarComboBox_SelectedValueChanged(object sender, EventArgs e)

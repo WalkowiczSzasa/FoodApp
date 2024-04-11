@@ -15,7 +15,8 @@ namespace FoodApp
 {
     public partial class Rendeles_felvetel : UserControl
     {
-        private byte elvitel, fizeszk;
+        private byte elvitel=1;
+        private byte fizeszk;
         private DateTime DueDate = new DateTime();
         private int customerID, orderDestID;
 
@@ -321,21 +322,38 @@ namespace FoodApp
             if (comboBox1.SelectedIndex == 0){fizeszk = 0;}
             else{fizeszk = 1;}
 
-            //TODO: problémás orders-payment tábla kereszthivatkozás megcsinálása (a payment táblát az orders tábla után kell látrehozni, mert a payment táblának szüksége van az orders táblában kiválasztott ételek és italok ID-jára a szumma számoláshoz, valamint a kiválasztott ételek count-jára a csomagolás árának kiszámítására
-            
+            MessageBox.Show(elvitel.ToString());
             //payment tábla record létrehozás
-            try
+            if (elvitel==1)
             {
-                conn.Open();
-                string sql = $"INSERT INTO `payment`(`paymentType`, `packagingCost`, `deliveryCost`, `sum`) VALUES ('{fizeszk}','[value-2]','[value-3]','[value-4]')";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    conn.Open();
+                    string sql = $"INSERT INTO `payment`(`paymentType`, `packagingCost`, `deliveryCost`, `sum`) VALUES ('{fizeszk}','[value-2]','400','[value-4]')";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                try
+                {
+                    conn.Open();
+                    string sql = $"INSERT INTO `payment`(`paymentType`, `packagingCost`, `deliveryCost`, `sum`) VALUES ('{fizeszk}','[value-2]','0','[value-4]')";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close();
             }
-            conn.Close();
 
             try
             {
