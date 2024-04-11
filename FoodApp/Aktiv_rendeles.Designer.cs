@@ -40,9 +40,10 @@ namespace FoodApp
             this.futarComboBox = new System.Windows.Forms.ComboBox();
             this.idoLabel = new System.Windows.Forms.Label();
             this.dueDayLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.szerk_PictureBox = new System.Windows.Forms.PictureBox();
+            this.id_Label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.szerk_PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -73,7 +74,7 @@ namespace FoodApp
             this.nevLabel.ForeColor = System.Drawing.Color.White;
             this.nevLabel.Location = new System.Drawing.Point(24, 18);
             this.nevLabel.Name = "nevLabel";
-            this.nevLabel.Size = new System.Drawing.Size(52, 22);
+            this.nevLabel.Size = new System.Drawing.Size(47, 23);
             this.nevLabel.TabIndex = 1;
             this.nevLabel.Text = "Név";
             this.nevLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,7 +88,7 @@ namespace FoodApp
             this.telszamLabel.ForeColor = System.Drawing.Color.White;
             this.telszamLabel.Location = new System.Drawing.Point(34, 43);
             this.telszamLabel.Name = "telszamLabel";
-            this.telszamLabel.Size = new System.Drawing.Size(131, 22);
+            this.telszamLabel.Size = new System.Drawing.Size(123, 23);
             this.telszamLabel.TabIndex = 2;
             this.telszamLabel.Text = "Telefonszám";
             this.telszamLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -101,7 +102,7 @@ namespace FoodApp
             this.cimLabel.ForeColor = System.Drawing.Color.White;
             this.cimLabel.Location = new System.Drawing.Point(34, 66);
             this.cimLabel.Name = "cimLabel";
-            this.cimLabel.Size = new System.Drawing.Size(149, 22);
+            this.cimLabel.Size = new System.Drawing.Size(140, 23);
             this.cimLabel.TabIndex = 3;
             this.cimLabel.Text = "Utca házszám";
             this.cimLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -117,7 +118,7 @@ namespace FoodApp
             this.allapotLabel.Location = new System.Drawing.Point(287, 0);
             this.allapotLabel.Name = "allapotLabel";
             this.allapotLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.allapotLabel.Size = new System.Drawing.Size(117, 33);
+            this.allapotLabel.Size = new System.Drawing.Size(108, 32);
             this.allapotLabel.TabIndex = 4;
             this.allapotLabel.Text = "Állapot";
             this.allapotLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -133,7 +134,7 @@ namespace FoodApp
             this.arLabel.Location = new System.Drawing.Point(375, 42);
             this.arLabel.Name = "arLabel";
             this.arLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.arLabel.Size = new System.Drawing.Size(33, 22);
+            this.arLabel.Size = new System.Drawing.Size(30, 23);
             this.arLabel.TabIndex = 5;
             this.arLabel.Text = "Ár";
             this.arLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -144,10 +145,11 @@ namespace FoodApp
             this.futarComboBox.FormattingEnabled = true;
             this.futarComboBox.Location = new System.Drawing.Point(253, 92);
             this.futarComboBox.Name = "futarComboBox";
-            this.futarComboBox.Size = new System.Drawing.Size(157, 25);
+            this.futarComboBox.Size = new System.Drawing.Size(157, 24);
             this.futarComboBox.Sorted = true;
             this.futarComboBox.TabIndex = 6;
             this.futarComboBox.Text = "Válassz egy futárt";
+            this.futarComboBox.SelectedValueChanged += new System.EventHandler(this.futarComboBox_SelectedValueChanged);
             // 
             // idoLabel
             // 
@@ -158,7 +160,7 @@ namespace FoodApp
             this.idoLabel.ForeColor = System.Drawing.Color.Black;
             this.idoLabel.Location = new System.Drawing.Point(221, 6);
             this.idoLabel.Name = "idoLabel";
-            this.idoLabel.Size = new System.Drawing.Size(68, 22);
+            this.idoLabel.Size = new System.Drawing.Size(67, 23);
             this.idoLabel.TabIndex = 7;
             this.idoLabel.Text = "XX:XX";
             this.idoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -172,28 +174,42 @@ namespace FoodApp
             this.dueDayLabel.ForeColor = System.Drawing.Color.Black;
             this.dueDayLabel.Location = new System.Drawing.Point(221, 28);
             this.dueDayLabel.Name = "dueDayLabel";
-            this.dueDayLabel.Size = new System.Drawing.Size(71, 22);
+            this.dueDayLabel.Size = new System.Drawing.Size(71, 23);
             this.dueDayLabel.TabIndex = 8;
             this.dueDayLabel.Text = "XX/XX";
             this.dueDayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // szerk_PictureBox
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(386, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(23, 23);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.szerk_PictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.szerk_PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("szerk_PictureBox.Image")));
+            this.szerk_PictureBox.Location = new System.Drawing.Point(386, 2);
+            this.szerk_PictureBox.Name = "szerk_PictureBox";
+            this.szerk_PictureBox.Size = new System.Drawing.Size(23, 23);
+            this.szerk_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.szerk_PictureBox.TabIndex = 9;
+            this.szerk_PictureBox.TabStop = false;
+            this.szerk_PictureBox.Click += new System.EventHandler(this.szerk_PictureBox_Click);
+            // 
+            // id_Label
+            // 
+            this.id_Label.AutoSize = true;
+            this.id_Label.BackColor = System.Drawing.Color.White;
+            this.id_Label.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.id_Label.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.id_Label.Location = new System.Drawing.Point(3, 97);
+            this.id_Label.Name = "id_Label";
+            this.id_Label.Size = new System.Drawing.Size(27, 16);
+            this.id_Label.TabIndex = 10;
+            this.id_Label.Text = "#ID";
             // 
             // Aktiv_rendeles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.id_Label);
+            this.Controls.Add(this.szerk_PictureBox);
             this.Controls.Add(this.dueDayLabel);
             this.Controls.Add(this.idoLabel);
             this.Controls.Add(this.futarComboBox);
@@ -208,7 +224,7 @@ namespace FoodApp
             this.Load += new System.EventHandler(this.Aktiv_rendeles_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.szerk_PictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,6 +242,7 @@ namespace FoodApp
         private System.Windows.Forms.ComboBox futarComboBox;
         private System.Windows.Forms.Label idoLabel;
         private System.Windows.Forms.Label dueDayLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox szerk_PictureBox;
+        private System.Windows.Forms.Label id_Label;
     }
 }

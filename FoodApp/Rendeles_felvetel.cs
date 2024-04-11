@@ -199,7 +199,7 @@ namespace FoodApp
         private void uj_rendeles()
         {
             //Elvitel- e a rendelés
-
+            string fizID="";
 
             //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
@@ -337,6 +337,35 @@ namespace FoodApp
             }
             conn.Close();
 
+            try
+            {
+                conn.Open();
+                string sql = $"SELECT `ID` FROM `payment` ORDER BY ID DESC LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    fizID = rdr[0].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+
+            try
+            {
+                conn.Open();
+                string sql = $"UPDATE `orders` SET `paymentID`={fizID} ORDER BY orderID DESC LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
         }
 
         private void mezok_kiurit()

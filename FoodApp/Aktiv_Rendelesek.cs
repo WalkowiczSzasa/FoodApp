@@ -13,13 +13,16 @@ namespace FoodApp
 {
     public partial class Aktiv_Rendelesek : UserControl
     {
-        List<food> foodMenu = new List<food>();
-        List<drink> drinkMenu = new List<drink>();
+        public static string oID;
         public static List<string> foodID = new List<string>();
         public static List<string> drinkID = new List<string>();
+        List<food> foodMenu = new List<food>();
+        List<drink> drinkMenu = new List<drink>();
         List<customer> Customers = new List<customer>();
         List<cim> Cimek = new List<cim>();
         List<order> Orders = new List<order>();
+        List<tetel> rendeles_tetelek = new List<tetel>();
+
         public class food
         {
             private string nev;
@@ -136,8 +139,6 @@ namespace FoodApp
         {
             rendelesek_betolt();
             etelek_betolt();
-            
-
         }
 
         public void rendelesek_betolt()
@@ -207,6 +208,7 @@ namespace FoodApp
                 }
                 conn.Close();
             }
+
             Aktiv_rendeles[] aktiv_rend = new Aktiv_rendeles[Orders.Count];
             for (int i = 0; i < Orders.Count(); i++)
             {
@@ -234,6 +236,7 @@ namespace FoodApp
                 }
                 aktiv_rend[i].Duetime = Orders[i].Ido;
                 aktiv_rend[i].Ar = aktiv_rend[i].Ar;
+                aktiv_rend[i].fizID = Orders[i].FizID;
                 
                 flowLayoutPanel1.Controls.Add(aktiv_rend[i]);
             }
@@ -266,26 +269,25 @@ namespace FoodApp
             }
             conn.Close();
 
-            Menu_elemek[] menu_items = new Menu_elemek[foodMenu.Count];
+            Menu_elemek_Aktiv_rend[] ar_menu_items = new Menu_elemek_Aktiv_rend[foodMenu.Count];
 
             for (int i = 0; i < foodMenu.Count(); i++)
             {
                 if (foodMenu[i].Elerheto)
                 {
-                    menu_items[i] = new Menu_elemek();
-                    menu_items[i].Nev = foodMenu[i].Nev;
-                    menu_items[i].Ar = foodMenu[i].Ar;
-                    menu_items[i].Leiras = foodMenu[i].Leiras;
-                    menu_items[i].Elerheto = foodMenu[i].Elerheto;
-                    menu_items[i].Id = foodMenu[i].Id;
+                    ar_menu_items[i] = new Menu_elemek_Aktiv_rend();
+                    ar_menu_items[i].Nev = foodMenu[i].Nev;
+                    ar_menu_items[i].Ar = foodMenu[i].Ar;
+                    ar_menu_items[i].Leiras = foodMenu[i].Leiras;
+                    ar_menu_items[i].Elerheto = foodMenu[i].Elerheto;
+                    ar_menu_items[i].Id = foodMenu[i].Id;
 
-                    flowLayoutPanel2.Controls.Add(menu_items[i]);
+                    flowLayoutPanel2.Controls.Add(ar_menu_items[i]);
 
                 }
             }
 
         }
-
         private void italok_betolt()
         {
             drinkMenu.Clear();
@@ -313,19 +315,19 @@ namespace FoodApp
             }
             conn.Close();
 
-            Menu_elemek[] Dmenu_items = new Menu_elemek[drinkMenu.Count];
+            Menu_elemek_Aktiv_rend[] ar_Dmenu_items = new Menu_elemek_Aktiv_rend[drinkMenu.Count];
 
             for (int i = 0; i < drinkMenu.Count(); i++)
             {
                 if (drinkMenu[i].DElerheto)
                 {
-                    Dmenu_items[i] = new Menu_elemek();
-                    Dmenu_items[i].Nev = drinkMenu[i].DNev;
-                    Dmenu_items[i].Ar = drinkMenu[i].DAr;
-                    Dmenu_items[i].Elerheto = drinkMenu[i].DElerheto;
-                    Dmenu_items[i].Id = drinkMenu[i].DId;
+                    ar_Dmenu_items[i] = new Menu_elemek_Aktiv_rend();
+                    ar_Dmenu_items[i].Nev = drinkMenu[i].DNev;
+                    ar_Dmenu_items[i].Ar = drinkMenu[i].DAr;
+                    ar_Dmenu_items[i].Elerheto = drinkMenu[i].DElerheto;
+                    ar_Dmenu_items[i].Id = drinkMenu[i].DId;
 
-                    flowLayoutPanel2.Controls.Add(Dmenu_items[i]);
+                    flowLayoutPanel2.Controls.Add(ar_Dmenu_items[i]);
 
                 }
             }
@@ -335,10 +337,12 @@ namespace FoodApp
             string kiv_tetel = rend_tetelek.SelectedItem.ToString();
             kivalasztott_tetelTextBox.Text = kiv_tetel.TrimEnd('\t').Remove(kiv_tetel.LastIndexOf('\t') + 1);
         }
-        private void rend_tetelekFeltoltes()
+
+        public void rend_tetelekFeltoltes()
         {
-           /* rend_tetelek.Items.Clear();
+            rend_tetelek.Items.Clear();
             rendeles_tetelek.Clear();
+            
             //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -346,7 +350,8 @@ namespace FoodApp
             //cutomerID és név kiválasztása a destination tábla customerID mező kitöltéséhez
             try
             {
-                if (foodID.Count > 0)
+                
+                if (foodID.Count > 0 && foodID[0] != "")
                 {
                     for (int i = 0; i < foodID.Count; i++)
                     {
@@ -361,7 +366,7 @@ namespace FoodApp
                         conn.Close();
                     }
                 }
-                if (drinkID.Count > 0)
+                if (drinkID.Count > 0 && drinkID[0]!="")
                 {
                     for (int i = 0; i < drinkID.Count; i++)
                     {
@@ -387,9 +392,8 @@ namespace FoodApp
                 rend_tetelek.Items.Add(item.TetelID + " " + item.TetelName + "\t" + item.TetelPrice);
             }
             rend_tetelek.Sorted = true;
-           */
+           
         }
-
 
         private void etelBtn_Click(object sender, EventArgs e)
         {
@@ -399,11 +403,6 @@ namespace FoodApp
         private void italBtn_Click(object sender, EventArgs e)
         {
             italok_betolt();
-        }
-
-        private void refreshPctbox_Click(object sender, EventArgs e)
-        {
-            rend_tetelekFeltoltes();
         }
 
         private void tetelAdd_Click(object sender, EventArgs e)
@@ -437,6 +436,40 @@ namespace FoodApp
         private void refreshPictbox_Click(object sender, EventArgs e)
         {
             rend_tetelekFeltoltes();
+        }
+
+        private void mentesBtnClick(object sender, EventArgs e)
+        {
+            var oFoodID=String.Join(" ",foodID);
+            var oDrinkID=String.Join(" ", drinkID);
+            
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+                string sql = $"UPDATE `orders` SET `foodID`='{oFoodID}',`drinkID`='{oDrinkID}' WHERE orderID='{oID}'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
+        private void adatok_modBtn_Click(object sender, EventArgs e)
+        {
+            adatmodPanel.BringToFront();
+            //true= kártya false=kp
+            
+        }
+
+        private void rendeles_szerkBtn_Click(object sender, EventArgs e)
+        {
+            tetelmodPanel.BringToFront();
         }
     }
 }

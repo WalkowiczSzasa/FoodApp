@@ -20,6 +20,10 @@ namespace FoodApp
         }
 
         private string id, nev, telszam, cim, ar;
+        public string foodID = "";
+        public string drinkID = "";
+        public string fizID;
+        public static string fiztip;
         private bool allapot;
         private DateTime duetime;
         List<futar> futarok = new List<futar>();
@@ -49,7 +53,30 @@ namespace FoodApp
         private void Aktiv_rendeles_Load(object sender, EventArgs e)
         {
             futarok_betolt();
+            fiztip_lekerdezes();
             adat_beiras();
+        }
+
+        private void fiztip_lekerdezes()
+        {
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+                string sql = $"SELECT `paymentType` FROM `payment` WHERE `ID`='{fizID}'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    fiztip = rdr[0].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
         }
 
         private void futarok_betolt()
@@ -79,8 +106,59 @@ namespace FoodApp
             conn.Close();
         }
 
+        private void szerk_PictureBox_Click(object sender, EventArgs e)
+        {
+            string orderID = id_Label.Text.Trim('#');
+
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            //dispatchID és név kiválasztása a users táblából combobox feltöltéshez
+            try
+            {
+                conn.Open();
+                string sql = $"SELECT `foodID`, `drinkID` FROM `orders` WHERE `orderID`='{orderID}'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    foodID = rdr[0].ToString();
+                    drinkID = rdr[1].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+
+            Aktiv_Rendelesek.foodID=foodID.Split(' ').ToList();
+            Aktiv_Rendelesek.drinkID = drinkID.Split(' ').ToList();
+            Aktiv_Rendelesek.oID = Id;
+        }
+
+        private void futarComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+                string sql = $"UPDATE `orders` SET orderDispatchID='{futarok[futarComboBox.SelectedIndex].Id}' WHERE orderID='{Id}'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
         private void adat_beiras()
         {
+            id_Label.Text = "#"+id;
             nevLabel.Text = nev;
             telszamLabel.Text = telszam;
             cimLabel.Text = cim;
@@ -112,17 +190,44 @@ namespace FoodApp
 
         private void allapot_ellenorzes()
         {
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             if (allapot == true)
             {
                 checkBox.Checked = true;
                 allapotLabel.Text = "Kész";
                 allapotLabel.BackColor = Color.Green;
+                MySqlConnection conn = new MySqlConnection(connStr);
+                try
+                {
+                    conn.Open();
+                    string sql = $"UPDATE `orders` SET orderStatus=1 WHERE orderID='{Id}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close();
             }
             else
             {
                 checkBox.Checked = false;
                 allapotLabel.Text = "Készül";
                 allapotLabel.BackColor = Color.Goldenrod;
+                MySqlConnection conn = new MySqlConnection(connStr);
+                try
+                {
+                    conn.Open();
+                    string sql = $"UPDATE `orders` SET orderStatus=0 WHERE orderID='{Id}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close();
             }
         }
 
