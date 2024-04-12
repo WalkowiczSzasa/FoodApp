@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace FoodApp
 {
@@ -28,6 +30,7 @@ namespace FoodApp
         {
             label2.Text = Dname;
             role_kezeles();
+            allergene_lekerdezes();
         }
 
         private void role_kezeles()
@@ -41,6 +44,28 @@ namespace FoodApp
 
                     break;
             }
+        }
+        private void allergene_lekerdezes()
+        {
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+                string sql = "SELECT `allergeneID`,`allergeneName` FROM `allergene`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    allergeneListBox.Items.Add(rdr[0]+"\t"+rdr[1]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -74,7 +99,7 @@ namespace FoodApp
         {
             KijeloltPanel.Height = button7.Height;
             KijeloltPanel.Top = button7.Top;
-            rendeles_felvetel2.BringToFront();
+            etel_Ital_felvetel1.BringToFront();
             exitBtn.BringToFront();
             move_PictureBox.BringToFront();
         }

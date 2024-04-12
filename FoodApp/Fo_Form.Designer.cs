@@ -31,6 +31,7 @@ namespace FoodApp
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FoodApp));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.allergeneListBox = new System.Windows.Forms.ListBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@ namespace FoodApp
             this.exitBtn = new System.Windows.Forms.Button();
             this.aktiv_Rendelesek1 = new Aktiv_Rendelesek();
             this.rendeles_felvetel2 = new Rendeles_felvetel();
+            this.etel_Ital_felvetel1 = new Etel_Ital_felvetel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -54,6 +56,7 @@ namespace FoodApp
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.panel1.Controls.Add(this.allergeneListBox);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button7);
@@ -66,6 +69,16 @@ namespace FoodApp
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(188, 585);
             this.panel1.TabIndex = 0;
+            // 
+            // allergeneListBox
+            // 
+            this.allergeneListBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.allergeneListBox.FormattingEnabled = true;
+            this.allergeneListBox.ItemHeight = 17;
+            this.allergeneListBox.Location = new System.Drawing.Point(9, 374);
+            this.allergeneListBox.Name = "allergeneListBox";
+            this.allergeneListBox.Size = new System.Drawing.Size(171, 191);
+            this.allergeneListBox.TabIndex = 14;
             // 
             // pictureBox2
             // 
@@ -84,7 +97,7 @@ namespace FoodApp
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(38, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 24);
+            this.label2.Size = new System.Drawing.Size(75, 25);
             this.label2.TabIndex = 10;
             this.label2.Text = "label2";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -100,7 +113,7 @@ namespace FoodApp
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(179, 43);
             this.button7.TabIndex = 9;
-            this.button7.Text = "Étel/feltét felvétele";
+            this.button7.Text = "Étel/Ital felvétele";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -152,7 +165,7 @@ namespace FoodApp
             this.label1.Location = new System.Drawing.Point(9, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 25);
+            this.label1.Size = new System.Drawing.Size(72, 26);
             this.label1.TabIndex = 3;
             this.label1.Text = "Menü";
             // 
@@ -225,12 +238,21 @@ namespace FoodApp
             this.rendeles_felvetel2.Size = new System.Drawing.Size(772, 584);
             this.rendeles_felvetel2.TabIndex = 1;
             // 
+            // etel_Ital_felvetel1
+            // 
+            this.etel_Ital_felvetel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.etel_Ital_felvetel1.Location = new System.Drawing.Point(188, 0);
+            this.etel_Ital_felvetel1.Name = "etel_Ital_felvetel1";
+            this.etel_Ital_felvetel1.Size = new System.Drawing.Size(772, 584);
+            this.etel_Ital_felvetel1.TabIndex = 13;
+            // 
             // FoodApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(960, 585);
+            this.Controls.Add(this.etel_Ital_felvetel1);
             this.Controls.Add(this.move_PictureBox);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.panel1);
@@ -272,5 +294,7 @@ namespace FoodApp
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox move_PictureBox;
+        private Etel_Ital_felvetel etel_Ital_felvetel1;
+        private System.Windows.Forms.ListBox allergeneListBox;
     }
 }
