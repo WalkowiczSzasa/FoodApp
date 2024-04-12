@@ -35,13 +35,15 @@ namespace FoodApp
             private string ar;
             private bool elerheto;
             private string id;
-            public food(string nev, string leiras, string ar, bool elerheto, string id) => (this.nev, this.leiras, this.ar, this.elerheto, this.id) = (nev, leiras, ar, elerheto, id);
+            private string allergenes;
+            public food(string nev, string leiras, string ar, bool elerheto, string id, string allergenes) => (this.nev, this.leiras, this.ar, this.elerheto, this.id, this.allergenes) = (nev, leiras, ar, elerheto, id, allergenes);
 
             public string Nev { get => nev; set => nev = value; }
             public string Leiras { get => leiras; set => leiras = value; }
             public string Ar { get => ar; set => ar = value; }
             public bool Elerheto { get => elerheto; set => elerheto = value; }
             public string Id { get => id; set => id = value; }
+            public string Allergenes { get => allergenes; set => allergenes = value; }
         }
         public class drink
         {
@@ -161,6 +163,8 @@ namespace FoodApp
             }
             rend_tetelekFeltoltes();
         }
+
+
 
         private void customerek_betolt()
         {
@@ -301,14 +305,13 @@ namespace FoodApp
                 MessageBox.Show(ex.ToString());
             }
             conn.Close();
-
             // orders tábla record létrehozás
             try
             {
                 foodID.Sort();
                 drinkID.Sort();
                 conn.Open();
-                string sql = $"INSERT INTO `orders`(`orderNote`, `orderTime`, `orderDueTime`, `orderDestID`, `orderDispatchID`, `orderStatus`, `foodID`, `drinkID`, `paymentID`) VALUES ('{richTextBox4.Text}','{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}','{DueDate.ToString("yyyy-MM-dd hh:mm:ss")}','{orderDestID}','[value-5]','0','{string.Join(" ", foodID)}','{string.Join(" ", drinkID)}','0'   )";
+                string sql = $"INSERT INTO `orders`(`orderNote`, `orderTime`, `orderDueTime`, `orderDestID`, `orderDispatchID`, `orderStatus`, `foodID`, `drinkID`, `paymentID`) VALUES ('{richTextBox4.Text}','{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss tt")}','{DueDate.ToString("yyyy-MM-dd HH:mm:ss tt")}','{orderDestID}','[value-5]','0','{string.Join(" ", foodID)}','{string.Join(" ", drinkID)}','0'   )";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
             }
@@ -322,7 +325,6 @@ namespace FoodApp
             if (comboBox1.SelectedIndex == 0){fizeszk = 0;}
             else{fizeszk = 1;}
 
-            MessageBox.Show(elvitel.ToString());
             //payment tábla record létrehozás
             if (elvitel==1)
             {
@@ -404,7 +406,7 @@ namespace FoodApp
 
         private void etelek_betolt()
         {
-            flowLayoutPanel1.Controls.Clear();
+            menuFlowLayoutPanel.Controls.Clear();
             foodMenu.Clear();
             //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
             //Kapcsolódási adatok
@@ -415,12 +417,12 @@ namespace FoodApp
             try
             {
                 conn.Open();
-                string sql = "SELECT `foodName`, `foodDesc`,`foodPrice`,`foodStatus`,`ID`  FROM `food`";
+                string sql = "SELECT `foodName`, `foodDesc`,`foodPrice`,`foodStatus`,`ID`,`foodAllergenID`   FROM `food`";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    foodMenu.Add(new food(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), Convert.ToBoolean(Convert.ToInt32(rdr[3])), rdr[4].ToString()));
+                    foodMenu.Add(new food(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), Convert.ToBoolean(Convert.ToInt32(rdr[3])), rdr[4].ToString(), rdr[5].ToString()));
                 }
             }
             catch (Exception ex)
@@ -441,8 +443,9 @@ namespace FoodApp
                     menu_items[i].Leiras = foodMenu[i].Leiras;
                     menu_items[i].Elerheto = foodMenu[i].Elerheto;
                     menu_items[i].Id = foodMenu[i].Id;
+                    menu_items[i].Allergenek = foodMenu[i].Allergenes;
 
-                    flowLayoutPanel1.Controls.Add(menu_items[i]);
+                    menuFlowLayoutPanel.Controls.Add(menu_items[i]);
 
                 }
             }
@@ -452,7 +455,7 @@ namespace FoodApp
         private void italok_betolt()
         {
             drinkMenu.Clear();
-            flowLayoutPanel1.Controls.Clear();
+            menuFlowLayoutPanel.Controls.Clear();
             //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
             //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
@@ -488,7 +491,7 @@ namespace FoodApp
                     Dmenu_items[i].Elerheto = drinkMenu[i].DElerheto;
                     Dmenu_items[i].Id = drinkMenu[i].DId;
 
-                    flowLayoutPanel1.Controls.Add(Dmenu_items[i]);
+                    menuFlowLayoutPanel.Controls.Add(Dmenu_items[i]);
 
                 }
             }
@@ -578,6 +581,20 @@ namespace FoodApp
             string kiv_tetel = rend_tetelek.SelectedItem.ToString();
             kivalasztott_tetelTextBox.Text = kiv_tetel.TrimEnd('\t').Remove(kiv_tetel.LastIndexOf('\t') + 1);
         }
+
+
+
+        //rend_tetelek fél-automata frissítés
+        private void menuFlowLayoutPanel_MouseEnter(object sender, EventArgs e)
+        {
+            rend_tetelekFeltoltes();
+        }
+        private void menuFlowLayoutPanel_MouseLeave(object sender, EventArgs e)
+        {
+            rend_tetelekFeltoltes();
+        }
+
+
 
         //placeholder attribútum hiányában ez a csunyaság van megoldásképp
         private void textBox1_Enter(object sender, EventArgs e)

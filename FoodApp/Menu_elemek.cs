@@ -29,6 +29,7 @@ namespace FoodApp
              label2.Text = ar + "Ft";
              textBox1.Text = leiras;
              label3.Text="#"+id;
+            label4.Text = allergenek;
         }
 
         private string nev;
@@ -36,14 +37,15 @@ namespace FoodApp
         private string ar;
         private bool elerheto;
         private string id;
+        private string allergenek;
 
         public string Nev { get => nev; set => nev = value; }
         public string Leiras { get => leiras; set => leiras = value; }
         public string Ar { get => ar; set => ar = value; }
         public bool Elerheto { get => elerheto; set => elerheto = value; }
         public string Id { get => id; set => id = value; }
+        public string Allergenek { get => allergenek; set => allergenek = value; }
 
-        
         private void hozzaadasBtn_Click(object sender, EventArgs e)
         {
             if (textBox1.Text=="")
