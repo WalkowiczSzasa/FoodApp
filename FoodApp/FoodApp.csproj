@@ -118,6 +118,12 @@
     <Compile Include="Etel_Ital_felvetel.Designer.cs">
       <DependentUpon>Etel_Ital_felvetel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Allergen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Allergen.Designer.cs">
+      <DependentUpon>Allergen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fo_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,12 @@
     </Compile>
     <Compile Include="Menu_elemek_Aktiv_rend.Designer.cs">
       <DependentUpon>Menu_elemek_Aktiv_rend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_elmek_Etel_ital_felvetel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Menu_elmek_Etel_ital_felvetel.Designer.cs">
+      <DependentUpon>Menu_elmek_Etel_ital_felvetel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,6 +175,9 @@
     <EmbeddedResource Include="Etel_Ital_felvetel.resx">
       <DependentUpon>Etel_Ital_felvetel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Allergen.resx">
+      <DependentUpon>Allergen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fo_Form.resx">
       <DependentUpon>Fo_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_elemek_Aktiv_rend.resx">
       <DependentUpon>Menu_elemek_Aktiv_rend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_elmek_Etel_ital_felvetel.resx">
+      <DependentUpon>Menu_elmek_Etel_ital_felvetel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
