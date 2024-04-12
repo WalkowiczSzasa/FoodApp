@@ -13,6 +13,7 @@ namespace FoodApp
 {
     public partial class Aktiv_Rendelesek : UserControl
     {
+        private byte elvitel = 1;
         public static string destID, fizID, oID, custID;
         public static List<string> foodID = new List<string>();
         public static List<string> drinkID = new List<string>();
@@ -32,6 +33,7 @@ namespace FoodApp
             static DateTime ido;
             static string vegossz;
             static string custID;
+            static byte check;
 
             public static string Telszam { get => telszam; set => telszam = value; }
             public static string Nev { get => nev; set => nev = value; }
@@ -40,6 +42,7 @@ namespace FoodApp
             public static DateTime Ido { get => ido; set => ido = value; }
             public static string Vegossz { get => vegossz; set => vegossz = value; }
             public static string CustID { get => custID; set => custID = value; }
+            public static byte Check { get => check; set => check = value; }
         }
         public class food
         {
@@ -424,12 +427,127 @@ namespace FoodApp
             timePicker.Value = adat.Ido;
             osszegLabel.Text = adat.Vegossz + " Ft";
         }
-
         private void rend_tetelek_SelectedIndexChanged(object sender, EventArgs e)
         {
             string kiv_tetel = rend_tetelek.SelectedItem.ToString();
             kivalasztott_tetelTextBox.Text = kiv_tetel.TrimEnd('\t').Remove(kiv_tetel.LastIndexOf('\t') + 1);
         }
+        private void elvitel_ellenorzes(object sender, EventArgs e)
+        {
+            if (elvitelCheckBox.Checked == true)
+            {
+                elvitel = 0;
+                utcaTextBox.Text = "Étterem utcája";
+                hsztextBox.Text = "Étterem hsz.";
+            }
+            else
+            {
+                utcaTextBox.Text = "";
+                hsztextBox.Text = "";
+                elvitel = 1;
+            }
+            MessageBox.Show(elvitel.ToString());
+        }
+        private void adatmodositas() 
+        {
+            if (adat.Check == 1)
+            {
+                string paytype;
+                //Kártya=1, Készpénz=0
+                if (fizComboBox.SelectedItem.ToString() == "Kártya")
+                { paytype = "1"; }
+                else
+                { paytype = "0"; }
+
+                //Kapcsolódási adatok
+                string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+                MySqlConnection conn = new MySqlConnection(connStr);
+                try
+                {
+                    conn.Open();
+                    string sql = $"UPDATE `customer` SET `phoneNumber`='{telszamTextBox.Text}', `name`='{nevTextBox.Text}' WHERE ID='{adat.CustID}'; UPDATE `destination` SET `orderStreet`='{utcaTextBox.Text}',`orderStreetNum`='{hsztextBox.Text}' WHERE ID='{destID}'; UPDATE `payment` SET `paymentType`='{paytype}',`sum`='{osszegLabel.Text.Substring(osszegLabel.Text.Length - 2)}' WHERE ID='{fizID}'; UPDATE `orders` SET `orderDueTime`='{timePicker.Value.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE orderID='{oID}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close();
+                if (elvitel == 1)
+                {
+                    try
+                    {
+                        conn.Open();
+                        string sql = $"UPDATE `payment` SET `deliveryCost`='400', `sum`='{/*osszegLabel.Text.Substring(osszegLabel.Text.Length - 2)*/0}' WHERE ID='{fizID}'; UPDATE `destination` SET `orderType`='1',`orderStreet`='{utcaTextBox.Text}',`orderStreetNum`='{hsztextBox.Text}' WHERE ID='{destID}'";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    conn.Close();
+                }
+                else
+                {
+                    try
+                    {
+                        conn.Open();
+                        string sql = $"INSERT INTO `payment`(`deliveryCost`, `sum`) VALUES ('0','{osszegLabel.Text.Substring(osszegLabel.Text.Length - 2)}') WHERE ID='{fizID}; UPDATE `destination` SET `orderType`='0',`orderStreet`='{utcaTextBox.Text}',`orderStreetNum`='{hsztextBox.Text}' WHERE ID='{destID}'";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    conn.Close();
+                }
+                adatm_mezok_kiurit();
+                rendelesek_betolt();
+                MessageBox.Show("Adatok sikeresen módosítva!");
+            }
+            else
+            {
+                MessageBox.Show("Előbb válassz ki egy szerkesztendő rendelést!");
+            }
+
+        }
+        private void adatm_mezok_kiurit()
+        {
+            telszamTextBox.Clear();
+            nevTextBox.Clear();
+            utcaTextBox.Clear();
+            hsztextBox.Clear();
+            timePicker.Value = DateTime.Now;
+            elvitelCheckBox.Checked = false;
+            fizComboBox.SelectedIndex = -1;
+            osszegLabel.Text = "Ft";
+        }
+        private void rend_szerk()
+        {
+            var oFoodID = String.Join(" ", foodID);
+            var oDrinkID = String.Join(" ", drinkID);
+
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+                string sql = $"UPDATE `orders` SET `foodID`='{oFoodID}',`drinkID`='{oDrinkID}' WHERE orderID='{oID}'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Rendelés sikeresen szerkesztve!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
 
         private void etelBtn_Click(object sender, EventArgs e)
         {
@@ -476,62 +594,32 @@ namespace FoodApp
 
         private void mentesBtnClick(object sender, EventArgs e)
         {
-            var oFoodID=String.Join(" ",foodID);
-            var oDrinkID=String.Join(" ", drinkID);
+            rend_szerk();
             
-            //Kapcsolódási adatok
-            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            try
-            {
-                conn.Open();
-                string sql = $"UPDATE `orders` SET `foodID`='{oFoodID}',`drinkID`='{oDrinkID}' WHERE orderID='{oID}'";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            conn.Close();
         }
 
         private void adatmodositasBtnClick(object sender, EventArgs e)
         {
-            string paytype;
-            //Kártya=1, Készpénz=0
-            if (fizComboBox.SelectedItem.ToString()=="Kártya")
-            {paytype = "1";}
-            else
-            {paytype = "0";}
-
-            //Kapcsolódási adatok
-            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            try
-            {
-                conn.Open();
-                string sql = $"UPDATE `customer` SET `phoneNumber`='{telszamTextBox.Text}', `name`='{nevTextBox.Text}' WHERE ID='{adat.CustID}'; UPDATE `destination` SET `orderStreet`='{utcaTextBox.Text}',`orderStreetNum`='{hsztextBox.Text}' WHERE ID='{destID}'; UPDATE `payment` SET `paymentType`='{paytype}',`sum`='{osszegLabel.Text.Substring(osszegLabel.Text.Length-2)}' WHERE ID='{fizID}'; UPDATE `orders` SET `orderDueTime`='{timePicker.Value.ToString("yyyy-MM-dd hh:mm:ss")}' WHERE orderID='{oID}'";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            conn.Close();
+            adatmodositas();
         }
 
         private void adatok_modBtn_Click(object sender, EventArgs e)
         {
-            //Gomb funkció/reszponzivitás
-            adatmodPanel.BringToFront();
-            adatok_modBtn.BackColor = Color.FromArgb(146, 173, 44);
-            adatok_modBtn.ForeColor = Color.White;
-            rendeles_szerkBtn.BackColor = Color.White;
-            rendeles_szerkBtn.ForeColor = Color.Black;
+            if (adat.Check==1)
+            {
+                //Gomb funkció/reszponzivitás
+                adatmodPanel.BringToFront();
+                adatok_modBtn.BackColor = Color.FromArgb(146, 173, 44);
+                adatok_modBtn.ForeColor = Color.White;
+                rendeles_szerkBtn.BackColor = Color.White;
+                rendeles_szerkBtn.ForeColor = Color.Black;
 
-            rend_adatokBetolt();
+                rend_adatokBetolt();
+            }
+            else
+            {
+                MessageBox.Show("Előbb válassz ki egy szerkesztendő rendelést!");
+            }
         }
 
         private void rendeles_szerkBtn_Click(object sender, EventArgs e)

@@ -24,6 +24,7 @@ namespace FoodApp
         public string drinkID = "";
         public string fizID, cimID, customerID;
         public static string fiztip;
+        public byte checkClick = 0;
         private bool allapot;
         private DateTime duetime;
         List<futar> futarok = new List<futar>();
@@ -108,6 +109,7 @@ namespace FoodApp
 
         private void szerk_PictureBox_Click(object sender, EventArgs e)
         {
+            checkClick = 1;
             string orderID = id_Label.Text.Trim('#');
 
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
@@ -151,6 +153,7 @@ namespace FoodApp
             Aktiv_Rendelesek.adat.Ido = duetime;
             Aktiv_Rendelesek.adat.Vegossz = ar;
             Aktiv_Rendelesek.adat.CustID = customerID;
+            Aktiv_Rendelesek.adat.Check = checkClick;
         }
 
         private void futarComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -194,7 +197,7 @@ namespace FoodApp
             DateTime ma = DateTime.Now;
             if (duetime.Date>ma.Date)
             {
-                idoLabel.Text = Duetime.ToString("HH:mm");
+                idoLabel.Text = Duetime.ToString("HH:mm tt");
                 dueDayLabel.Text= Duetime.ToString("MM/dd");
             }
             else
@@ -225,6 +228,7 @@ namespace FoodApp
                     MessageBox.Show(ex.ToString());
                 }
                 conn.Close();
+                futarComboBox.Enabled = true;
             }
             else
             {
@@ -244,6 +248,7 @@ namespace FoodApp
                     MessageBox.Show(ex.ToString());
                 }
                 conn.Close();
+                futarComboBox.Enabled = false;
             }
         }
 
