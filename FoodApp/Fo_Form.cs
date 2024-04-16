@@ -20,8 +20,8 @@ namespace FoodApp
         public FoodApp()
         {
             InitializeComponent();
-            KijeloltPanel.Height = button2.Height;
-            KijeloltPanel.Top = button2.Top;
+            KijeloltPanel.Height = rendeles_felvetelBtn.Height;
+            KijeloltPanel.Top = rendeles_felvetelBtn.Top;
             rendeles_felvetel2.BringToFront();
             exitBtn.BringToFront();
             move_PictureBox.BringToFront();
@@ -37,11 +37,35 @@ namespace FoodApp
         {
             switch (role)
             {
+                case "admmin":
+                    futar_nezet1.Show();
+                    aktiv_Rendelesek1.Show();
+                    rendeles_felvetel2.Show();
+                    etel_Ital_felvetel1.Show();
+                    rendeles_felvetelBtn.Show();
+                    aktiv_rendelesekBtn.Show();
+                    etel_ital_felvetelBtn.Show();
+                    futar_nezetBtn.Show();
+                    break;
                 case "cook":
-                    button7.Hide();
+                    futar_nezet1.Hide();
+                    aktiv_Rendelesek1.Show();
+                    rendeles_felvetel2.Show();
+                    etel_Ital_felvetel1.Hide();
+                    rendeles_felvetelBtn.Show();
+                    aktiv_rendelesekBtn.Show();
+                    etel_ital_felvetelBtn.Hide();
+                    futar_nezetBtn.Hide();
                     break;
                 case "dispatch":
-
+                    futar_nezet1.Show();
+                    aktiv_Rendelesek1.Hide();
+                    rendeles_felvetel2.Hide();
+                    etel_Ital_felvetel1.Hide();
+                    rendeles_felvetelBtn.Hide();
+                    aktiv_rendelesekBtn.Hide();
+                    etel_ital_felvetelBtn.Hide();
+                    futar_nezetBtn.Show();
                     break;
             }
         }
@@ -76,30 +100,38 @@ namespace FoodApp
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void rend_felvetel_Click(object sender, EventArgs e)
         {
-            KijeloltPanel.Height = button2.Height;
-            KijeloltPanel.Top = button2.Top;
+            KijeloltPanel.Height = rendeles_felvetelBtn.Height;
+            KijeloltPanel.Top = rendeles_felvetelBtn.Top;
             rendeles_felvetel2.BringToFront();
             exitBtn.BringToFront();
             move_PictureBox.BringToFront();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void aktiv_rend_Click(object sender, EventArgs e)
         {
-            KijeloltPanel.Height = button3.Height;
-            KijeloltPanel.Top = button3.Top;
+            KijeloltPanel.Height = aktiv_rendelesekBtn.Height;
+            KijeloltPanel.Top = aktiv_rendelesekBtn.Top;
             aktiv_Rendelesek1.BringToFront();
             exitBtn.BringToFront();
             move_PictureBox.BringToFront();
             aktiv_Rendelesek1.rendelesek_betolt();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void etel_ital_felvetel_Click(object sender, EventArgs e)
         {
-            KijeloltPanel.Height = button7.Height;
-            KijeloltPanel.Top = button7.Top;
+            KijeloltPanel.Height = etel_ital_felvetelBtn.Height;
+            KijeloltPanel.Top = etel_ital_felvetelBtn.Top;
             etel_Ital_felvetel1.BringToFront();
+            exitBtn.BringToFront();
+            move_PictureBox.BringToFront();
+        }
+        private void futar_nezet_Click(object sender, EventArgs e)
+        {
+            KijeloltPanel.Height = futar_nezetBtn.Height;
+            KijeloltPanel.Top = futar_nezetBtn.Top;
+            futar_nezet1.BringToFront();
             exitBtn.BringToFront();
             move_PictureBox.BringToFront();
         }
@@ -123,5 +155,7 @@ namespace FoodApp
             }
         }
         #endregion
+
+
     }
 }
