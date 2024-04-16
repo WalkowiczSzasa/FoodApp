@@ -130,6 +130,18 @@
     <Compile Include="Fo_Form.Designer.cs">
       <DependentUpon>Fo_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Futar_cimek.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Futar_cimek.Designer.cs">
+      <DependentUpon>Futar_cimek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Futar_nezet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Futar_nezet.Designer.cs">
+      <DependentUpon>Futar_nezet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu_elemek.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,6 +192,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fo_Form.resx">
       <DependentUpon>Fo_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Futar_cimek.resx">
+      <DependentUpon>Futar_cimek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Futar_nezet.resx">
+      <DependentUpon>Futar_nezet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_elemek.resx">
       <DependentUpon>Menu_elemek.cs</DependentUpon>
