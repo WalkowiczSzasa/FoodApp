@@ -175,7 +175,7 @@ namespace FoodApp
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(6, 293);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 23);
+            this.label6.Size = new System.Drawing.Size(81, 22);
             this.label6.TabIndex = 32;
             this.label6.Text = "Tételek";
             // 
@@ -255,7 +255,7 @@ namespace FoodApp
             this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(30, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 32);
+            this.label1.Size = new System.Drawing.Size(249, 33);
             this.label1.TabIndex = 32;
             this.label1.Text = "Aktív rendelések";
             // 
@@ -315,7 +315,7 @@ namespace FoodApp
             this.label2.Location = new System.Drawing.Point(206, 207);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 23);
+            this.label2.Size = new System.Drawing.Size(74, 22);
             this.label2.TabIndex = 29;
             this.label2.Text = "Elvitel:";
             // 
@@ -341,7 +341,7 @@ namespace FoodApp
             this.osszegLabel.Location = new System.Drawing.Point(186, 346);
             this.osszegLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.osszegLabel.Name = "osszegLabel";
-            this.osszegLabel.Size = new System.Drawing.Size(108, 32);
+            this.osszegLabel.Size = new System.Drawing.Size(108, 33);
             this.osszegLabel.TabIndex = 27;
             this.osszegLabel.Text = "XXXXFt";
             // 
@@ -353,7 +353,7 @@ namespace FoodApp
             this.label13.Location = new System.Drawing.Point(6, 354);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(115, 23);
+            this.label13.Size = new System.Drawing.Size(124, 22);
             this.label13.TabIndex = 26;
             this.label13.Text = "Végösszeg:";
             // 
@@ -365,7 +365,7 @@ namespace FoodApp
             this.label12.Location = new System.Drawing.Point(168, 148);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(98, 23);
+            this.label12.Size = new System.Drawing.Size(102, 22);
             this.label12.TabIndex = 25;
             this.label12.Text = "Házszám:";
             // 
@@ -377,7 +377,7 @@ namespace FoodApp
             this.label11.Location = new System.Drawing.Point(6, 147);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 23);
+            this.label11.Size = new System.Drawing.Size(64, 22);
             this.label11.TabIndex = 24;
             this.label11.Text = "Utca:";
             // 
@@ -389,7 +389,7 @@ namespace FoodApp
             this.label10.Location = new System.Drawing.Point(6, 87);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 23);
+            this.label10.Size = new System.Drawing.Size(58, 22);
             this.label10.TabIndex = 23;
             this.label10.Text = "Név:";
             // 
@@ -401,7 +401,7 @@ namespace FoodApp
             this.label9.Location = new System.Drawing.Point(6, 26);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(128, 23);
+            this.label9.Size = new System.Drawing.Size(137, 22);
             this.label9.TabIndex = 22;
             this.label9.Text = "Telefonszám:";
             // 
@@ -424,7 +424,7 @@ namespace FoodApp
             this.label8.Location = new System.Drawing.Point(6, 207);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 23);
+            this.label8.Size = new System.Drawing.Size(91, 22);
             this.label8.TabIndex = 19;
             this.label8.Text = "Időzítés:";
             // 
@@ -485,7 +485,7 @@ namespace FoodApp
             this.label7.Location = new System.Drawing.Point(6, 247);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(129, 23);
+            this.label7.Size = new System.Drawing.Size(136, 22);
             this.label7.TabIndex = 9;
             this.label7.Text = "Fizetési mód:";
             // 
@@ -522,8 +522,8 @@ namespace FoodApp
             this.Controls.Add(this.label1);
             this.Controls.Add(this.adatok_modBtn);
             this.Controls.Add(this.rendeles_szerkBtn);
-            this.Controls.Add(this.tetelmodPanel);
             this.Controls.Add(this.adatmodPanel);
+            this.Controls.Add(this.tetelmodPanel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Aktiv_Rendelesek";
             this.Size = new System.Drawing.Size(772, 584);

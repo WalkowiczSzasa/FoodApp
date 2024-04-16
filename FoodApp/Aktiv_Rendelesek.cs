@@ -247,8 +247,6 @@ namespace FoodApp
                         
                     }
                 }
-                //aktiv_rend[i].Nev = Customers[i].Nev;
-                //aktiv_rend[i].Telszam = Customers[i].Telszam;
                 aktiv_rend[i].Cim = Cimek[i].Utca + " " +Cimek[i].Hazszam;
                 if (Orders[i].Allapot=="0")
                 {
@@ -507,6 +505,7 @@ namespace FoodApp
                 adatm_mezok_kiurit();
                 rendelesek_betolt();
                 MessageBox.Show("Adatok sikeresen módosítva!");
+                adat.Check = 0;
             }
             else
             {

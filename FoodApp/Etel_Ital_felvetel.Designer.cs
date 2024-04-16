@@ -94,7 +94,7 @@ namespace FoodApp
             this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(30, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 32);
+            this.label1.Size = new System.Drawing.Size(241, 33);
             this.label1.TabIndex = 33;
             this.label1.Text = "Étel/Ital felvétel";
             // 
@@ -210,7 +210,7 @@ namespace FoodApp
             this.label20.ForeColor = System.Drawing.Color.White;
             this.label20.Location = new System.Drawing.Point(130, 385);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(84, 23);
+            this.label20.Size = new System.Drawing.Size(92, 22);
             this.label20.TabIndex = 62;
             this.label20.Text = "Elérhető";
             // 
@@ -221,11 +221,11 @@ namespace FoodApp
             this.elemModositBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.elemModositBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.elemModositBtn.ForeColor = System.Drawing.Color.White;
-            this.elemModositBtn.Location = new System.Drawing.Point(81, 473);
+            this.elemModositBtn.Location = new System.Drawing.Point(109, 473);
             this.elemModositBtn.Name = "elemModositBtn";
-            this.elemModositBtn.Size = new System.Drawing.Size(154, 35);
+            this.elemModositBtn.Size = new System.Drawing.Size(126, 35);
             this.elemModositBtn.TabIndex = 57;
-            this.elemModositBtn.Text = "Elem módosítása";
+            this.elemModositBtn.Text = "Módosít";
             this.elemModositBtn.UseVisualStyleBackColor = false;
             this.elemModositBtn.Click += new System.EventHandler(this.elemModositBtn_Click);
             // 
@@ -238,7 +238,7 @@ namespace FoodApp
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(94, 385);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(26, 23);
+            this.label12.Size = new System.Drawing.Size(26, 22);
             this.label12.TabIndex = 61;
             this.label12.Text = "%";
             // 
@@ -260,7 +260,7 @@ namespace FoodApp
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(5, 385);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(42, 23);
+            this.label13.Size = new System.Drawing.Size(47, 22);
             this.label13.TabIndex = 59;
             this.label13.Text = "Áfa";
             // 
@@ -273,7 +273,7 @@ namespace FoodApp
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(3, 342);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(156, 16);
+            this.label14.Size = new System.Drawing.Size(177, 17);
             this.label14.TabIndex = 58;
             this.label14.Text = "(Szóközzel elválasztva)";
             // 
@@ -286,7 +286,7 @@ namespace FoodApp
             this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Location = new System.Drawing.Point(5, 284);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(160, 23);
+            this.label15.Size = new System.Drawing.Size(170, 22);
             this.label15.TabIndex = 56;
             this.label15.Text = "Allergének ID-ja";
             // 
@@ -307,7 +307,7 @@ namespace FoodApp
             this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Location = new System.Drawing.Point(133, 240);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(25, 23);
+            this.label16.Size = new System.Drawing.Size(28, 22);
             this.label16.TabIndex = 54;
             this.label16.Text = "Ft";
             // 
@@ -320,7 +320,7 @@ namespace FoodApp
             this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Location = new System.Drawing.Point(5, 211);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(30, 23);
+            this.label17.Size = new System.Drawing.Size(33, 22);
             this.label17.TabIndex = 53;
             this.label17.Text = "Ár";
             // 
@@ -333,7 +333,7 @@ namespace FoodApp
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(5, 139);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(122, 23);
+            this.label18.Size = new System.Drawing.Size(126, 22);
             this.label18.TabIndex = 52;
             this.label18.Text = "Elem leírása";
             // 
@@ -346,7 +346,7 @@ namespace FoodApp
             this.label19.ForeColor = System.Drawing.Color.White;
             this.label19.Location = new System.Drawing.Point(5, 66);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(106, 23);
+            this.label19.Size = new System.Drawing.Size(115, 22);
             this.label19.TabIndex = 51;
             this.label19.Text = "Elem neve";
             // 
@@ -383,7 +383,7 @@ namespace FoodApp
             this.label3.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold);
             this.label3.Location = new System.Drawing.Point(0, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(236, 32);
+            this.label3.Size = new System.Drawing.Size(254, 33);
             this.label3.TabIndex = 36;
             this.label3.Text = "Elem módosítása";
             // 
@@ -396,7 +396,7 @@ namespace FoodApp
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(3, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(232, 32);
+            this.label2.Size = new System.Drawing.Size(256, 33);
             this.label2.TabIndex = 34;
             this.label2.Text = "Új elem felvétele";
             // 
@@ -446,7 +446,7 @@ namespace FoodApp
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(94, 385);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(26, 23);
+            this.label11.Size = new System.Drawing.Size(26, 22);
             this.label11.TabIndex = 47;
             this.label11.Text = "%";
             // 
@@ -468,7 +468,7 @@ namespace FoodApp
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(5, 385);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 23);
+            this.label10.Size = new System.Drawing.Size(47, 22);
             this.label10.TabIndex = 45;
             this.label10.Text = "Áfa";
             // 
@@ -481,7 +481,7 @@ namespace FoodApp
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(3, 342);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(156, 16);
+            this.label9.Size = new System.Drawing.Size(177, 17);
             this.label9.TabIndex = 44;
             this.label9.Text = "(Szóközzel elválasztva)";
             // 
@@ -494,7 +494,7 @@ namespace FoodApp
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(5, 284);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(160, 23);
+            this.label8.Size = new System.Drawing.Size(170, 22);
             this.label8.TabIndex = 43;
             this.label8.Text = "Allergének ID-ja";
             // 
@@ -515,7 +515,7 @@ namespace FoodApp
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(133, 240);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 23);
+            this.label7.Size = new System.Drawing.Size(28, 22);
             this.label7.TabIndex = 41;
             this.label7.Text = "Ft";
             // 
@@ -528,7 +528,7 @@ namespace FoodApp
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(5, 211);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 23);
+            this.label6.Size = new System.Drawing.Size(33, 22);
             this.label6.TabIndex = 40;
             this.label6.Text = "Ár";
             // 
@@ -541,7 +541,7 @@ namespace FoodApp
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(5, 139);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 23);
+            this.label5.Size = new System.Drawing.Size(126, 22);
             this.label5.TabIndex = 39;
             this.label5.Text = "Elem leírása";
             // 
@@ -554,7 +554,7 @@ namespace FoodApp
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(5, 66);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 23);
+            this.label4.Size = new System.Drawing.Size(115, 22);
             this.label4.TabIndex = 38;
             this.label4.Text = "Elem neve";
             // 
