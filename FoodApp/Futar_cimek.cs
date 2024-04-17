@@ -15,8 +15,8 @@ namespace FoodApp
     {
 
         private string id, nev, telszam, cim, ar;
-        public static List<string> foodID = new List<string>();
-        public static List<string> drinkID = new List<string>();
+        public static string[] foodID = new string[1];
+        public static string[] drinkID = new string[1];
         public string fizID, cimID, customerID, foodIDs, drinkIDs;
         public static string fiztip;
         public byte checkClick = 0;
@@ -95,8 +95,8 @@ namespace FoodApp
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    foodID.Add(rdr[0].ToString());
-                    drinkID.Add(rdr[1].ToString());
+                    foodID[0]=(rdr[0].ToString());
+                    drinkID[0]=(rdr[1].ToString());
                 }
             }
             catch (Exception ex)
@@ -104,7 +104,6 @@ namespace FoodApp
                 MessageBox.Show(ex.ToString());
             }
             conn.Close();
-
         }
 
         private void fiztip_lekerdezes()
@@ -129,30 +128,6 @@ namespace FoodApp
             conn.Close();
         }
 
-        /* private void futarok_betolt()
-         {
-             tetelComboBox.Items.Clear();
-             //Kapcsolódási adatok
-             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
-             MySqlConnection conn = new MySqlConnection(connStr);
-
-             try
-             {
-                 conn.Open();
-                 string sql = "SELECT ID, dname FROM `users` WHERE role='dispatch' ORDER BY dname ASC;";
-                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                 MySqlDataReader rdr = cmd.ExecuteReader();
-                 while (rdr.Read())
-                 {
-                     futarok.Add(new futar(rdr[0].ToString(), rdr[1].ToString()));
-                 }
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show(ex.ToString());
-             }
-             conn.Close();
-         }*/
         private void adat_beiras()
         {
             id_Label.Text = "#" + id;
@@ -205,15 +180,17 @@ namespace FoodApp
                                 rendeles_tetelek.Add(new tetel(food[i], rdr[1].ToString(), Convert.ToDouble(rdr[2])));
                             }
                             conn.Close();
+                            tetelcomboBox.Items.Clear();
                         }
+                        food.Clear();
                     }
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
             }
+
             foreach (var item in drinkID)
             {
                 if (item!="" && item!=null)
@@ -230,33 +207,31 @@ namespace FoodApp
                             while (rdr.Read())
                             {
                                 rendeles_tetelek.Add(new tetel(drink[i], rdr[1].ToString(), Convert.ToDouble(rdr[2])));
+                                
                             }
                             conn.Close();
                         }
                     }
                 }
-
             }
-            foreach (tetel item in rendeles_tetelek)
+            Dictionary<string, int> dict= megszamlalas(rendeles_tetelek);
+            foreach (KeyValuePair<string, int> x in dict)
             {
-                 tetelcomboBox.Items.Add(item.TetelID + " " + item.TetelName);
+                tetelcomboBox.Items.Add($"{x.Value}x {x.Key}");
             }
+            
+
             tetelcomboBox.Sorted = true;
-            /*
-            string[] items = new string[tetelcomboBox.Items.Count];
-            tetelcomboBox.Items.CopyTo(items, 0);
-            tetelcomboBox.Items.Clear();
-            LinqMethod(items);
-            */
+            rendeles_tetelek.Clear();
         }
-        /*private void LinqMethod(string[] items)
+        private Dictionary<string, int> megszamlalas(List<tetel> items)
         {
-            var ranking = (from item in items
-                           group item by item into r
-                           orderby r.Count() descending
-                           select new { Name = r.Key, Rank = r.Count() });
-            foreach (var item in ranking)
-                tetelcomboBox.Items.Add(item);
-        }*/
+            var szamol = items.ToList().GroupBy(x => x.TetelName).Select(x => new
+            {
+                nev = x.Key,
+                count = x.Count()
+            }).ToDictionary(kp=>kp.nev, kp=>kp.count);
+            return szamol;
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace FoodApp
             this.futarFlowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.futarFlowLayoutPanel.Location = new System.Drawing.Point(0, 61);
             this.futarFlowLayoutPanel.Name = "futarFlowLayoutPanel";
-            this.futarFlowLayoutPanel.Size = new System.Drawing.Size(437, 523);
+            this.futarFlowLayoutPanel.Size = new System.Drawing.Size(438, 523);
             this.futarFlowLayoutPanel.TabIndex = 40;
             // 
             // Futar_nezet
