@@ -42,7 +42,7 @@ namespace FoodApp
             try
             {
                 conn.Open();
-                string sql = $"SELECT role, dname FROM `users` WHERE username='{textBox2.Text}' AND password='{textBox1.Text}'";
+                string sql = $"SELECT role, dname, ID FROM `users` WHERE username='{textBox2.Text}' AND password='{textBox1.Text}'";
                 MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
                 DataTable dtbl = new DataTable();
                 da.Fill(dtbl);
@@ -54,12 +54,17 @@ namespace FoodApp
                     {
                         form.Dname = row["dname"].ToString();
                         form.role = row["role"].ToString();
+                        form.loggedID = row["ID"].ToString();
+
+                        break;
                     }
+
                     textBox1.Clear();
                     textBox2.Clear();
                     this.Hide();
                     form.ShowDialog();
                     this.Show();
+
                 }
                 else {label4.Show();}
             }
