@@ -24,7 +24,8 @@ namespace FoodApp
         public string drinkID = "";
         public string fizID, cimID, customerID;
         public static string fiztip;
-        double kiszDij=0, sum=0;
+        double kiszDij=0, sum=0, csomagar = 0;
+        byte tetelszam = 0;
         public byte checkClick = 0;
         private bool allapot;
         private DateTime duetime;
@@ -93,7 +94,7 @@ namespace FoodApp
             try
             {
                 conn.Open();
-                string sql = $"UPDATE `payment` SET sum='{sum}' WHERE ID='{fizID}'";
+                string sql = $"UPDATE `payment` SET sum='{sum}', packagingCost='{tetelszam*csomagar}' WHERE ID='{fizID}'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
             }
@@ -108,8 +109,34 @@ namespace FoodApp
         {
             id_lekeres();
             rend_tetelekLekeres();
+            csomagar_lekeres();
             adat_beiras();
         }
+
+        private void csomagar_lekeres()
+        {
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            try
+            {
+                conn.Open();
+                string sql = "SELECT `price` FROM `packaging`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    csomagar = Convert.ToDouble(rdr[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
         private void id_lekeres()
         {
             string orderID = id_Label.Text.Trim('#');
@@ -140,6 +167,7 @@ namespace FoodApp
         public void rend_tetelekLekeres()
         {
             sum = 0;
+            tetelszam = 0;
             rendeles_tetelek.Clear();
 
             //Kapcsolódási adatok
@@ -161,6 +189,7 @@ namespace FoodApp
                             MySqlDataReader rdr = cmd.ExecuteReader();
                             while (rdr.Read())
                             {
+                                tetelszam++;
                                 rendeles_tetelek.Add(new tetel(food[i], rdr[1].ToString(), Convert.ToDouble(rdr[2])));
                             }
                             conn.Close();
@@ -203,7 +232,7 @@ namespace FoodApp
             {
                 sum += x.Value.Item2;
             }
-
+            
             rendeles_tetelek.Clear();
             adat_beiras();
         }
@@ -301,6 +330,8 @@ namespace FoodApp
             Aktiv_Rendelesek.fizID = fizID;
             Aktiv_Rendelesek.destID = cimID;
             Aktiv_Rendelesek.kiszDIj = kiszDij;
+            Aktiv_Rendelesek.adat.Csomagar = csomagar;
+            Aktiv_Rendelesek.adat.Tetelszam = tetelszam;
             Aktiv_Rendelesek.adat.Telszam = telszam;
             Aktiv_Rendelesek.adat.Nev = nev;
             Aktiv_Rendelesek.adat.Utcahsz = cim;
@@ -336,7 +367,7 @@ namespace FoodApp
             telszamLabel.Text = telszam;
             arLabel.Text = (sum + kiszDij).ToString();
             cimLabel.Text = cim;
-            arLabel.Text = sum+kiszDij + "Ft";
+            arLabel.Text = sum+kiszDij+csomagar*tetelszam + "Ft";
             hatarido_kezeles();
             allapot_ellenorzes();
 
@@ -347,7 +378,7 @@ namespace FoodApp
             DateTime ma = DateTime.Now;
             if (duetime.Date>ma.Date)
             {
-                idoLabel.Text = Duetime.ToString("HH:mm tt");
+                idoLabel.Text = Duetime.ToString("HH:mm");
                 dueDayLabel.Text= Duetime.ToString("MM/dd");
             }
             else

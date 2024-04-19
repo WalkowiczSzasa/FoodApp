@@ -32,6 +32,8 @@ namespace FoodApp
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aktiv_Rendelesek));
             this.rendeles_szerkBtn = new System.Windows.Forms.Button();
             this.tetelmodPanel = new System.Windows.Forms.Panel();
+            this.csomagLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.refreshPictbox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.rend_tetelek = new System.Windows.Forms.ListBox();
@@ -66,10 +68,15 @@ namespace FoodApp
             this.hsztextBox = new System.Windows.Forms.TextBox();
             this.utcaTextBox = new System.Windows.Forms.TextBox();
             this.nevTextBox = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.kiszDijMentesBtn = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.kiszDijNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tetelmodPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).BeginInit();
             this.adatmodPanel.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kiszDijNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // rendeles_szerkBtn
@@ -91,6 +98,8 @@ namespace FoodApp
             // tetelmodPanel
             // 
             this.tetelmodPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.tetelmodPanel.Controls.Add(this.csomagLabel);
+            this.tetelmodPanel.Controls.Add(this.label3);
             this.tetelmodPanel.Controls.Add(this.refreshPictbox);
             this.tetelmodPanel.Controls.Add(this.flowLayoutPanel2);
             this.tetelmodPanel.Controls.Add(this.rend_tetelek);
@@ -106,6 +115,28 @@ namespace FoodApp
             this.tetelmodPanel.Name = "tetelmodPanel";
             this.tetelmodPanel.Size = new System.Drawing.Size(336, 522);
             this.tetelmodPanel.TabIndex = 28;
+            // 
+            // csomagLabel
+            // 
+            this.csomagLabel.AutoSize = true;
+            this.csomagLabel.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.csomagLabel.ForeColor = System.Drawing.Color.White;
+            this.csomagLabel.Location = new System.Drawing.Point(117, 467);
+            this.csomagLabel.Name = "csomagLabel";
+            this.csomagLabel.Size = new System.Drawing.Size(51, 18);
+            this.csomagLabel.TabIndex = 41;
+            this.csomagLabel.Text = "xxxxFt";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(15, 467);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 18);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "Csomagolás:";
             // 
             // refreshPictbox
             // 
@@ -134,14 +165,14 @@ namespace FoodApp
             this.rend_tetelek.ItemHeight = 21;
             this.rend_tetelek.Location = new System.Drawing.Point(10, 318);
             this.rend_tetelek.Name = "rend_tetelek";
-            this.rend_tetelek.Size = new System.Drawing.Size(302, 130);
+            this.rend_tetelek.Size = new System.Drawing.Size(302, 109);
             this.rend_tetelek.TabIndex = 36;
             this.rend_tetelek.SelectedIndexChanged += new System.EventHandler(this.rend_tetelek_SelectedIndexChanged);
             // 
             // tetelMinus
             // 
             this.tetelMinus.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tetelMinus.Location = new System.Drawing.Point(244, 451);
+            this.tetelMinus.Location = new System.Drawing.Point(244, 432);
             this.tetelMinus.Name = "tetelMinus";
             this.tetelMinus.Size = new System.Drawing.Size(31, 31);
             this.tetelMinus.TabIndex = 35;
@@ -152,7 +183,7 @@ namespace FoodApp
             // tetelAdd
             // 
             this.tetelAdd.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tetelAdd.Location = new System.Drawing.Point(281, 451);
+            this.tetelAdd.Location = new System.Drawing.Point(281, 432);
             this.tetelAdd.Name = "tetelAdd";
             this.tetelAdd.Size = new System.Drawing.Size(31, 31);
             this.tetelAdd.TabIndex = 34;
@@ -163,7 +194,7 @@ namespace FoodApp
             // kivalasztott_tetelTextBox
             // 
             this.kivalasztott_tetelTextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.kivalasztott_tetelTextBox.Location = new System.Drawing.Point(10, 452);
+            this.kivalasztott_tetelTextBox.Location = new System.Drawing.Point(10, 433);
             this.kivalasztott_tetelTextBox.Name = "kivalasztott_tetelTextBox";
             this.kivalasztott_tetelTextBox.Size = new System.Drawing.Size(229, 31);
             this.kivalasztott_tetelTextBox.TabIndex = 33;
@@ -513,11 +544,70 @@ namespace FoodApp
             this.nevTextBox.Size = new System.Drawing.Size(326, 31);
             this.nevTextBox.TabIndex = 0;
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.White;
+            this.label23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label23.ForeColor = System.Drawing.Color.Black;
+            this.label23.Location = new System.Drawing.Point(412, 10);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(18, 16);
+            this.label23.TabIndex = 70;
+            this.label23.Text = "Ft";
+            // 
+            // kiszDijMentesBtn
+            // 
+            this.kiszDijMentesBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.kiszDijMentesBtn.FlatAppearance.BorderSize = 0;
+            this.kiszDijMentesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kiszDijMentesBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.kiszDijMentesBtn.ForeColor = System.Drawing.Color.White;
+            this.kiszDijMentesBtn.Location = new System.Drawing.Point(348, 26);
+            this.kiszDijMentesBtn.Name = "kiszDijMentesBtn";
+            this.kiszDijMentesBtn.Size = new System.Drawing.Size(71, 23);
+            this.kiszDijMentesBtn.TabIndex = 71;
+            this.kiszDijMentesBtn.Text = "Mentés";
+            this.kiszDijMentesBtn.UseVisualStyleBackColor = false;
+            this.kiszDijMentesBtn.Click += new System.EventHandler(this.kiszDijMentesBtn_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.White;
+            this.label24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label24.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(302, 9);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(60, 16);
+            this.label24.TabIndex = 72;
+            this.label24.Text = "Kisz. díj:";
+            // 
+            // kiszDijNumericUpDown
+            // 
+            this.kiszDijNumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.kiszDijNumericUpDown.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.kiszDijNumericUpDown.Location = new System.Drawing.Point(368, 8);
+            this.kiszDijNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.kiszDijNumericUpDown.Name = "kiszDijNumericUpDown";
+            this.kiszDijNumericUpDown.Size = new System.Drawing.Size(47, 19);
+            this.kiszDijNumericUpDown.TabIndex = 73;
+            // 
             // Aktiv_Rendelesek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.kiszDijMentesBtn);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.kiszDijNumericUpDown);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.adatok_modBtn);
@@ -534,6 +624,7 @@ namespace FoodApp
             this.adatmodPanel.ResumeLayout(false);
             this.adatmodPanel.PerformLayout();
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kiszDijNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -576,5 +667,11 @@ namespace FoodApp
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox elvitelCheckBox;
+        private System.Windows.Forms.Label csomagLabel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button kiszDijMentesBtn;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.NumericUpDown kiszDijNumericUpDown;
     }
 }

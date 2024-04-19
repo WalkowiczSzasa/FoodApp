@@ -16,7 +16,7 @@ namespace FoodApp
         private byte elvitel = 1;
         public static string destID, fizID, oID, custID;
         public static double kiszDIj = 0;
-        double sum = 0;
+        double sum = 0, delFee=0;
         public static List<string> foodID = new List<string>();
         public static List<string> drinkID = new List<string>();
         List<food> foodMenu = new List<food>();
@@ -35,6 +35,8 @@ namespace FoodApp
             static DateTime ido;
             static string custID;
             static byte check;
+            static double csomagar;
+            static double tetelszam;
 
             public static string Telszam { get => telszam; set => telszam = value; }
             public static string Nev { get => nev; set => nev = value; }
@@ -43,6 +45,8 @@ namespace FoodApp
             public static DateTime Ido { get => ido; set => ido = value; }
             public static string CustID { get => custID; set => custID = value; }
             public static byte Check { get => check; set => check = value; }
+            public static double Csomagar { get => csomagar; set => csomagar = value; }
+            public static double Tetelszam { get => tetelszam; set => tetelszam = value; }
         }
         public class food
         {
@@ -156,6 +160,7 @@ namespace FoodApp
         }
         private void Aktiv_Rendelesek_Load(object sender, EventArgs e)
         {
+            szallDij_betolt();
             rendelesek_betolt();
             etelek_betolt();
 
@@ -163,6 +168,31 @@ namespace FoodApp
             timePicker.Format = DateTimePickerFormat.Custom;
             timePicker.CustomFormat = "HH:mm";
             timePicker.ShowUpDown = true;
+        }
+
+        private void szallDij_betolt()
+        {
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            try
+            {
+                conn.Open();
+                string sql = "SELECT `price` FROM `deliveryfee`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    kiszDijNumericUpDown.Value = Convert.ToInt32(rdr[0]);
+                    delFee = Convert.ToDouble(rdr[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
         }
 
         public void rendelesek_betolt()
@@ -408,13 +438,14 @@ namespace FoodApp
                 rend_tetelek.Items.Add(item.TetelID + " " + item.TetelName + "\t" + item.TetelPrice);
             }
             rend_tetelek.Sorted = true;
-
+            csomagLabel.Text = (adat.Csomagar * adat.Tetelszam + "Ft").ToString();
             sum = 0;
             Dictionary<string, (int, double)> dict = megszamlalas(rendeles_tetelek);
             foreach (KeyValuePair<string, (int, double)> x in dict)
             {
                 sum += x.Value.Item2;
             }
+
         }
         private void rend_adatokBetolt()
         {
@@ -441,7 +472,7 @@ namespace FoodApp
             {
                 elvitel = 0;
                 utcaTextBox.Text = "Étterem utcája";
-                hsztextBox.Text = "Étterem hsz.";
+                hsztextBox.Text = "Étteremhsz.";
             }
             else
             {
@@ -449,7 +480,6 @@ namespace FoodApp
                 hsztextBox.Text = "";
                 elvitel = 1;
             }
-            MessageBox.Show(elvitel.ToString());
         }
         private void adatmodositas() 
         {
@@ -482,7 +512,7 @@ namespace FoodApp
                     try
                     {
                         conn.Open();
-                        string sql = $"UPDATE `payment` SET `deliveryCost`='400', `sum`='{/*osszegLabel.Text.Substring(osszegLabel.Text.Length - 2)*/0}' WHERE ID='{fizID}'; UPDATE `destination` SET `orderType`='1',`orderStreet`='{utcaTextBox.Text}',`orderStreetNum`='{hsztextBox.Text}' WHERE ID='{destID}'";
+                        string sql = $"UPDATE `payment` SET `deliveryCost`='{delFee}' WHERE ID='{fizID}'; UPDATE `destination` SET `orderType`='{elvitel}',`orderStreet`='{utcaTextBox.Text}',`orderStreetNum`='{hsztextBox.Text}' WHERE ID='{destID}'";
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         cmd.ExecuteNonQuery();
                     }
@@ -492,12 +522,12 @@ namespace FoodApp
                     }
                     conn.Close();
                 }
-                else
+                else if(elvitel==0)
                 {
                     try
                     {
                         conn.Open();
-                        string sql = $"INSERT INTO `payment`(`deliveryCost`, `sum`) VALUES ('0','{osszegLabel.Text.Substring(osszegLabel.Text.Length - 2)}') WHERE ID='{fizID}; UPDATE `destination` SET `orderType`='0',`orderStreet`='{utcaTextBox.Text}',`orderStreetNum`='{hsztextBox.Text}' WHERE ID='{destID}'";
+                        string sql = $"UPDATE `payment` SET `deliveryCost`='0' WHERE ID='{fizID}'; UPDATE `destination` SET `orderType`='{elvitel}',`orderStreet`='{utcaTextBox.Text}',`orderStreetNum`='{hsztextBox.Text}' WHERE ID='{destID}'";
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         cmd.ExecuteNonQuery();
                     }
@@ -610,12 +640,31 @@ namespace FoodApp
         private void mentesBtnClick(object sender, EventArgs e)
         {
             rend_szerk();
-            
+            tetelmodPanel.BringToFront();
         }
 
         private void adatmodositasBtnClick(object sender, EventArgs e)
         {
             adatmodositas();
+        }
+
+        private void kiszDijMentesBtn_Click(object sender, EventArgs e)
+        {
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+                string sql = sql = $"UPDATE `deliveryfee` SET `price`='{kiszDijNumericUpDown.Value.ToString()}' WHERE ID=1";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("A kiszállítási díj módosult!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
         }
 
         private void adatok_modBtn_Click(object sender, EventArgs e)
