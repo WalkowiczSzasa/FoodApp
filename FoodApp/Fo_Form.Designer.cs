@@ -31,6 +31,8 @@ namespace FoodApp
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FoodApp));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.move_PictureBox = new System.Windows.Forms.PictureBox();
+            this.futar_nezetBtn = new System.Windows.Forms.Button();
             this.allergeneListBox = new System.Windows.Forms.ListBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,23 +43,22 @@ namespace FoodApp
             this.label1 = new System.Windows.Forms.Label();
             this.rendeles_felvetelBtn = new System.Windows.Forms.Button();
             this.KijeloltPanel = new System.Windows.Forms.Panel();
-            this.move_PictureBox = new System.Windows.Forms.PictureBox();
             this.exitBtn = new System.Windows.Forms.Button();
             this.aktiv_Rendelesek1 = new Aktiv_Rendelesek();
             this.rendeles_felvetel2 = new Rendeles_felvetel();
             this.etel_Ital_felvetel1 = new Etel_Ital_felvetel();
             this.futar_nezet1 = new Futar_nezet();
-            this.futar_nezetBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.move_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.move_PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.panel1.Controls.Add(this.move_PictureBox);
             this.panel1.Controls.Add(this.futar_nezetBtn);
             this.panel1.Controls.Add(this.allergeneListBox);
             this.panel1.Controls.Add(this.pictureBox2);
@@ -73,6 +74,34 @@ namespace FoodApp
             this.panel1.Size = new System.Drawing.Size(188, 585);
             this.panel1.TabIndex = 0;
             // 
+            // move_PictureBox
+            // 
+            this.move_PictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.move_PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("move_PictureBox.Image")));
+            this.move_PictureBox.Location = new System.Drawing.Point(150, 42);
+            this.move_PictureBox.Name = "move_PictureBox";
+            this.move_PictureBox.Size = new System.Drawing.Size(38, 36);
+            this.move_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.move_PictureBox.TabIndex = 12;
+            this.move_PictureBox.TabStop = false;
+            this.move_PictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Fo_Form_MouseDown);
+            // 
+            // futar_nezetBtn
+            // 
+            this.futar_nezetBtn.BackColor = System.Drawing.Color.White;
+            this.futar_nezetBtn.FlatAppearance.BorderSize = 0;
+            this.futar_nezetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.futar_nezetBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.futar_nezetBtn.Location = new System.Drawing.Point(0, 310);
+            this.futar_nezetBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.futar_nezetBtn.Name = "futar_nezetBtn";
+            this.futar_nezetBtn.Size = new System.Drawing.Size(179, 43);
+            this.futar_nezetBtn.TabIndex = 4;
+            this.futar_nezetBtn.Text = "Futár nézet";
+            this.futar_nezetBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.futar_nezetBtn.UseVisualStyleBackColor = false;
+            this.futar_nezetBtn.Click += new System.EventHandler(this.futar_nezet_Click);
+            // 
             // allergeneListBox
             // 
             this.allergeneListBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -82,6 +111,7 @@ namespace FoodApp
             this.allergeneListBox.Name = "allergeneListBox";
             this.allergeneListBox.Size = new System.Drawing.Size(171, 191);
             this.allergeneListBox.TabIndex = 14;
+            this.allergeneListBox.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -100,7 +130,7 @@ namespace FoodApp
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(38, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 24);
+            this.label2.Size = new System.Drawing.Size(75, 25);
             this.label2.TabIndex = 10;
             this.label2.Text = "label2";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -115,7 +145,7 @@ namespace FoodApp
             this.etel_ital_felvetelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.etel_ital_felvetelBtn.Name = "etel_ital_felvetelBtn";
             this.etel_ital_felvetelBtn.Size = new System.Drawing.Size(179, 43);
-            this.etel_ital_felvetelBtn.TabIndex = 9;
+            this.etel_ital_felvetelBtn.TabIndex = 3;
             this.etel_ital_felvetelBtn.Text = "Étel/Ital felvétele";
             this.etel_ital_felvetelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.etel_ital_felvetelBtn.UseVisualStyleBackColor = false;
@@ -131,7 +161,7 @@ namespace FoodApp
             this.aktiv_rendelesekBtn.Margin = new System.Windows.Forms.Padding(2);
             this.aktiv_rendelesekBtn.Name = "aktiv_rendelesekBtn";
             this.aktiv_rendelesekBtn.Size = new System.Drawing.Size(179, 43);
-            this.aktiv_rendelesekBtn.TabIndex = 5;
+            this.aktiv_rendelesekBtn.TabIndex = 2;
             this.aktiv_rendelesekBtn.Text = "Aktív rendelések";
             this.aktiv_rendelesekBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.aktiv_rendelesekBtn.UseVisualStyleBackColor = false;
@@ -146,7 +176,7 @@ namespace FoodApp
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(150, 44);
-            this.panel2.TabIndex = 4;
+            this.panel2.TabIndex = 21;
             // 
             // pictureBox1
             // 
@@ -168,8 +198,8 @@ namespace FoodApp
             this.label1.Location = new System.Drawing.Point(9, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 25);
-            this.label1.TabIndex = 3;
+            this.label1.Size = new System.Drawing.Size(72, 26);
+            this.label1.TabIndex = 20;
             this.label1.Text = "Menü";
             // 
             // rendeles_felvetelBtn
@@ -182,7 +212,7 @@ namespace FoodApp
             this.rendeles_felvetelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.rendeles_felvetelBtn.Name = "rendeles_felvetelBtn";
             this.rendeles_felvetelBtn.Size = new System.Drawing.Size(179, 43);
-            this.rendeles_felvetelBtn.TabIndex = 2;
+            this.rendeles_felvetelBtn.TabIndex = 1;
             this.rendeles_felvetelBtn.Text = "Rendelés felvétele";
             this.rendeles_felvetelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.rendeles_felvetelBtn.UseVisualStyleBackColor = false;
@@ -197,18 +227,6 @@ namespace FoodApp
             this.KijeloltPanel.Size = new System.Drawing.Size(14, 43);
             this.KijeloltPanel.TabIndex = 1;
             // 
-            // move_PictureBox
-            // 
-            this.move_PictureBox.BackColor = System.Drawing.Color.White;
-            this.move_PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("move_PictureBox.Image")));
-            this.move_PictureBox.Location = new System.Drawing.Point(188, 0);
-            this.move_PictureBox.Name = "move_PictureBox";
-            this.move_PictureBox.Size = new System.Drawing.Size(28, 33);
-            this.move_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.move_PictureBox.TabIndex = 12;
-            this.move_PictureBox.TabStop = false;
-            this.move_PictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Fo_Form_MouseDown);
-            // 
             // exitBtn
             // 
             this.exitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -219,7 +237,7 @@ namespace FoodApp
             this.exitBtn.Margin = new System.Windows.Forms.Padding(0);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(46, 42);
-            this.exitBtn.TabIndex = 1;
+            this.exitBtn.TabIndex = 22;
             this.exitBtn.UseVisualStyleBackColor = false;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
@@ -231,6 +249,7 @@ namespace FoodApp
             this.aktiv_Rendelesek1.Name = "aktiv_Rendelesek1";
             this.aktiv_Rendelesek1.Size = new System.Drawing.Size(772, 585);
             this.aktiv_Rendelesek1.TabIndex = 2;
+            this.aktiv_Rendelesek1.TabStop = false;
             // 
             // rendeles_felvetel2
             // 
@@ -251,26 +270,12 @@ namespace FoodApp
             // 
             // futar_nezet1
             // 
+            this.futar_nezet1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
             this.futar_nezet1.Location = new System.Drawing.Point(188, 0);
+            this.futar_nezet1.LoggedID = null;
             this.futar_nezet1.Name = "futar_nezet1";
             this.futar_nezet1.Size = new System.Drawing.Size(772, 584);
             this.futar_nezet1.TabIndex = 14;
-            // 
-            // futar_nezetBtn
-            // 
-            this.futar_nezetBtn.BackColor = System.Drawing.Color.White;
-            this.futar_nezetBtn.FlatAppearance.BorderSize = 0;
-            this.futar_nezetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.futar_nezetBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.futar_nezetBtn.Location = new System.Drawing.Point(0, 310);
-            this.futar_nezetBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.futar_nezetBtn.Name = "futar_nezetBtn";
-            this.futar_nezetBtn.Size = new System.Drawing.Size(179, 43);
-            this.futar_nezetBtn.TabIndex = 15;
-            this.futar_nezetBtn.Text = "Futár nézet";
-            this.futar_nezetBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.futar_nezetBtn.UseVisualStyleBackColor = false;
-            this.futar_nezetBtn.Click += new System.EventHandler(this.futar_nezet_Click);
             // 
             // FoodApp
             // 
@@ -278,11 +283,10 @@ namespace FoodApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(960, 585);
-            this.Controls.Add(this.futar_nezet1);
-            this.Controls.Add(this.etel_Ital_felvetel1);
-            this.Controls.Add(this.move_PictureBox);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.futar_nezet1);
+            this.Controls.Add(this.etel_Ital_felvetel1);
             this.Controls.Add(this.aktiv_Rendelesek1);
             this.Controls.Add(this.rendeles_felvetel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -296,11 +300,11 @@ namespace FoodApp
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Fo_Form_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.move_PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.move_PictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }

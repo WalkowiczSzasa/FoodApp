@@ -16,6 +16,7 @@ namespace FoodApp
     {//Változók átvétele
         public string Dname { get; set; }
         public string role { get; set; }
+        public string loggedID { get; set; }
 
         public FoodApp()
         {
@@ -37,7 +38,7 @@ namespace FoodApp
         {
             switch (role)
             {
-                case "admmin":
+                case "admin":
                     futar_nezet1.Show();
                     aktiv_Rendelesek1.Show();
                     rendeles_felvetel2.Show();
@@ -48,17 +49,17 @@ namespace FoodApp
                     futar_nezetBtn.Show();
                     break;
                 case "cook":
-                    futar_nezet1.Hide();
+                    futar_nezet1.Show();
                     aktiv_Rendelesek1.Show();
                     rendeles_felvetel2.Show();
                     etel_Ital_felvetel1.Hide();
                     rendeles_felvetelBtn.Show();
                     aktiv_rendelesekBtn.Show();
                     etel_ital_felvetelBtn.Hide();
-                    futar_nezetBtn.Hide();
+                    futar_nezetBtn.Show();
                     break;
                 case "dispatch":
-                    futar_nezet1.Show();
+                    futar_nezet1.Hide();
                     aktiv_Rendelesek1.Hide();
                     rendeles_felvetel2.Hide();
                     etel_Ital_felvetel1.Hide();
@@ -66,6 +67,9 @@ namespace FoodApp
                     aktiv_rendelesekBtn.Hide();
                     etel_ital_felvetelBtn.Hide();
                     futar_nezetBtn.Show();
+                    KijeloltPanel.Hide();
+                    KijeloltPanel.Height = futar_nezetBtn.Height;
+                    KijeloltPanel.Top = futar_nezetBtn.Top;
                     break;
             }
         }
@@ -131,9 +135,13 @@ namespace FoodApp
         {
             KijeloltPanel.Height = futar_nezetBtn.Height;
             KijeloltPanel.Top = futar_nezetBtn.Top;
+            futar_nezet1.LoggedID = loggedID;
+            futar_nezet1.LoggedRole = role;
             futar_nezet1.BringToFront();
             exitBtn.BringToFront();
             move_PictureBox.BringToFront();
+            futar_nezet1.Show();
+            KijeloltPanel.Show();
         }
 
         #region Ablak mozgatás
