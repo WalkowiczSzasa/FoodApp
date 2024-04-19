@@ -103,7 +103,6 @@ namespace FoodApp
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
 
-            //cutomerID és név kiválasztása a destination tábla customerID mező kitöltéséhez
             try
             {
                 conn.Open();
@@ -136,6 +135,29 @@ namespace FoodApp
                 tetelekFlowLayoutPanel.Controls.Add(ar_menu_items[i]);
             }
 
+        }
+        private void csomagolas_betolt()
+        {
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            try
+            {
+                conn.Open();
+                string sql = "SELECT `price` FROM `packaging` WHERE ID=1";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    csomagolasNumericUpDown.Value = Convert.ToInt32(rdr[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
         }
         private void italok_betolt()
         {
@@ -452,6 +474,7 @@ namespace FoodApp
         private void Etel_Ital_felvetel_Load(object sender, EventArgs e)
         {
             etelek_betolt();
+            csomagolas_betolt();
         }
 
         private void tetelekFlowLayoutPanel_MouseEnter(object sender, EventArgs e)
@@ -464,6 +487,25 @@ namespace FoodApp
             adatmodositas_ellenorzes();
         }
 
-
+        private void csomagMentesBtn_Click(object sender, EventArgs e)
+        {
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                string sql = "";
+                conn.Open();
+                sql = $"UPDATE `packaging` SET `price`='{csomagolasNumericUpDown.Value.ToString()}' WHERE ID=1";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Csomagolás ára sikeresen módosítva!");
+                mezok_kiurit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
     }
 }
