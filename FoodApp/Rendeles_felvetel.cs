@@ -19,6 +19,7 @@ namespace FoodApp
         private byte fizeszk;
         private DateTime DueDate = new DateTime();
         private int customerID, orderDestID;
+        double kiszDij;
 
 
         List<food> foodMenu = new List<food>();
@@ -109,12 +110,13 @@ namespace FoodApp
 
             //customerek betöltése comboBox-ba
             customerek_betolt();
-
+            szalldij_betolt();
             etelek_betolt();
         }
 
         private void mentesBtn_Click(object sender, EventArgs e)
         {
+            szalldij_betolt();
             uj_rendeles();
             customerek_betolt();
             mezok_kiurit();
@@ -165,6 +167,29 @@ namespace FoodApp
         }
 
 
+        private void szalldij_betolt()
+        {
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            try
+            {
+                conn.Open();
+                string sql = "SELECT `price` FROM `deliveryfee` WHERE ID=1";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    kiszDij = Convert.ToDouble(rdr[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
 
         private void customerek_betolt()
         {
@@ -331,7 +356,7 @@ namespace FoodApp
                 try
                 {
                     conn.Open();
-                    string sql = $"INSERT INTO `payment`(`paymentType`, `packagingCost`, `deliveryCost`, `sum`) VALUES ('{fizeszk}','[value-2]','400','[value-4]')";
+                    string sql = $"INSERT INTO `payment`(`paymentType`, `packagingCost`, `deliveryCost`, `sum`) VALUES ('{fizeszk}','[value-2]','{kiszDij}','[value-4]')";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.ExecuteNonQuery();
                 }
@@ -565,7 +590,7 @@ namespace FoodApp
             {
                 elvitel = 0;
                 textBox3.Text = "Étterem utcája";
-                textBox4.Text = "Étterem hsz.";
+                textBox4.Text = "Étteremhsz.";
             }
             else
             {
