@@ -131,9 +131,9 @@ namespace FoodApp
             this.arLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.arLabel.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.arLabel.ForeColor = System.Drawing.Color.Black;
-            this.arLabel.Location = new System.Drawing.Point(375, 42);
+            this.arLabel.Location = new System.Drawing.Point(321, 55);
             this.arLabel.Name = "arLabel";
-            this.arLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.arLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.arLabel.Size = new System.Drawing.Size(30, 23);
             this.arLabel.TabIndex = 5;
             this.arLabel.Text = "Ár";
@@ -194,7 +194,7 @@ namespace FoodApp
             // id_Label
             // 
             this.id_Label.AutoSize = true;
-            this.id_Label.BackColor = System.Drawing.Color.White;
+            this.id_Label.BackColor = System.Drawing.SystemColors.Control;
             this.id_Label.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.id_Label.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.id_Label.Location = new System.Drawing.Point(3, 97);

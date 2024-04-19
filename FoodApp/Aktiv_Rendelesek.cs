@@ -15,6 +15,8 @@ namespace FoodApp
     {
         private byte elvitel = 1;
         public static string destID, fizID, oID, custID;
+        public static double kiszDIj = 0;
+        double sum = 0;
         public static List<string> foodID = new List<string>();
         public static List<string> drinkID = new List<string>();
         List<food> foodMenu = new List<food>();
@@ -31,7 +33,6 @@ namespace FoodApp
             static string utcahsz;
             static string fizmod;
             static DateTime ido;
-            static string vegossz;
             static string custID;
             static byte check;
 
@@ -40,7 +41,6 @@ namespace FoodApp
             public static string Utcahsz { get => utcahsz; set => utcahsz = value; }
             public static string Fizmod { get => fizmod; set => fizmod = value; }
             public static DateTime Ido { get => ido; set => ido = value; }
-            public static string Vegossz { get => vegossz; set => vegossz = value; }
             public static string CustID { get => custID; set => custID = value; }
             public static byte Check { get => check; set => check = value; }
         }
@@ -257,7 +257,6 @@ namespace FoodApp
                     aktiv_rend[i].Allapot = true;
                 }
                 aktiv_rend[i].Duetime = Orders[i].Ido;
-                aktiv_rend[i].Ar = aktiv_rend[i].Ar;
                 aktiv_rend[i].fizID = Orders[i].FizID;
                 aktiv_rend[i].cimID = Orders[i].CimID;
                 aktiv_rend[i].customerID = Cimek[i].CustomerID;
@@ -410,6 +409,12 @@ namespace FoodApp
             }
             rend_tetelek.Sorted = true;
 
+            sum = 0;
+            Dictionary<string, (int, double)> dict = megszamlalas(rendeles_tetelek);
+            foreach (KeyValuePair<string, (int, double)> x in dict)
+            {
+                sum += x.Value.Item2;
+            }
         }
         private void rend_adatokBetolt()
         {
@@ -423,7 +428,7 @@ namespace FoodApp
             else
             { fizComboBox.SelectedIndex = 0; }
             timePicker.Value = adat.Ido;
-            osszegLabel.Text = adat.Vegossz + " Ft";
+            osszegLabel.Text = sum+kiszDIj + " Ft";
         }
         private void rend_tetelek_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -546,7 +551,18 @@ namespace FoodApp
             }
             conn.Close();
         }
-
+        private Dictionary<string, (int, double)> megszamlalas(List<tetel> items)
+        {
+            var szamol = items
+                .GroupBy(x => x.TetelName)
+                .Select(x => new
+                {
+                    nev = x.Key,
+                    count = x.Count(),
+                    total = x.Sum(item => item.TetelPrice)
+                }).ToDictionary(kp => kp.nev, kp => (kp.count, kp.total));
+            return szamol;
+        }
 
         private void etelBtn_Click(object sender, EventArgs e)
         {
