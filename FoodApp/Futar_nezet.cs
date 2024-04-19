@@ -15,6 +15,8 @@ namespace FoodApp
     {
         public string LoggedID { get; set; }
         public string LoggedRole { get; set; }
+
+
         List<cim> Cimek = new List<cim>();
         List<customer> Customers = new List<customer>();
         List<order> Orders = new List<order>();
@@ -30,6 +32,9 @@ namespace FoodApp
             static DateTime duedate;
             static double sum;
             static double kiszDij;
+            static double csomagar;
+            static double tetelszam;
+            static string note;
 
             public static string Nev { get => nev; set => nev = value; }
             public static string Telefonszam { get => telefonszam; set => telefonszam = value; }
@@ -40,6 +45,9 @@ namespace FoodApp
             public static bool Ellenorzes { get => ellenorzes; set => ellenorzes = value; }
             public static byte Tetelhossz { get => tetelhossz; set => tetelhossz = value; }
             public static double KiszDij { get => kiszDij; set => kiszDij = value; }
+            public static double Csomagar { get => csomagar; set => csomagar = value; }
+            public static double Tetelszam { get => tetelszam; set => tetelszam = value; }
+            public static string Note { get => note; set => note = value; }
         }
         public class order
         {
@@ -49,8 +57,9 @@ namespace FoodApp
             private string cimID;
             private string fizID;
             private string dispatchID;
+            private string note;
 
-            public order(string id, DateTime ido, string allapot, string cimID, string fizID, string dispatchID)
+            public order(string id, DateTime ido, string allapot, string cimID, string fizID, string dispatchID, string note)
             {
                 this.id = id;
                 this.ido = ido;
@@ -58,6 +67,7 @@ namespace FoodApp
                 this.cimID = cimID;
                 this.fizID = fizID;
                 this.DispatchID = dispatchID;
+                this.note = note;
             }
 
             public string Id { get => id; set => id = value; }
@@ -66,6 +76,7 @@ namespace FoodApp
             public string CimID { get => cimID; set => cimID = value; }
             public string FizID { get => fizID; set => fizID = value; }
             public string DispatchID { get => dispatchID; set => dispatchID = value; }
+            public string Note { get => note; set => note = value; }
         }
         public class cim
         {
@@ -117,7 +128,7 @@ namespace FoodApp
         {
             rendelesek_betolt();
         }
-
+        //TODO: kell még egy kész gom ami átteszi az ordersből a finishedordersbe a recordot
         private void szamlaBtn_Click(object sender, EventArgs e)
         {
             if (adat.Ellenorzes == true && adat.Tetelek != null)
@@ -125,6 +136,10 @@ namespace FoodApp
                 tetelListBox.Items.Clear();
                 adatbeiras();
                 adat.Ellenorzes = false;
+            }
+            else
+            {
+                MessageBox.Show("Előbb válassz ki egy rendelést a nagyítóra kattintással!");
             }
         }
 
@@ -147,12 +162,12 @@ namespace FoodApp
             try
             {
                 conn.Open();
-                string sql = "SELECT `orderID`, `orderDueTime`, `orderStatus`, `orderDestID`, `paymentID`, `orderDispatchID` FROM `orders` ORDER BY orderDueTime ASC";
+                string sql = "SELECT `orderID`, `orderDueTime`, `orderStatus`, `orderDestID`, `paymentID`, `orderDispatchID`, `orderNote` FROM `orders` ORDER BY orderDueTime ASC";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    Orders.Add(new order(rdr[0].ToString(), Convert.ToDateTime(rdr[1]), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), rdr[5].ToString()));
+                    Orders.Add(new order(rdr[0].ToString(), Convert.ToDateTime(rdr[1]), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), rdr[5].ToString(), rdr[6].ToString()));
                 }
             }
             catch (Exception ex)
@@ -232,6 +247,7 @@ namespace FoodApp
                     futar_cim[i].fizID = Orders[i].FizID;
                     futar_cim[i].cimID = Orders[i].CimID;
                     futar_cim[i].customerID = Cimek[i].CustomerID;
+                    futar_cim[i].Note = Orders[i].Note;
                     futarFlowLayoutPanel.Controls.Add(futar_cim[i]);
                 }
                 else if (Orders[i].Allapot=="1" && LoggedID=="1")
@@ -260,6 +276,7 @@ namespace FoodApp
                     futar_cim[i].fizID = Orders[i].FizID;
                     futar_cim[i].cimID = Orders[i].CimID;
                     futar_cim[i].customerID = Cimek[i].CustomerID;
+                    futar_cim[i].Note = Orders[i].Note;
                     futarFlowLayoutPanel.Controls.Add(futar_cim[i]);
                 }
                 else if(Orders[i].DispatchID=="4" && LoggedRole=="cook")
@@ -288,6 +305,7 @@ namespace FoodApp
                     futar_cim[i].fizID = Orders[i].FizID;
                     futar_cim[i].cimID = Orders[i].CimID;
                     futar_cim[i].customerID = Cimek[i].CustomerID;
+                    futar_cim[i].Note = Orders[i].Note;
                     futarFlowLayoutPanel.Controls.Add(futar_cim[i]);
                 }
 
@@ -305,8 +323,10 @@ namespace FoodApp
             nevLabel.Text = adat.Nev;
             telszamLabel.Text = adat.Telefonszam;
             cimLabel.Text = adat.Cim;
-            szummaLabel.Text = adat.Sum.ToString();
+            szummaLabel.Text = (adat.Sum+adat.Csomagar*adat.Tetelszam).ToString();
             szallitasidijLabel.Text = adat.KiszDij.ToString();
+            csomagolasTextBox.Text = $"{adat.Tetelszam}x Csomagolás \t\t{adat.Csomagar*adat.Tetelszam}Ft";
+            megjegyzesRichTextBox.Text = adat.Note;
             datumkezeles();
         }
         private void datumkezeles()
@@ -314,14 +334,15 @@ namespace FoodApp
             DateTime ma = DateTime.Now;
             if (adat.Duedate.Date > ma.Date)
             {
-                duetimeLabel.Text = adat.Duedate.ToString("HH:mm tt \t MM/dd");
+                duetimeLabel.Text = adat.Duedate.ToString("HH:mm");
+                datumLabel.Text = adat.Duedate.ToString("MM/dd");
+                datumLabel.Show();
             }
             else
             {
                 duetimeLabel.Text = adat.Duedate.ToString("HH:mm");
+                datumLabel.Hide();
             }
         }
-
-
     }
 }

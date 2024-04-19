@@ -14,13 +14,13 @@ namespace FoodApp
     public partial class Futar_cimek : UserControl
     {
 
-        private string id, nev, telszam, cim, rendelesType;
+        private string id, nev, telszam, cim, rendelesType, note;
         public static string[] foodID = new string[1];
         public static string[] drinkID = new string[1];
         public string fizID, cimID, customerID, foodIDs, drinkIDs;
         public static string fiztip;
         public byte checkClick = 0;
-        double sum = 0,kiszDij = 0;
+        double sum = 0, kiszDij = 0, tetelszam = 0, csomagar = 0;
         private bool allapot;
         private DateTime duetime;
         List<futar> futarok = new List<futar>();
@@ -63,6 +63,7 @@ namespace FoodApp
         public bool Allapot { get => allapot; set => allapot = value; }
         public DateTime Duetime { get => duetime; set => duetime = value; }
         public string RendelesType { get => rendelesType; set => rendelesType = value; }
+        public string Note { get => note; set => note = value; }
 
         public Futar_cimek()
         {
@@ -70,11 +71,37 @@ namespace FoodApp
         }
         private void Futar_cimek_Load(object sender, EventArgs e)
         {
+            csomagar_lekeres();
             fiztip_lekerdezes();
             adat_beiras();
             id_lekeres();
             rend_tetelekFeltoltes();
         }
+
+        private void csomagar_lekeres()
+        {
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            try
+            {
+                conn.Open();
+                string sql = "SELECT `price` FROM `packaging`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    csomagar = Convert.ToDouble(rdr[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
         private void nagyitoPictureBox_Click(object sender, EventArgs e)
         {
             adat_atadas();
@@ -95,6 +122,9 @@ namespace FoodApp
             }
             Futar_nezet.adat.Sum = sum+kiszDij;
             Futar_nezet.adat.KiszDij = kiszDij;
+            Futar_nezet.adat.Csomagar = csomagar;
+            Futar_nezet.adat.Tetelszam = tetelszam;
+            Futar_nezet.adat.Note = note;
         }
 
         private void adat_torles()
@@ -183,7 +213,7 @@ namespace FoodApp
             DateTime ma = DateTime.Now;
             if (duetime.Date > ma.Date)
             {
-                idoLabel.Text = Duetime.ToString("HH:mm tt");
+                idoLabel.Text = Duetime.ToString("HH:mm");
                 dueDayLabel.Text = Duetime.ToString("MM/dd");
             }
             else
@@ -196,6 +226,7 @@ namespace FoodApp
         public void rend_tetelekFeltoltes()
         {
             sum = 0;
+            tetelszam = 0;
             tetelcomboBox.Items.Clear();
             rendeles_tetelek.Clear();
 
@@ -259,8 +290,9 @@ namespace FoodApp
             Dictionary<string, (int, double)> dict= megszamlalas(rendeles_tetelek);
             foreach (KeyValuePair<string, (int, double)> x in dict)
             {
-                tetelcomboBox.Items.Add($"{x.Value.Item1}x {x.Key} \t{x.Value.Item2}Ft");
+                tetelcomboBox.Items.Add($"{x.Value.Item1}x {x.Key} \t\t{x.Value.Item2}Ft");
                 sum += x.Value.Item2;
+                tetelszam += x.Value.Item1;
             }
             
 
