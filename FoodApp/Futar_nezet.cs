@@ -155,6 +155,7 @@ namespace FoodApp
         {
             order_lekeres();
             keszorder_atadas();
+            adat_urites();
         }
 
         public void rendelesek_betolt()
@@ -373,6 +374,7 @@ namespace FoodApp
                     MySqlCommand cmd1 = new MySqlCommand(sql, conn);
                     cmd1.ExecuteNonQuery();
                     conn.Close();
+                    adat_urites();
                     rendelesek_betolt();
                 }
                 catch (Exception e)
@@ -387,6 +389,21 @@ namespace FoodApp
             }
 
         }
+
+        private void adat_urites()
+        {
+            nevLabel.Text = "xxxxxxx xxxxxx";
+            telszamLabel.Text = "xx/xxx xxxx";
+            cimLabel.Text = "xxxxxxxxxxx xxxxxx xxx";
+            szummaLabel.Text = "xxxxx";
+            szallitasidijLabel.Text = "xxx";
+            csomagolasTextBox.Text = default;
+            megjegyzesRichTextBox.Text = "*Megjegyzés helye*";
+            tetelListBox.Items.Clear();
+            duetimeLabel.Text = "xx:xx";
+            datumLabel.Text = "xx/xx";
+        }
+
         private void order_lekeres()
         {
             //Kapcsolódási adatok
