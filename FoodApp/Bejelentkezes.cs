@@ -32,7 +32,14 @@ namespace FoodApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bejelentkezes();
+            if (textBox2.Text=="" && textBox1.Text=="")
+            {
+                label4.Show();
+            }
+            else
+            {
+                bejelentkezes();
+            }
         }
 
         private void bejelentkezes()
