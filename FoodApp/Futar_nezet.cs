@@ -16,6 +16,7 @@ namespace FoodApp
         public string LoggedID { get; set; }
         public string LoggedRole { get; set; }
 
+        string[] keszorder=new string[9];
 
         List<cim> Cimek = new List<cim>();
         List<customer> Customers = new List<customer>();
@@ -35,6 +36,7 @@ namespace FoodApp
             static double csomagar;
             static double tetelszam;
             static string note;
+            static string orderID;
 
             public static string Nev { get => nev; set => nev = value; }
             public static string Telefonszam { get => telefonszam; set => telefonszam = value; }
@@ -48,6 +50,7 @@ namespace FoodApp
             public static double Csomagar { get => csomagar; set => csomagar = value; }
             public static double Tetelszam { get => tetelszam; set => tetelszam = value; }
             public static string Note { get => note; set => note = value; }
+            public static string OrderID { get => orderID; set => orderID = value; }
         }
         public class order
         {
@@ -128,7 +131,7 @@ namespace FoodApp
         {
             rendelesek_betolt();
         }
-        //TODO: kell még egy kész gom ami átteszi az ordersből a finishedordersbe a recordot
+
         private void szamlaBtn_Click(object sender, EventArgs e)
         {
             if (adat.Ellenorzes == true && adat.Tetelek != null)
@@ -147,6 +150,12 @@ namespace FoodApp
         {
             rendelesek_betolt();
     }
+
+        private void keszBtn_Click(object sender, EventArgs e)
+        {
+            order_lekeres();
+            keszorder_atadas();
+        }
 
         public void rendelesek_betolt()
         {
@@ -343,6 +352,72 @@ namespace FoodApp
                 duetimeLabel.Text = adat.Duedate.ToString("HH:mm");
                 datumLabel.Hide();
             }
+        }
+        private void keszorder_atadas()
+        {
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            try
+            {
+                conn.Open();
+                string sql = $"INSERT INTO `finishedorders`(`forderID`, `orderNote`, `orderTime`, `orderDueTime`, `orderDestID`, `orderDispatchID`, `foodID`, `drinkID`, `paymentID`) VALUES ('{keszorder[0]}','{keszorder[1]}','{keszorder[2]}','{keszorder[3]}','{keszorder[4]}','{keszorder[5]}','{keszorder[6]}','{keszorder[7]}','{keszorder[8]}')";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                try
+                {
+                    conn.Open();
+                    sql = $"DELETE FROM `orders` WHERE `orderID`={adat.OrderID}";
+                    MySqlCommand cmd1 = new MySqlCommand(sql, conn);
+                    cmd1.ExecuteNonQuery();
+                    conn.Close();
+                    rendelesek_betolt();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Valamilyen hiba történt a művelet során!");
+            }
+
+        }
+        private void order_lekeres()
+        {
+            //Kapcsolódási adatok
+            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            try
+            {
+                conn.Open();
+                string sql = $"SELECT `orderID`, `orderNote`, `orderTime`, `orderDueTime`, `orderDestID`, `orderDispatchID`,`foodID`, `drinkID`, `paymentID` FROM `orders` WHERE orderID={adat.OrderID}";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    keszorder[0] = rdr[0].ToString();
+                    keszorder[1] = rdr[1].ToString();
+                    keszorder[2] = Convert.ToDateTime(rdr[2]).ToString("yyyy-MM-dd HH:mm:ss");
+                    keszorder[3] = Convert.ToDateTime(rdr[3]).ToString("yyyy-MM-dd HH:mm:ss");
+                    keszorder[4] = rdr[4].ToString();
+                    keszorder[5] = rdr[5].ToString();
+                    keszorder[6] = rdr[6].ToString();
+                    keszorder[7] = rdr[7].ToString();
+                    keszorder[8] = rdr[8].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+
         }
     }
 }

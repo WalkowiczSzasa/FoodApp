@@ -125,6 +125,7 @@ namespace FoodApp
             Futar_nezet.adat.Csomagar = csomagar;
             Futar_nezet.adat.Tetelszam = tetelszam;
             Futar_nezet.adat.Note = note;
+            Futar_nezet.adat.OrderID = Id;
         }
 
         private void adat_torles()

@@ -61,9 +61,10 @@ namespace FoodApp
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.megjegyzesRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.keszBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).BeginInit();
@@ -409,15 +410,6 @@ namespace FoodApp
             this.panel4.Size = new System.Drawing.Size(325, 67);
             this.panel4.TabIndex = 47;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 54);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(319, 13);
-            this.label18.TabIndex = 6;
-            this.label18.Text = "____________________________________________________";
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -427,6 +419,15 @@ namespace FoodApp
             this.label15.Size = new System.Drawing.Size(85, 17);
             this.label15.TabIndex = 8;
             this.label15.Text = "Megjegyzés:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 54);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(319, 13);
+            this.label18.TabIndex = 6;
+            this.label18.Text = "____________________________________________________";
             // 
             // megjegyzesRichTextBox
             // 
@@ -441,11 +442,28 @@ namespace FoodApp
             this.megjegyzesRichTextBox.TabIndex = 9;
             this.megjegyzesRichTextBox.Text = "*Megjegyzés helye*";
             // 
+            // keszBtn
+            // 
+            this.keszBtn.BackColor = System.Drawing.Color.Green;
+            this.keszBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.keszBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.keszBtn.ForeColor = System.Drawing.Color.White;
+            this.keszBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.keszBtn.Location = new System.Drawing.Point(604, 16);
+            this.keszBtn.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.keszBtn.Name = "keszBtn";
+            this.keszBtn.Size = new System.Drawing.Size(71, 33);
+            this.keszBtn.TabIndex = 48;
+            this.keszBtn.Text = "Kész";
+            this.keszBtn.UseVisualStyleBackColor = false;
+            this.keszBtn.Click += new System.EventHandler(this.keszBtn_Click);
+            // 
             // Futar_nezet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(173)))), ((int)(((byte)(44)))));
+            this.Controls.Add(this.keszBtn);
             this.Controls.Add(this.megjegyzesRichTextBox);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -510,5 +528,6 @@ namespace FoodApp
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.RichTextBox megjegyzesRichTextBox;
+        private System.Windows.Forms.Button keszBtn;
     }
 }
