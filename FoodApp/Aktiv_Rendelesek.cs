@@ -99,14 +99,16 @@ namespace FoodApp
             private string allapot;
             private string cimID;
             private string fizID;
+            private string futarID;
 
-            public order(string id, DateTime ido, string allapot, string cimID, string fizID)
+            public order(string id, DateTime ido, string allapot, string cimID, string fizID, string futarID)
             {
                 this.id = id;
                 this.ido = ido;
                 this.allapot = allapot;
                 this.cimID = cimID;
                 this.fizID = fizID;
+                this.futarID = futarID;
             }
 
             public string Id { get => id; set => id = value; }
@@ -114,6 +116,7 @@ namespace FoodApp
             public string Allapot { get => allapot; set => allapot = value; }
             public string CimID { get => cimID; set => cimID = value; }
             public string FizID { get => fizID; set => fizID = value; }
+            public string FutarID { get => futarID; set => futarID = value; }
         }
         public class cim
         {
@@ -209,12 +212,12 @@ namespace FoodApp
             try
             {
                 conn.Open();
-                string sql = "SELECT `orderID`, `orderDueTime`, `orderStatus`, `orderDestID`, `paymentID` FROM `orders` ORDER BY orderDueTime ASC";
+                string sql = "SELECT `orderID`, `orderDueTime`, `orderStatus`, `orderDestID`, `paymentID`, `orderDispatchID` FROM `orders` ORDER BY orderDueTime ASC";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    Orders.Add(new order(rdr[0].ToString(), Convert.ToDateTime(rdr[1]), rdr[2].ToString(),rdr[3].ToString(),rdr[4].ToString()));
+                    Orders.Add(new order(rdr[0].ToString(), Convert.ToDateTime(rdr[1]), rdr[2].ToString(),rdr[3].ToString(),rdr[4].ToString(), rdr[5].ToString()));
                 }
             }
             catch (Exception ex)
@@ -290,6 +293,7 @@ namespace FoodApp
                 aktiv_rend[i].fizID = Orders[i].FizID;
                 aktiv_rend[i].cimID = Orders[i].CimID;
                 aktiv_rend[i].customerID = Cimek[i].CustomerID;
+                aktiv_rend[i].FutarID = Orders[i].FutarID;
                 flowLayoutPanel1.Controls.Add(aktiv_rend[i]);
             }
 
@@ -561,25 +565,32 @@ namespace FoodApp
         }
         private void rend_szerk()
         {
-            var oFoodID = String.Join(" ", foodID);
-            var oDrinkID = String.Join(" ", drinkID);
+            if (adat.Check==1)
+            {
+                var oFoodID = String.Join(" ", foodID);
+                var oDrinkID = String.Join(" ", drinkID);
 
-            //Kapcsolódási adatok
-            string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            try
-            {
-                conn.Open();
-                string sql = $"UPDATE `orders` SET `foodID`='{oFoodID}',`drinkID`='{oDrinkID}' WHERE orderID='{oID}'";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Rendelés sikeresen szerkesztve!");
+                //Kapcsolódási adatok
+                string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
+                MySqlConnection conn = new MySqlConnection(connStr);
+                try
+                {
+                    conn.Open();
+                    string sql = $"UPDATE `orders` SET `foodID`='{oFoodID}',`drinkID`='{oDrinkID}' WHERE orderID='{oID}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Rendelés sikeresen szerkesztve!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Előbb válassz ki egy szerkesztendő rendelést!");
             }
-            conn.Close();
         }
         private Dictionary<string, (int, double)> megszamlalas(List<tetel> items)
         {

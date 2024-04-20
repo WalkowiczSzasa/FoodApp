@@ -14,17 +14,13 @@ namespace FoodApp
 {
     public partial class Aktiv_rendeles : UserControl
     {
-        public Aktiv_rendeles()
-        {
-            InitializeComponent();
-        }
 
-        private string id, nev, telszam, cim;
+        private string id, nev, telszam, cim, futarID;
         public string foodID = "";
         public string drinkID = "";
         public string fizID, cimID, customerID;
         public static string fiztip;
-        double kiszDij=0, sum=0, csomagar = 0;
+        double kiszDij = 0, sum = 0, csomagar = 0;
         byte tetelszam = 0;
         public byte checkClick = 0;
         private bool allapot;
@@ -70,6 +66,12 @@ namespace FoodApp
         public string Cim { get => cim; set => cim = value; }
         public bool Allapot { get => allapot; set => allapot = value; }
         public DateTime Duetime { get => duetime; set => duetime = value; }
+        public string FutarID { get => futarID; set => futarID = value; }
+
+        public Aktiv_rendeles()
+        {
+            InitializeComponent();
+        }
 
         private void Aktiv_rendeles_Load(object sender, EventArgs e)
         {
@@ -289,7 +291,18 @@ namespace FoodApp
             {
                 futarComboBox.Items.Add(item.Nev);
             }
-            futarComboBox.SelectedIndex = -1;
+            for (int i = 0; i < futarok.Count; i++)
+            {
+                if (futarok[i].Id==futarID)
+                {
+                    futarComboBox.SelectedIndex = i;
+                    break;
+                }
+                else
+                {
+                    futarComboBox.SelectedIndex = -1;
+                }
+            }
         }
         //pack cost feltöltés sum-nál
         private void szerk_PictureBox_Click(object sender, EventArgs e)
@@ -346,18 +359,36 @@ namespace FoodApp
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
 
             MySqlConnection conn = new MySqlConnection(connStr);
-            try
+            if (futarComboBox.SelectedIndex==-1)
             {
-                conn.Open();
-                string sql = $"UPDATE `orders` SET orderDispatchID='{futarok[futarComboBox.SelectedIndex].Id}' WHERE orderID='{Id}'";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    conn.Open();
+                    string sql = $"UPDATE `orders` SET orderDispatchID='{0}' WHERE orderID='{Id}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                try
+                {
+                    conn.Open();
+                    string sql = $"UPDATE `orders` SET orderDispatchID='{futarok[futarComboBox.SelectedIndex].Id}' WHERE orderID='{Id}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close();
             }
-            conn.Close();
         }
 
         private void adat_beiras()
