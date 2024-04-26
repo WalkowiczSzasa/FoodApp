@@ -18,7 +18,7 @@ namespace FoodApp
         public static string[] foodID = new string[1];
         public static string[] drinkID = new string[1];
         public string fizID, cimID, customerID, foodIDs, drinkIDs;
-        public static string fiztip;
+        public string fiztip;
         public byte checkClick = 0;
         double sum = 0, kiszDij = 0, tetelszam = 0, csomagar = 0;
         private bool allapot;
@@ -126,6 +126,7 @@ namespace FoodApp
             Futar_nezet.adat.Tetelszam = tetelszam;
             Futar_nezet.adat.Note = note;
             Futar_nezet.adat.OrderID = Id;
+            Futar_nezet.adat.Fiztip = fiztip;
         }
 
         private void adat_torles()

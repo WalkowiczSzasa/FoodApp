@@ -60,6 +60,7 @@ namespace FoodApp
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.hibaLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).BeginInit();
             this.panel2.SuspendLayout();
@@ -74,7 +75,7 @@ namespace FoodApp
             this.label1.Location = new System.Drawing.Point(30, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(253, 32);
+            this.label1.Size = new System.Drawing.Size(280, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Rendelés felvétele";
             // 
@@ -204,7 +205,7 @@ namespace FoodApp
             this.label2.Location = new System.Drawing.Point(30, 182);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(231, 32);
+            this.label2.Size = new System.Drawing.Size(255, 33);
             this.label2.TabIndex = 3;
             this.label2.Text = "Adatok felvétele";
             // 
@@ -232,7 +233,7 @@ namespace FoodApp
             this.label3.Location = new System.Drawing.Point(32, 291);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 23);
+            this.label3.Size = new System.Drawing.Size(136, 22);
             this.label3.TabIndex = 6;
             this.label3.Text = "Fizetési mód:";
             // 
@@ -243,7 +244,7 @@ namespace FoodApp
             this.label4.Location = new System.Drawing.Point(31, 338);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 23);
+            this.label4.Size = new System.Drawing.Size(91, 22);
             this.label4.TabIndex = 7;
             this.label4.Text = "Időzítés:";
             // 
@@ -275,7 +276,7 @@ namespace FoodApp
             this.label5.Location = new System.Drawing.Point(31, 371);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 23);
+            this.label5.Size = new System.Drawing.Size(134, 22);
             this.label5.TabIndex = 10;
             this.label5.Text = "Megjegyzés:";
             // 
@@ -331,7 +332,7 @@ namespace FoodApp
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(3, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 23);
+            this.label6.Size = new System.Drawing.Size(68, 22);
             this.label6.TabIndex = 15;
             this.label6.Text = "Elvitel";
             // 
@@ -408,11 +409,24 @@ namespace FoodApp
             this.comboBox2.TabIndex = 19;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.customer_select);
             // 
+            // hibaLabel
+            // 
+            this.hibaLabel.AutoSize = true;
+            this.hibaLabel.BackColor = System.Drawing.Color.White;
+            this.hibaLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.hibaLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hibaLabel.Location = new System.Drawing.Point(32, 535);
+            this.hibaLabel.Name = "hibaLabel";
+            this.hibaLabel.Size = new System.Drawing.Size(52, 21);
+            this.hibaLabel.TabIndex = 16;
+            this.hibaLabel.Text = "*Hiba";
+            // 
             // Rendeles_felvetel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.hibaLabel);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.timePicker);
             this.Controls.Add(this.textBox4);
@@ -478,5 +492,6 @@ namespace FoodApp
         private System.Windows.Forms.Button tetelAdd;
         private System.Windows.Forms.TextBox kivalasztott_tetelTextBox;
         private System.Windows.Forms.PictureBox refreshPictbox;
+        private System.Windows.Forms.Label hibaLabel;
     }
 }

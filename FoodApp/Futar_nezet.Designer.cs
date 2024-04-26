@@ -65,6 +65,7 @@ namespace FoodApp
             this.label18 = new System.Windows.Forms.Label();
             this.megjegyzesRichTextBox = new System.Windows.Forms.RichTextBox();
             this.keszBtn = new System.Windows.Forms.Button();
+            this.fiztipLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refreshPictbox)).BeginInit();
@@ -103,7 +104,7 @@ namespace FoodApp
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 56);
+            this.label1.Size = new System.Drawing.Size(289, 58);
             this.label1.TabIndex = 42;
             this.label1.Text = "Futár nézet";
             // 
@@ -245,6 +246,7 @@ namespace FoodApp
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.fiztipLabel);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.szallitasidijLabel);
             this.panel2.Controls.Add(this.label9);
@@ -254,14 +256,14 @@ namespace FoodApp
             this.panel2.Controls.Add(this.szummaLabel);
             this.panel2.Location = new System.Drawing.Point(444, 423);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(325, 74);
+            this.panel2.Size = new System.Drawing.Size(325, 86);
             this.panel2.TabIndex = 45;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label12.Location = new System.Drawing.Point(288, 13);
+            this.label12.Location = new System.Drawing.Point(288, 35);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(25, 21);
             this.label12.TabIndex = 10;
@@ -271,7 +273,7 @@ namespace FoodApp
             // 
             this.szallitasidijLabel.AutoSize = true;
             this.szallitasidijLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.szallitasidijLabel.Location = new System.Drawing.Point(253, 13);
+            this.szallitasidijLabel.Location = new System.Drawing.Point(253, 35);
             this.szallitasidijLabel.Name = "szallitasidijLabel";
             this.szallitasidijLabel.Size = new System.Drawing.Size(34, 21);
             this.szallitasidijLabel.TabIndex = 9;
@@ -281,7 +283,7 @@ namespace FoodApp
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(3, 13);
+            this.label9.Location = new System.Drawing.Point(3, 35);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 21);
             this.label9.TabIndex = 8;
@@ -291,9 +293,9 @@ namespace FoodApp
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(285, 41);
+            this.label7.Location = new System.Drawing.Point(285, 63);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 25);
+            this.label7.Size = new System.Drawing.Size(29, 24);
             this.label7.TabIndex = 7;
             this.label7.Text = "Ft";
             // 
@@ -310,7 +312,7 @@ namespace FoodApp
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label11.Location = new System.Drawing.Point(2, 44);
+            this.label11.Location = new System.Drawing.Point(2, 66);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(83, 21);
             this.label11.TabIndex = 2;
@@ -320,10 +322,10 @@ namespace FoodApp
             // 
             this.szummaLabel.AutoSize = true;
             this.szummaLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.szummaLabel.Location = new System.Drawing.Point(220, 41);
+            this.szummaLabel.Location = new System.Drawing.Point(220, 63);
             this.szummaLabel.Name = "szummaLabel";
             this.szummaLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.szummaLabel.Size = new System.Drawing.Size(72, 25);
+            this.szummaLabel.Size = new System.Drawing.Size(65, 24);
             this.szummaLabel.TabIndex = 5;
             this.szummaLabel.Text = "xxxxx";
             this.szummaLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -356,16 +358,16 @@ namespace FoodApp
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.label17);
-            this.panel3.Location = new System.Drawing.Point(444, 492);
+            this.panel3.Location = new System.Drawing.Point(444, 506);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(325, 85);
+            this.panel3.Size = new System.Drawing.Size(325, 71);
             this.panel3.TabIndex = 46;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(30, 55);
+            this.label8.Location = new System.Drawing.Point(30, 48);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(257, 21);
             this.label8.TabIndex = 9;
@@ -375,7 +377,7 @@ namespace FoodApp
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label14.Location = new System.Drawing.Point(83, 17);
+            this.label14.Location = new System.Drawing.Point(83, 10);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(161, 17);
             this.label14.TabIndex = 8;
@@ -384,7 +386,7 @@ namespace FoodApp
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 0);
+            this.label16.Location = new System.Drawing.Point(3, -3);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(319, 13);
             this.label16.TabIndex = 6;
@@ -394,7 +396,7 @@ namespace FoodApp
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label17.Location = new System.Drawing.Point(44, 34);
+            this.label17.Location = new System.Drawing.Point(44, 27);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(227, 17);
             this.label17.TabIndex = 2;
@@ -457,6 +459,16 @@ namespace FoodApp
             this.keszBtn.Text = "Kész";
             this.keszBtn.UseVisualStyleBackColor = false;
             this.keszBtn.Click += new System.EventHandler(this.keszBtn_Click);
+            // 
+            // fiztipLabel
+            // 
+            this.fiztipLabel.AutoSize = true;
+            this.fiztipLabel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.fiztipLabel.Location = new System.Drawing.Point(118, 20);
+            this.fiztipLabel.Name = "fiztipLabel";
+            this.fiztipLabel.Size = new System.Drawing.Size(87, 17);
+            this.fiztipLabel.TabIndex = 49;
+            this.fiztipLabel.Text = "Fizetési mód";
             // 
             // Futar_nezet
             // 
@@ -529,5 +541,6 @@ namespace FoodApp
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.RichTextBox megjegyzesRichTextBox;
         private System.Windows.Forms.Button keszBtn;
+        private System.Windows.Forms.Label fiztipLabel;
     }
 }

@@ -467,8 +467,11 @@ namespace FoodApp
         }
         private void rend_tetelek_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string kiv_tetel = rend_tetelek.SelectedItem.ToString();
-            kivalasztott_tetelTextBox.Text = kiv_tetel.TrimEnd('\t').Remove(kiv_tetel.LastIndexOf('\t') + 1);
+            if (rend_tetelek.SelectedItem.ToString()!="" && rend_tetelek.SelectedItem.ToString()!=null)
+            {
+                string kiv_tetel = rend_tetelek.SelectedItem.ToString();
+                kivalasztott_tetelTextBox.Text = kiv_tetel.TrimEnd('\t').Remove(kiv_tetel.LastIndexOf('\t') + 1);
+            }
         }
         private void elvitel_ellenorzes(object sender, EventArgs e)
         {

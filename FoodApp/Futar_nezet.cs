@@ -37,6 +37,7 @@ namespace FoodApp
             static double tetelszam;
             static string note;
             static string orderID;
+            static string fiztip;
 
             public static string Nev { get => nev; set => nev = value; }
             public static string Telefonszam { get => telefonszam; set => telefonszam = value; }
@@ -51,6 +52,7 @@ namespace FoodApp
             public static double Tetelszam { get => tetelszam; set => tetelszam = value; }
             public static string Note { get => note; set => note = value; }
             public static string OrderID { get => orderID; set => orderID = value; }
+            public static string Fiztip { get => fiztip; set => fiztip = value; }
         }
         public class order
         {
@@ -338,7 +340,25 @@ namespace FoodApp
             csomagolasTextBox.Text = $"{adat.Tetelszam}x Csomagolás \t\t{adat.Csomagar*adat.Tetelszam}Ft";
             megjegyzesRichTextBox.Text = adat.Note;
             datumkezeles();
+            fiztip_kezeles();
         }
+
+        private void fiztip_kezeles()
+        {
+            if (adat.Fiztip=="True")
+            {
+                fiztipLabel.Text = "Kártyás fizetés";
+            }
+            else if (adat.Fiztip=="False")
+            {
+                fiztipLabel.Text = "Készpénzes fizetés";
+            }
+            else
+            {
+                fiztipLabel.Text = "Hibás formátumú fizetési mód!";
+            }
+        }
+
         private void datumkezeles()
         {
             DateTime ma = DateTime.Now;
@@ -402,6 +422,7 @@ namespace FoodApp
             tetelListBox.Items.Clear();
             duetimeLabel.Text = "xx:xx";
             datumLabel.Text = "xx/xx";
+            fiztipLabel.Text = "Fizetési mód";
         }
 
         private void order_lekeres()

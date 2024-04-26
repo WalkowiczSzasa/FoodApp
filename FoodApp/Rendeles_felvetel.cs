@@ -93,6 +93,8 @@ namespace FoodApp
 
         private void Rendeles_felvetel_Load(object sender, EventArgs e)
         {
+            hibaLabel.Hide();
+
             //placeholder attribútum hiányában ez a csunyaság van megoldásképp
             textBox1.Text = "Telefonszám";
             textBox2.Text = "Név:";
@@ -116,13 +118,46 @@ namespace FoodApp
 
         private void mentesBtn_Click(object sender, EventArgs e)
         {
-            szalldij_betolt();
-            uj_rendeles();
-            customerek_betolt();
-            mezok_kiurit();
-
+            ures_rendeles_kezeles();
         }
 
+        private void ures_rendeles_kezeles()
+        {
+            hibaLabel.Hide();
+            if (textBox1.Text=="Telefonszám")
+            {
+                hibaLabel.Text ="A telefonszám mező üres!";
+                hibaLabel.Show();
+            }
+            else if (textBox2.Text == "Név:")
+            {
+                hibaLabel.Text = "A név mező üres!";
+                hibaLabel.Show();
+            }
+            else if (textBox3.Text == "Utca:")
+            {
+                hibaLabel.Text = "Az utca mező üres!";
+                hibaLabel.Show();
+            }
+            else if (textBox4.Text == "Házszám:")
+            {
+                hibaLabel.Text = "A házszám mező üres!";
+                hibaLabel.Show();
+            }
+            else if (foodID.Count()==0 && drinkID.Count()==0)
+            {
+                hibaLabel.Text = "A rendelésnek nincsenek tételei";
+                hibaLabel.Show();
+            }
+            else
+            {
+                szalldij_betolt();
+                uj_rendeles();
+                customerek_betolt();
+                mezok_kiurit();
+            }
+        }
+        #region
         private void etelBtn_Click(object sender, EventArgs e)
         {
             etelek_betolt();
@@ -602,9 +637,12 @@ namespace FoodApp
         }
 
         private void rend_tetelek_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string kiv_tetel = rend_tetelek.SelectedItem.ToString();
-            kivalasztott_tetelTextBox.Text = kiv_tetel.TrimEnd('\t').Remove(kiv_tetel.LastIndexOf('\t') + 1);
+        { 
+            if (rend_tetelek.SelectedItem.ToString() != "" && rend_tetelek.SelectedItem.ToString() != null)
+            {
+                string kiv_tetel = rend_tetelek.SelectedItem.ToString();
+                kivalasztott_tetelTextBox.Text = kiv_tetel.TrimEnd('\t').Remove(kiv_tetel.LastIndexOf('\t') + 1);
+            }
         }
 
 
@@ -620,7 +658,7 @@ namespace FoodApp
         }
 
 
-
+        #endregion
         //placeholder attribútum hiányában ez a csunyaság van megoldásképp
         private void textBox1_Enter(object sender, EventArgs e)
         {
@@ -633,7 +671,7 @@ namespace FoodApp
         {
             if (textBox1.Text == "")
             {
-                textBox1.Text = "Telefonszám";
+                textBox1.Text = "Telefonszám:";
 
             }
         }
