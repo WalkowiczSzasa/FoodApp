@@ -146,7 +146,6 @@ namespace FoodApp
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
 
-            //dispatchID és név kiválasztása a users táblából combobox feltöltéshez
             try
             {
                 conn.Open();

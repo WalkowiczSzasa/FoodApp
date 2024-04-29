@@ -302,7 +302,6 @@ namespace FoodApp
         {
             flowLayoutPanel2.Controls.Clear();
             foodMenu.Clear();
-            //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
             //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -348,7 +347,6 @@ namespace FoodApp
         {
             drinkMenu.Clear();
             flowLayoutPanel2.Controls.Clear();
-            //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
             //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);

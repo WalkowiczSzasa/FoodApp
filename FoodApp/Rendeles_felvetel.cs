@@ -468,7 +468,6 @@ namespace FoodApp
         {
             menuFlowLayoutPanel.Controls.Clear();
             foodMenu.Clear();
-            //TODO: watch?v=u71RJZm7Gdc&t=0s&ab_channel=AaricAaiden
             //Kapcsolódási adatok
             string connStr = "server=localhost;user=asd;database=restaurantapp;port=3306;password=asd";
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -660,6 +659,7 @@ namespace FoodApp
 
         #endregion
         //placeholder attribútum hiányában ez a csunyaság van megoldásképp
+        #region Makeshift Placeholder
         private void textBox1_Enter(object sender, EventArgs e)
         {
             if (textBox1.Text == "Telefonszám")
@@ -720,5 +720,6 @@ namespace FoodApp
 
             }
         }
+        #endregion
     }
 }

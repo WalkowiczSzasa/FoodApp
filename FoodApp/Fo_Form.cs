@@ -103,7 +103,6 @@ namespace FoodApp
             login.Show();
 
         }
-
         private void rend_felvetel_Click(object sender, EventArgs e)
         {
             KijeloltPanel.Height = rendeles_felvetelBtn.Height;
@@ -112,7 +111,6 @@ namespace FoodApp
             exitBtn.BringToFront();
             move_PictureBox.BringToFront();
         }
-
         private void aktiv_rend_Click(object sender, EventArgs e)
         {
             KijeloltPanel.Height = aktiv_rendelesekBtn.Height;
@@ -122,7 +120,6 @@ namespace FoodApp
             move_PictureBox.BringToFront();
             aktiv_Rendelesek1.rendelesek_betolt();
         }
-
         private void etel_ital_felvetel_Click(object sender, EventArgs e)
         {
             KijeloltPanel.Height = etel_ital_felvetelBtn.Height;
