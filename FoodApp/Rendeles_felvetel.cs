@@ -123,6 +123,7 @@ namespace FoodApp
 
         private void ures_rendeles_kezeles()
         {
+            hibaLabel.Font = new Font("Century Gothic", 12);
             hibaLabel.Hide();
             if (textBox1.Text=="Telefonszám")
             {
@@ -144,9 +145,15 @@ namespace FoodApp
                 hibaLabel.Text = "A házszám mező üres!";
                 hibaLabel.Show();
             }
+            else if (comboBox1.SelectedItem==""||comboBox1.SelectedItem==null)
+            {
+                hibaLabel.Text = "Válassz egy fizetési módot!";
+                hibaLabel.Show();
+            }
             else if (foodID.Count()==0 && drinkID.Count()==0)
             {
-                hibaLabel.Text = "A rendelésnek nincsenek tételei";
+                hibaLabel.Text = "A rendelésnek nincsenek tételei!";
+                hibaLabel.Font = new Font("Century Gothic" , 9);
                 hibaLabel.Show();
             }
             else
