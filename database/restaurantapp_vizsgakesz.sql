@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Ápr 30. 01:42
+-- Létrehozás ideje: 2024. Ápr 30. 09:31
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -32,6 +32,14 @@ CREATE TABLE `allergene` (
   `allergeneName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `allergene`
+--
+
+INSERT INTO `allergene` (`allergeneID`, `allergeneName`) VALUES
+(1, 'Teszt allergén 1'),
+(2, 'Teszt allergén 2');
+
 -- --------------------------------------------------------
 
 --
@@ -43,6 +51,14 @@ CREATE TABLE `customer` (
   `name` varchar(40) NOT NULL,
   `phoneNumber` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `customer`
+--
+
+INSERT INTO `customer` (`ID`, `name`, `phoneNumber`) VALUES
+(1, 'Teszt Teszt', '12345678910'),
+(2, 'Teszt2 Teszt2', '123456789102');
 
 -- --------------------------------------------------------
 
@@ -76,6 +92,14 @@ CREATE TABLE `destination` (
   `customerID` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `destination`
+--
+
+INSERT INTO `destination` (`ID`, `orderType`, `orderStreet`, `orderStreetNum`, `customerID`) VALUES
+(1, 1, 'Teszt utca', 'Teszt hsz', 1),
+(2, 1, 'Teszt2 utca', 'Teszt2 hsz', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -88,6 +112,14 @@ CREATE TABLE `drink` (
   `drinkPrice` int(5) NOT NULL COMMENT 'VAT percentage of the drink f.e.:27%',
   `drinkStatus` int(1) NOT NULL COMMENT '0=Not Available\r\n1=Available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `drink`
+--
+
+INSERT INTO `drink` (`ID`, `drinkName`, `drinkPrice`, `drinkStatus`) VALUES
+(1, 'Teszt ital 1', 500, 1),
+(2, 'Teszt ital 2', 350, 1);
 
 -- --------------------------------------------------------
 
@@ -123,6 +155,14 @@ CREATE TABLE `food` (
   `foodStatus` int(1) NOT NULL COMMENT '0=Not Available\r\n1=Available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `food`
+--
+
+INSERT INTO `food` (`ID`, `foodName`, `foodDesc`, `foodVAT`, `foodPrice`, `foodAllergenID`, `foodStatus`) VALUES
+(1, 'Teszt étel 1', 'Teszt leírás 1', '27%', 1200, '1 2', 1),
+(2, 'Teszt étel 2', 'Teszt leírás 2', '10%', 2100, '1', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -141,6 +181,14 @@ CREATE TABLE `orders` (
   `drinkID` varchar(255) NOT NULL,
   `paymentID` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `orders`
+--
+
+INSERT INTO `orders` (`orderID`, `orderNote`, `orderTime`, `orderDueTime`, `orderDestID`, `orderDispatchID`, `orderStatus`, `foodID`, `drinkID`, `paymentID`) VALUES
+(1, 'Teszt megjegyzés', '2024-04-30 02:49:37', '2024-04-30 09:48:33', 1, 2, 1, 'f1', 'd1', 1),
+(2, 'Teszt megjegfyzés', '2024-04-30 08:46:17', '2024-04-30 11:45:08', 2, 4, 1, 'f1 f2', 'd2', 2);
 
 -- --------------------------------------------------------
 
@@ -174,6 +222,14 @@ CREATE TABLE `payment` (
   `sum` int(11) NOT NULL COMMENT 'Sum of the foods and drinks cost.(Packaging and delivery fees excluded)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `payment`
+--
+
+INSERT INTO `payment` (`ID`, `paymentType`, `packagingCost`, `deliveryCost`, `sum`) VALUES
+(1, 0, 200, 500, 1700),
+(2, 1, 400, 500, 3650);
+
 -- --------------------------------------------------------
 
 --
@@ -193,7 +249,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `username`, `password`, `dname`, `role`) VALUES
-(1, 'admin', 'a', 'Admin', 'admin');
+(1, 'admin', 'a', 'Admin', 'admin'),
+(2, 'futar', 'f', 'Teszt Futár', 'dispatch'),
+(3, 'szakacs', 's', 'Teszt Szakács', 'cook'),
+(4, '', '', 'ELVITEL', 'dispatch');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -273,13 +332,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `allergene`
 --
 ALTER TABLE `allergene`
-  MODIFY `allergeneID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `allergeneID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `deliveryfee`
@@ -291,13 +350,13 @@ ALTER TABLE `deliveryfee`
 -- AUTO_INCREMENT a táblához `destination`
 --
 ALTER TABLE `destination`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `drink`
 --
 ALTER TABLE `drink`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `finishedorders`
@@ -309,13 +368,13 @@ ALTER TABLE `finishedorders`
 -- AUTO_INCREMENT a táblához `food`
 --
 ALTER TABLE `food`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `packaging`
@@ -327,13 +386,13 @@ ALTER TABLE `packaging`
 -- AUTO_INCREMENT a táblához `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
